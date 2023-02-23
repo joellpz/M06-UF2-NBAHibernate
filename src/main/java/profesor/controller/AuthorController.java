@@ -1,17 +1,12 @@
-package controller;
+package profesor.controller;
 
-import model.Author;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import profesor.model.Author;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.*;
-
-import org.hibernate.SessionFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

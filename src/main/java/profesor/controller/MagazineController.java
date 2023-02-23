@@ -1,11 +1,6 @@
-package controller;
+package profesor.controller;
 
-import model.Article;
-import model.Magazine;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import profesor.model.Magazine;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

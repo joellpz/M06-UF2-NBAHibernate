@@ -5,7 +5,7 @@ import javax.persistence.Id;
 
 public class Team {
     @Id
-    @Column(name = "id_autor")
+    @Column(name = "idteam")
     int teamId;
     @Column(name = "name", length = 45)
     String name;

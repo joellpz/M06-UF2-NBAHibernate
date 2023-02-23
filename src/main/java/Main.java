@@ -1,22 +1,25 @@
 import java.io.IOException;
 import java.sql.Connection;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.ArticleController;
-import controller.AuthorController;
-import controller.MagazineController;
+import newController.PlayerController;
+import newModel.Player;
+import profesor.controller.ArticleController;
+import profesor.controller.AuthorController;
+import profesor.controller.MagazineController;
 import database.ConnectionFactory;
-import model.*;
+import profesor.model.*;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import view.Menu;
+import profesor.view.Menu;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -24,7 +27,103 @@ import javax.persistence.Persistence;
 
 public class Main {
 
-  static SessionFactory sessionFactoryObj;
+    public static void main(String[] args) throws ParseException {
+//    ArrayList<Magazine> revistes = new ArrayList();
+
+        ConnectionFactory connectionFactory = ConnectionFactory.getInstance();
+        Connection c = connectionFactory.connect();
+        EntityManagerFactory entityManagerFactory = createEntityManagerFactory();
+
+//    SessionFactory sessionFactory = buildSessionFactory();
+        //sessionObj = buildSessionFactory().openSession();
+        PlayerController playerController = new PlayerController(c, entityManagerFactory);
+
+//    AuthorController authorController = new AuthorController(c, entityManagerFactory);
+//    ArticleController articleController = new ArticleController(c, entityManagerFactory);
+//    MagazineController magazineController = new MagazineController(c, entityManagerFactory);
+
+        DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
+
+        playerController.addPlayer(new Player("Joel1", "position", "college", "draftTeam", 5 , dateFormat.parse("1990-12-12"),25, 1990, 5));
+
+//
+//        Menu menu = new Menu();
+//        int opcio;
+//        opcio = menu.mainMenu();
+
+//        switch (opcio) {
+//
+//            case 1:
+//
+//                System.out.println("1!!");
+//                try {
+//
+//                    // authorController.printAutors(authorController.readAuthorsFile("src/main/resources/autors.txt"));
+//                    //
+//
+//                    // for (Author a : authors) {
+//                    //   authorController.addAuthor(a);
+//                    // }
+//
+//                    // magazineController.printMagazines(magazineController.readMagazinesFile("src/main/resources/revistes.txt"));
+//                    // magazineController.printMagazines();
+//
+//                    List<Author> authors = authorController.readAuthorsFile("src/main/resources/autors.txt");
+//                    List<Magazine> magazines = articleController.readArticlesFile("src/main/resources/articles.txt", "src/main/resources/revistes.txt", "src/main/resources/autors.txt");
+//                    List<Article> articles = articleController.readArticlesFile("src/main/resources/articles.txt", "src/main/resources/autors.txt");
+//
+//                    System.out.println("Revistes llegides des del fitxer");
+//                    for (int i = 0; i < magazines.size(); i++) {
+//                        System.out.println(magazines.get(i).toString() + "\n");
+//                        for (int j = 0; j < magazines.get(i).getArticles().size(); j++) {
+//                            Author author = magazines.get(i).getArticles().get(j).getAuthor();
+//                            authorController.addAuthor(author);
+//
+//                            System.out.println("EL AUTOR:");
+//                            System.out.println(author);
+//
+//                            Article article = magazines.get(i).getArticles().get(j);
+//                            article.setAuthor(author);
+//
+//                            System.out.println("EL ARTICLE:");
+//                            System.out.println(article);
+//
+//                            articleController.addArticle(article);
+//                        }
+//
+//                        magazineController.addMagazine(magazines.get(i));
+//                    }
+//
+///*
+//          for (Magazine m : magazines) {
+//            System.out.println(m);
+//            magazineController.addMagazine(m);
+//          }
+//
+//          for (Author a : authors) {
+//            authorController.addAuthor(a);
+//          }
+//
+//          for (Article ar : articles) {
+//            articleController.addArticle(ar);
+//          }
+//*/
+//                } catch (NumberFormatException | IOException e) {
+//
+//                    e.printStackTrace();
+//                }
+//                break;
+//
+//            default:
+//                System.out.println("Adeu!!");
+//                System.exit(1);
+//                break;
+//
+//        }
+    }
+
+    static SessionFactory sessionFactoryObj;
+
 /*
   private static SessionFactory buildSessionFactory() {
     // Creating Configuration Instance & Passing Hibernate Configuration File
@@ -39,119 +138,29 @@ public class Main {
     return sessionFactoryObj;
   } */
 
-  private static SessionFactory buildSessionFactory() {
-    try {
-      StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder()
-          .configure("hibernate.cfg.xml").build();
-      Metadata metadata = new MetadataSources(standardRegistry).getMetadataBuilder().build();
-      return metadata.getSessionFactoryBuilder().build();
-
-    } catch (HibernateException he) {
-      System.out.println("Session Factory creation failure");
-      throw he;
-    }
-  }
-
-  public static EntityManagerFactory createEntityManagerFactory(){
-    EntityManagerFactory emf;
-    try {
-      emf = Persistence.createEntityManagerFactory("JPAMagazines");
-    } catch (Throwable ex) {
-      System.err.println("Failed to create EntityManagerFactory object."+ ex);
-      throw new ExceptionInInitializerError(ex);
-    }
-    return emf;
-  }
-
-  public static void main(String[] args) {
-    ArrayList<Magazine> revistes = new ArrayList();
-
-    ConnectionFactory connectionFactory = ConnectionFactory.getInstance();
-    Connection c = connectionFactory.connect();
-
-//    SessionFactory sessionFactory = buildSessionFactory();
-    EntityManagerFactory entityManagerFactory = createEntityManagerFactory();
-    //sessionObj = buildSessionFactory().openSession();
-
-
-    AuthorController authorController = new AuthorController(c, entityManagerFactory);
-    ArticleController articleController = new ArticleController(c, entityManagerFactory);
-    MagazineController magazineController = new MagazineController(c, entityManagerFactory);
-
-    Menu menu = new Menu();
-    int opcio;
-    opcio = menu.mainMenu();
-
-    switch (opcio) {
-
-      case 1:
-
-        System.out.println("1!!");
+    private static SessionFactory buildSessionFactory() {
         try {
+            StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder()
+                    .configure("hibernate.cfg.xml").build();
+            Metadata metadata = new MetadataSources(standardRegistry).getMetadataBuilder().build();
+            return metadata.getSessionFactoryBuilder().build();
 
-          // authorController.printAutors(authorController.readAuthorsFile("src/main/resources/autors.txt"));
-        //
-
-         // for (Author a : authors) {
-         //   authorController.addAuthor(a);
-         // }
-
-          // magazineController.printMagazines(magazineController.readMagazinesFile("src/main/resources/revistes.txt"));
-          // magazineController.printMagazines();
-
-          List<Author> authors = authorController.readAuthorsFile("src/main/resources/autors.txt");
-          List<Magazine> magazines = articleController.readArticlesFile("src/main/resources/articles.txt", "src/main/resources/revistes.txt", "src/main/resources/autors.txt");
-          List<Article> articles = articleController.readArticlesFile("src/main/resources/articles.txt", "src/main/resources/autors.txt");
-
-          System.out.println("Revistes llegides des del fitxer");
-          for (int i = 0; i < magazines.size(); i++) {
-            System.out.println(magazines.get(i).toString()+"\n");
-            for (int j = 0; j < magazines.get(i).getArticles().size(); j++) {
-              Author author = magazines.get(i).getArticles().get(j).getAuthor();
-              authorController.addAuthor(author);
-
-              System.out.println("EL AUTOR:");
-              System.out.println(author);
-
-              Article article = magazines.get(i).getArticles().get(j);
-              article.setAuthor(author);
-
-              System.out.println("EL ARTICLE:");
-              System.out.println(article);
-
-              articleController.addArticle(article);
-            }
-
-            magazineController.addMagazine(magazines.get(i));
-          }
-
-/*
-          for (Magazine m : magazines) {
-            System.out.println(m);
-            magazineController.addMagazine(m);
-          }
-
-          for (Author a : authors) {
-            authorController.addAuthor(a);
-          }
-
-          for (Article ar : articles) {
-            articleController.addArticle(ar);
-          }
-*/
-        } catch (NumberFormatException | IOException e) {
-
-          e.printStackTrace();
+        } catch (HibernateException he) {
+            System.out.println("Session Factory creation failure");
+            throw he;
         }
-        break;
-
-      default:
-        System.out.println("Adeu!!");
-        System.exit(1);
-        break;
-
     }
-  }
+
+    public static EntityManagerFactory createEntityManagerFactory() {
+        EntityManagerFactory emf;
+        try {
+            emf = Persistence.createEntityManagerFactory("JPAMagazines");
+        } catch (Throwable ex) {
+            System.err.println("Failed to create EntityManagerFactory object." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+        return emf;
+    }
 }
 
 

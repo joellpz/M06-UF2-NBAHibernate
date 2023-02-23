@@ -1,7 +1,6 @@
 package newModel;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 public class Season {
 
@@ -14,8 +13,9 @@ public class Season {
     @Column(name = "league",length = 45)
     String league;
 
-
-    String champion;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idteam")
+    Team champion;
 
     @Column(name = "mvp",length = 45)
     String MVP;
@@ -45,10 +45,10 @@ public class Season {
      * @param ROTY       Mejor Rookie
      * @param PPG_Leader Líder Puntos
      * @param RGP_Leader Líder Rebotes
-     * @param APG_Leader Líder Asistencias
+     * @param APG_Leader Líder Asistenciass
      * @param WS_Leader  Líder Victorias
      */
-    public Season(String year, String league, String champion, String MVP, String ROTY, String PPG_Leader, String RGP_Leader, String APG_Leader, String WS_Leader) {
+    public Season(String year, String league, Team champion, String MVP, String ROTY, String PPG_Leader, String RGP_Leader, String APG_Leader, String WS_Leader) {
         this.year = year;
         this.league = league;
         this.champion = champion;
@@ -64,6 +64,86 @@ public class Season {
      * Constructor para JAXB
      */
     public Season() {
+    }
+
+    public int getSeasonId() {
+        return seasonId;
+    }
+
+    public void setSeasonId(int seasonId) {
+        this.seasonId = seasonId;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getLeague() {
+        return league;
+    }
+
+    public void setLeague(String league) {
+        this.league = league;
+    }
+
+    public Team getChampion() {
+        return champion;
+    }
+
+    public void setChampion(Team champion) {
+        this.champion = champion;
+    }
+
+    public String getMVP() {
+        return MVP;
+    }
+
+    public void setMVP(String MVP) {
+        this.MVP = MVP;
+    }
+
+    public String getROTY() {
+        return ROTY;
+    }
+
+    public void setROTY(String ROTY) {
+        this.ROTY = ROTY;
+    }
+
+    public String getPPG_Leader() {
+        return PPG_Leader;
+    }
+
+    public void setPPG_Leader(String PPG_Leader) {
+        this.PPG_Leader = PPG_Leader;
+    }
+
+    public String getRGP_Leader() {
+        return RGP_Leader;
+    }
+
+    public void setRGP_Leader(String RGP_Leader) {
+        this.RGP_Leader = RGP_Leader;
+    }
+
+    public String getAPG_Leader() {
+        return APG_Leader;
+    }
+
+    public void setAPG_Leader(String APG_Leader) {
+        this.APG_Leader = APG_Leader;
+    }
+
+    public String getWS_Leader() {
+        return WS_Leader;
+    }
+
+    public void setWS_Leader(String WS_Leader) {
+        this.WS_Leader = WS_Leader;
     }
 
     /**
