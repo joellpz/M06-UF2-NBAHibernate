@@ -43,9 +43,22 @@ public class Main {
 //    MagazineController magazineController = new MagazineController(c, entityManagerFactory);
 
         DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
+        Player player1 = new Player("Joel1", "position", "college", "draftTeam", 5 , dateFormat.parse("1990-12-12"),25, 1990, 5);
+        playerController.addPlayer(player1);
+        playerController.addPlayer(new Player("Joel2", "position", "college", "draftTeam", 5 , dateFormat.parse("1990-12-12"),25, 1990, 5));
+        playerController.listPlayers();
 
-        playerController.addPlayer(new Player("Joel1", "position", "college", "draftTeam", 5 , dateFormat.parse("1990-12-12"),25, 1990, 5));
+        player1.setName("NEWJOEL");
+        System.out.println(player1.getPlayerId()+"+++");
+        playerController.updatePlayer(player1.getPlayerId());
+        playerController.listPlayers();
+        playerController.deletePlayer();
+        playerController.listPlayers();
+//        playerController.listPlayers();
+//        playerController.deletePlayer(1);
+//        playerController.listPlayers();
 
+        playerController.clearPlayers();
 //
 //        Menu menu = new Menu();
 //        int opcio;

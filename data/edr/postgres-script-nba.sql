@@ -3,9 +3,11 @@
 BEGIN;
 
 
+DROP TABLE IF EXISTS public.players;
+
 CREATE TABLE IF NOT EXISTS public.players
 (
-    idplayer integer NOT NULL DEFAULT nextval('players_idplayer_seq'::regclass),
+    idplayer SERIAL NOT NULL,
     name character varying(45) COLLATE pg_catalog."default" DEFAULT 'noData'::character varying,
     age integer DEFAULT 0,
     "position" character varying(100) COLLATE pg_catalog."default" DEFAULT 'noData'::character varying,
@@ -17,6 +19,8 @@ CREATE TABLE IF NOT EXISTS public.players
     experience integer DEFAULT 0,
     CONSTRAINT players_pkey PRIMARY KEY (idplayer)
 );
+
+DROP TABLE IF EXISTS public.playerseasons;
 
 CREATE TABLE IF NOT EXISTS public.playerseasons
 (
@@ -55,9 +59,11 @@ CREATE TABLE IF NOT EXISTS public.playerseasons
     CONSTRAINT playerseasons_pkey PRIMARY KEY (idplayer, idseason, idteam)
 );
 
+DROP TABLE IF EXISTS public.seasons;
+
 CREATE TABLE IF NOT EXISTS public.seasons
 (
-    idseason integer NOT NULL DEFAULT nextval('seasons_idseason_seq'::regclass),
+    idseason SERIAL NOT NULL,
     years character varying(45) COLLATE pg_catalog."default",
     league character varying(45) COLLATE pg_catalog."default",
     champion integer,
@@ -70,9 +76,11 @@ CREATE TABLE IF NOT EXISTS public.seasons
     CONSTRAINT seasons_pkey PRIMARY KEY (idseason)
 );
 
+DROP TABLE IF EXISTS public.teams;
+
 CREATE TABLE IF NOT EXISTS public.teams
 (
-    idteam integer NOT NULL DEFAULT nextval('teams_idteam_seq'::regclass),
+    idteam SERIAL NOT NULL,
     name character varying(45) COLLATE pg_catalog."default",
     location character varying(45) COLLATE pg_catalog."default",
     games integer,

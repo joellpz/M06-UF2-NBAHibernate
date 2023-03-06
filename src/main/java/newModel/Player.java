@@ -1,5 +1,8 @@
 package newModel;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -10,6 +13,7 @@ import java.util.Date;
 public class Player implements Serializable {
     @Id
     @Column(name = "idplayer")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int playerId;
     @Column(name = "name", length = 45)
     String name;
@@ -152,6 +156,7 @@ public class Player implements Serializable {
     public String toString() {
 
         return "Player{" +
+                "playerId='" + playerId + '\'' +
                 "name='" + name + '\'' +
                 ", born='" + born + '\'' +
                 ", age=" + age +

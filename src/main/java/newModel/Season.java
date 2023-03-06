@@ -6,6 +6,7 @@ public class Season {
 
     @Id
     @Column(name = "idseason")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int seasonId;
     @Column(name = "years",length = 45)
     String year;

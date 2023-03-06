@@ -1,11 +1,14 @@
 package newModel;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 public class Team {
     @Id
     @Column(name = "idteam")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int teamId;
     @Column(name = "name", length = 45)
     String name;
