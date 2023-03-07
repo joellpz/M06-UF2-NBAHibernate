@@ -3,7 +3,7 @@
 BEGIN;
 
 
-DROP TABLE IF EXISTS public.players;
+DROP TABLE IF EXISTS public.players CASCADE;
 
 CREATE TABLE IF NOT EXISTS public.players
 (
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS public.players
     CONSTRAINT players_pkey PRIMARY KEY (idplayer)
 );
 
-DROP TABLE IF EXISTS public.playerseasons;
+DROP TABLE IF EXISTS public.playerseasons CASCADE;
 
 CREATE TABLE IF NOT EXISTS public.playerseasons
 (
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS public.playerseasons
     CONSTRAINT playerseasons_pkey PRIMARY KEY (idplayer, idseason, idteam)
 );
 
-DROP TABLE IF EXISTS public.seasons;
+DROP TABLE IF EXISTS public.seasons CASCADE;
 
 CREATE TABLE IF NOT EXISTS public.seasons
 (
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS public.seasons
     CONSTRAINT seasons_pkey PRIMARY KEY (idseason)
 );
 
-DROP TABLE IF EXISTS public.teams;
+DROP TABLE IF EXISTS public.teams CASCADE;
 
 CREATE TABLE IF NOT EXISTS public.teams
 (

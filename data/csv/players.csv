@@ -1,513 +1,177 @@
-"idplayer","name","age","position","college","draftteam","draftposition","draftyear","born","experience"
-1,"Alaa Abdelnaby",54,"Power Forward","Duke","Portland Trail Blazers",25,1990,"1968-06-24",5
-2,"Zaid Abdul-Aziz",76,"Center and Power Forward","Iowa State","Cincinnati Royals",5,1968,"1946-04-07",10
-3,"Kareem Abdul-Jabbar",75,"Center","UCLA","Milwaukee Bucks",1,1969,"1947-04-16",20
-4,"Mahmoud Abdul-Rauf",53,"Point Guard","LSU","Denver Nuggets",3,1990,"1969-03-09",9
-5,"Tariq Abdul-Wahad",48,"Shooting Guard","Michigan, San Jose State","Sacramento Kings",11,1997,"1974-11-03",6
-6,"Shareef Abdur-Rahim",46,"Power Forward, Small Forward, and Center","California","Vancouver Grizzlies",3,1996,"1976-12-11",12
-7,"Tom Abernethy",68,"Small Forward and Power Forward","Indiana","Los Angeles Lakers",9,1976,"1954-05-06",5
-8,"Forest Able",90,"Guard","Western Kentucky","Syracuse Nationals",5,1956,"1932-07-27",1
-9,"John Abramovic",81,"Forward","Salem University","none",NULL,0,"1919-02-09",2
-10,"Álex Abrines",29,"Shooting Guard","none","Oklahoma City Thunder",2,2013,"1993-08-01",0
-11,"Precious Achiuwa",23,"Center and Power Forward","Memphis","Miami Heat",20,2020,"1999-09-19",0
-12,"Alex Acker",39,"Shooting Guard","Pepperdine","Detroit Pistons",30,2005,"1983-01-21",2
-13,"Don Ackerman",80,"Point Guard","Long Island University","New York Knicks",2,1953,"1930-09-04",1
-14,"Mark Acres",60,"Center","Oral Roberts","Dallas Mavericks",16,1985,"1962-11-15",6
-15,"Bud Acton",80,"Small Forward","Hillsdale College","none",NULL,0,"1942-01-11",1
-16,"Quincy Acy",32,"Power Forward and Small Forward","Baylor","Toronto Raptors",7,2012,"1990-10-06",0
-17,"Alvan Adams",68,"Center and Power Forward","Oklahoma","Phoenix Suns",4,1975,"1954-07-19",13
-18,"Don Adams",66,"Small Forward","Northwestern","San Diego Rockets",1,1970,"1947-11-27",7
-19,"George Adams",73,"Small Forward","Gardner-Webb University","Milwaukee Bucks",16,1972,"1949-05-15",3
-20,"Hassan Adams",38,"Shooting Guard","Arizona","New Jersey Nets",24,2006,"1984-06-20",2
-21,"Jaylen Adams",26,"Point Guard","St. Bonaventure","none",NULL,0,"1996-05-04",0
-22,"Jordan Adams",28,"Shooting Guard","UCLA","Memphis Grizzlies",22,2014,"1994-07-08",2
-23,"Michael Adams",59,"Point Guard","Boston College","Sacramento Kings",19,1985,"1963-01-19",11
-24,"Steven Adams",29,"Center","Pitt","Oklahoma City Thunder",12,2013,"1993-07-20",0
-25,"Rafael Addison",58,"Small Forward","Syracuse","Phoenix Suns",15,1986,"1964-07-22",6
-26,"Bam Adebayo",25,"Center and Power Forward","Kentucky","Miami Heat",14,2017,"1997-07-18",0
-27,"Deng Adel",25,"Small Forward","Louisville","none",NULL,0,"1997-02-01",0
-28,"Rick Adelman",76,"Point Guard","Loyola Marymount","San Diego Rockets",1,1968,"1946-06-16",7
-29,"Jeff Adrien",36,"Power Forward","UConn","none",NULL,0,"1986-02-10",5
-30,"Arron Afflalo",37,"Shooting Guard and Small Forward","UCLA","Detroit Pistons",27,2007,"1985-10-15",11
-31,"Ochai Agbaji",22,"Shooting Guard","Kansas","Cleveland Cavaliers",14,2022,"2000-04-20",0
-32,"Maurice Ager",38,"Shooting Guard","Michigan State","Dallas Mavericks",28,2006,"1984-02-09",4
-33,"Mark Aguirre",63,"Small Forward","DePaul","Dallas Mavericks",1,1981,"1959-12-10",13
-34,"Blake Ahearn",38,"Point Guard","Missouri State","none",NULL,0,"1984-05-27",3
-35,"Danny Ainge",63,"Shooting Guard and Point Guard","BYU","Boston Celtics",8,1981,"1959-03-17",14
-36,"Matt Aitch",62,"Power Forward","Moberly Area Community College, Michigan State","Detroit Pistons",2,1967,"1944-09-21",1
-37,"Alexis Ajinça",34,"Center and Power Forward","none","Charlotte Bobcats",20,2008,"1988-05-06",7
-38,"Henry Akin",75,"Power Forward and Center","Morehead State University","New York Knicks",1,1966,"1944-07-31",3
-39,"Josh Akognon",36,"Point Guard","Washington State, Cal State Fullerton","none",NULL,0,"1986-02-10",1
-40,"DeVaughn Akoon-Purcell",29,"Shooting Guard","Illinois State","none",NULL,0,"1993-06-05",0
-41,"Solomon Alabi",34,"Center","Florida State","Dallas Mavericks",20,2010,"1988-03-21",2
-42,"Mark Alarie",59,"Power Forward","Duke","Denver Nuggets",18,1986,"1963-12-11",5
-43,"Gary Alcorn",70,"Center","Fresno State","Minneapolis Lakers",1,1959,"1936-10-08",2
-44,"Santi Aldama",21,"Power Forward","Loyola (MD)","Utah Jazz",30,2021,"2001-01-10",0
-45,"Furkan Aldemir",31,"Power Forward","none","Los Angeles Clippers",23,2012,"1991-08-09",1
-46,"Cole Aldrich",34,"Center","Kansas","New Orleans Hornets",11,2010,"1988-10-31",8
-47,"LaMarcus Aldridge",37,"Power Forward and Center","Texas","Chicago Bulls",2,2006,"1985-07-19",0
-48,"Chuck Aleksinas",63,"Center","Kentucky, UConn","Chicago Bulls",7,1982,"1959-02-26",1
-49,"Cliff Alexander",27,"Power Forward","Kansas","none",NULL,0,"1995-11-16",1
-50,"Cory Alexander",49,"Point Guard and Shooting Guard","Virginia","San Antonio Spurs",29,1995,"1973-06-22",7
-51,"Courtney Alexander",45,"Point Guard and Shooting Guard","Virginia, Fresno State","Orlando Magic",13,2000,"1977-04-27",3
-52,"Gary Alexander",53,"Power Forward","South Florida","none",NULL,0,"1969-11-01",1
-53,"Joe Alexander",35,"Small Forward","West Virginia","Milwaukee Bucks",8,2008,"1986-12-26",2
-54,"Kyle Alexander",26,"Center","Tennessee","none",NULL,0,"1996-10-21",0
-55,"Ty-Shon Alexander",24,"Shooting Guard","Creighton","none",NULL,0,"1998-07-16",0
-56,"Victor Alexander",53,"Center","Iowa State","Golden State Warriors",17,1991,"1969-08-31",5
-57,"Nickeil Alexander-Walker",24,"Shooting Guard","Virginia Tech","Brooklyn Nets",17,2019,"1998-09-02",0
-58,"Steve Alford",58,"Point Guard","Indiana","Dallas Mavericks",3,1987,"1964-11-23",4
-59,"Rawle Alkins",25,"Shooting Guard","Arizona","none",NULL,0,"1997-10-29",0
-60,"Bill Allen",0,"Center","New Mexico State","none",NULL,0,"1945-01-01",1
-61,"Bob Allen",76,"Power Forward","Marshall","San Francisco Warriors",7,1968,"1946-07-17",1
-62,"Grayson Allen",27,"Shooting Guard","Duke","Utah Jazz",21,2018,"1995-10-08",0
-63,"Jarrett Allen",24,"Center","Texas","Brooklyn Nets",22,2017,"1998-04-21",0
-64,"Jerome Allen",49,"Shooting Guard","Penn","Minnesota Timberwolves",20,1995,"1973-01-28",2
-65,"Kadeem Allen",29,"Point Guard","Arizona","Boston Celtics",23,2017,"1993-01-15",0
-66,"Lavoy Allen",33,"Power Forward and Center","Temple","Philadelphia 76ers",20,2011,"1989-02-04",6
-67,"Lucius Allen",75,"Point Guard","UCLA","Seattle SuperSonics",3,1969,"1947-09-26",10
-68,"Malik Allen",44,"Power Forward","Villanova","none",NULL,0,"1978-06-27",10
-69,"Randy Allen",57,"Shooting Guard","Florida State","none",NULL,0,"1965-01-26",2
-70,"Ray Allen",47,"Shooting Guard","UConn","Minnesota Timberwolves",5,1996,"1975-07-20",18
-71,"Tony Allen",40,"Shooting Guard, Small Forward, and Point Guard","Butler County Community College, Oklahoma State","Boston Celtics",25,2004,"1982-01-11",14
-72,"Willie Allen",73,"Power Forward","Miami (FL)","Baltimore Bullets",9,1971,"1949-02-08",1
-73,"Odis Allison",73,"Small Forward","UNLV","Golden State Warriors",8,1971,"1949-10-02",1
-74,"Lance Allred",41,"Center","Utah, Weber State","none",NULL,0,"1981-02-02",1
-75,"Darrell Allums",64,"Power Forward","UCLA","Dallas Mavericks",11,1980,"1958-09-12",1
-76,"Morris Almond",37,"Shooting Guard","Rice University","Utah Jazz",25,2007,"1985-02-02",3
-77,"Derrick Alston",50,"Center","Duquesne","Philadelphia 76ers",6,1994,"1972-08-20",3
-78,"Rafer Alston",46,"Point Guard","Fresno State","Milwaukee Bucks",10,1998,"1976-07-24",11
-79,"Peter Aluma",46,"Center","Liberty","none",NULL,0,"1973-04-23",1
-80,"Jose Alvarado",24,"Point Guard","Georgia Tech","none",NULL,0,"1998-04-12",0
-81,"John Amaechi",52,"Center and Power Forward","Vanderbilt, Penn State","none",NULL,0,"1970-11-26",5
-82,"Ashraf Amaya",51,"Power Forward","Southern Illinois","none",NULL,0,"1971-11-23",2
-83,"Al-Farouq Aminu",32,"Power Forward and Small Forward","Wake Forest","Los Angeles Clippers",8,2010,"1990-09-21",0
-84,"Lou Amundson",40,"Power Forward","UNLV","none",NULL,0,"1982-12-07",10
-85,"Bob Anderegg",85,"Small Forward","Michigan State","New York Knicks",6,1959,"1937-08-24",1
-86,"Chris Andersen",44,"Center and Power Forward","Blinn College","none",NULL,0,"1978-07-07",15
-87,"David Andersen",42,"Power Forward and Center","none","Atlanta Hawks",8,2002,"1980-06-23",2
-88,"Alan Anderson",40,"Small Forward and Shooting Guard","Michigan State","none",NULL,0,"1982-10-16",8
-89,"Andy Anderson",73,"Shooting Guard and Point Guard","Canisius","Boston Celtics",9,1967,"1945-07-06",3
-90,"Antonio Anderson",37,"Small Forward","Memphis","none",NULL,0,"1985-06-05",1
-91,"Cliff Anderson",76,"Shooting Guard","Saint Joseph's","Los Angeles Lakers",4,1967,"1944-09-07",4
-92,"Dan Anderson",79,"Center","Augsburg College","Philadelphia 76ers",3,1965,"1943-02-15",2
-93,"Dan Anderson",71,"Point Guard and Shooting Guard","USC","Portland Trail Blazers",2,1974,"1951-01-01",2
-94,"Derek Anderson",48,"Shooting Guard, Small Forward, and Point Guard","Ohio State, Kentucky","Cleveland Cavaliers",13,1997,"1974-07-18",11
-95,"Dwight Anderson",59,"Point Guard","Kentucky, USC","Washington Bullets",18,1982,"1960-12-28",1
-96,"Eric Anderson",48,"Power Forward","Indiana","none",NULL,0,"1970-05-26",2
-97,"Greg Anderson",58,"Power Forward and Center","Houston","San Antonio Spurs",23,1987,"1964-06-22",10
-98,"J.J. Anderson",62,"Small Forward","Bradley","Philadelphia 76ers",13,1982,"1960-09-23",3
-99,"James Anderson",33,"Shooting Guard and Small Forward","Oklahoma State","San Antonio Spurs",20,2010,"1989-03-25",5
-100,"Jerome Anderson",55,"Shooting Guard","West Virginia","Boston Celtics",17,1975,"1953-10-09",2
-101,"Justin Anderson",29,"Small Forward and Shooting Guard","Virginia","Dallas Mavericks",21,2015,"1993-11-19",0
-102,"Kenny Anderson",52,"Point Guard","Georgia Tech","New Jersey Nets",2,1991,"1970-10-09",14
-103,"Kim Anderson",67,"Small Forward","Missouri","Portland Trail Blazers",6,1978,"1955-05-12",1
-104,"Kyle Anderson",29,"Small Forward and Power Forward","UCLA","San Antonio Spurs",30,2014,"1993-09-20",0
-105,"Michael Anderson",56,"Point Guard","Drexel","Indiana Pacers",23,1988,"1966-03-23",1
-106,"Nick Anderson",54,"Shooting Guard and Small Forward","Illinois","Orlando Magic",11,1989,"1968-01-20",13
-107,"Richard Anderson",62,"Power Forward and Center","UC Santa Barbara","San Diego Clippers",9,1982,"1960-11-19",6
-108,"Ron Anderson",64,"Small Forward","Fresno State","Cleveland Cavaliers",3,1984,"1958-10-15",10
-109,"Ryan Anderson",34,"Power Forward and Center","California","New Jersey Nets",21,2008,"1988-05-06",12
-110,"Shandon Anderson",48,"Shooting Guard and Small Forward","Georgia","Utah Jazz",25,1996,"1973-12-31",10
-111,"Willie Anderson",55,"Shooting Guard and Small Forward","Georgia","San Antonio Spurs",10,1988,"1967-01-08",9
-112,"Wally Anderzunas",43,"Small Forward","Creighton","Detroit Pistons",6,1969,"1946-01-11",1
-113,"Martynas Andriuškevičius",36,"Center","none","Orlando Magic",14,2005,"1986-03-12",1
-114,"Don Anielak",65,"Forward","Missouri State","New York Knicks",8,1954,"1930-11-01",1
-115,"Ike Anigbogu",24,"Center","UCLA","Indiana Pacers",17,2017,"1998-10-17",0
-116,"Michael Ansley",55,"Small Forward","Alabama","Orlando Magic",10,1989,"1967-02-08",3
-117,"Chris Anstey",47,"Center","none","Portland Trail Blazers",18,1997,"1975-01-01",3
-118,"Giannis Antetokounmpo",28,"Power Forward, Small Forward, Point Guard, and Shooting Guard","none","Milwaukee Bucks",15,2013,"1994-12-06",0
-119,"Kostas Antetokounmpo",25,"Power Forward","Dayton","Philadelphia 76ers",30,2018,"1997-11-20",0
-120,"Thanasis Antetokounmpo",30,"Small Forward","none","New York Knicks",21,2014,"1992-07-18",0
-121,"Carmelo Anthony",38,"Small Forward and Power Forward","Syracuse","Denver Nuggets",3,2003,"1984-05-29",0
-122,"Cole Anthony",22,"Point Guard","UNC","Orlando Magic",15,2020,"2000-05-15",0
-123,"Greg Anthony",55,"Point Guard","University of Portland, UNLV","New York Knicks",12,1991,"1967-11-15",11
-124,"Joel Anthony",40,"Center and Power Forward","UNLV","none",NULL,0,"1982-08-09",10
-125,"Pero Antić",40,"Center","none","none",NULL,0,"1982-07-29",2
-126,"OG Anunoby",25,"Small Forward","Indiana","Toronto Raptors",23,2017,"1997-07-17",0
-127,"Keith Appling",30,"Point Guard","Michigan State","none",NULL,0,"1992-02-13",1
-128,"Rafael Araújo",42,"Center","BYU","Toronto Raptors",8,2004,"1980-08-12",3
-129,"Stacey Arceneaux",79,"Forward","Iowa State","none",NULL,0,"1936-02-17",1
-130,"Robert Archibald",39,"Power Forward and Center","Illinois","Memphis Grizzlies",3,2002,"1980-03-29",2
-131,"Tiny Archibald",74,"Point Guard","Texas-El Paso","Cincinnati Royals",2,1970,"1948-09-02",13
-132,"Ryan Arcidiacono",28,"Point Guard","Villanova","none",NULL,0,"1994-03-26",0
-133,"Jim Ard",74,"Center","Cincinnati","Seattle SuperSonics",6,1970,"1948-09-19",8
-134,"Gilbert Arenas",40,"Point Guard","Arizona","Golden State Warriors",2,2001,"1982-01-06",11
-135,"Trevor Ariza",37,"Small Forward and Shooting Guard","UCLA","New York Knicks",14,2004,"1985-06-30",0
-136,"Paul Arizin",78,"Small Forward","Villanova","Philadelphia Warriors",3,1950,"1928-04-09",10
-137,"Joe Arlauckas",57,"Small Forward","Niagara University","Sacramento Kings",5,1987,"1965-07-20",1
-138,"B.J. Armstrong",55,"Point Guard","Iowa","Chicago Bulls",18,1989,"1967-09-09",11
-139,"Bob Armstrong",82,"Center/Forward","Michigan State","Rochester Royals",2,1955,"1933-06-17",1
-140,"Brandon Armstrong",42,"Shooting Guard","Pepperdine","Houston Rockets",23,2001,"1980-06-16",3
-141,"Curly Armstrong",64,"Guard/Forward","Indiana","none",NULL,0,"1918-11-01",3
-142,"Darrell Armstrong",54,"Point Guard","Fayetteville State University","none",NULL,0,"1968-06-22",14
-143,"Hilton Armstrong",38,"Center and Power Forward","UConn","New Orleans/Oklahoma City Hornets",12,2006,"1984-11-11",6
-144,"Tate Armstrong",67,"Shooting Guard","Duke","Chicago Bulls",13,1977,"1955-10-05",2
-145,"Jesse Arnelle",86,"Power Forward","Penn State","Fort Wayne Pistons",7,1955,"1933-12-30",1
-146,"Jay Arnette",83,"Shooting Guard and Point Guard","Texas","Cincinnati Royals",1,1960,"1938-12-19",3
-147,"Bob Arnzen",75,"Small Forward","Notre Dame","Detroit Pistons",4,1969,"1947-11-03",4
-148,"Carlos Arroyo",43,"Point Guard and Shooting Guard","Florida International University","none",NULL,0,"1979-07-30",9
-149,"Darrell Arthur",34,"Power Forward and Small Forward","Kansas","New Orleans Hornets",27,2008,"1988-03-25",9
-150,"John Arthurs",75,"Guard","Tulane","Milwaukee Bucks",2,1969,"1947-08-15",1
-151,"Jamel Artis",29,"Shooting Guard","Pitt","none",NULL,0,"1993-01-12",1
-152,"Ömer Aşık",36,"Center","none","Portland Trail Blazers",6,2008,"1986-07-04",8
-153,"Vincent Askew",56,"Shooting Guard","Memphis","Philadelphia 76ers",16,1987,"1966-02-28",9
-154,"Keith Askins",54,"Small Forward","Alabama","none",NULL,0,"1967-12-15",9
-155,"Don Asmonga",85,"Guard","Alliance College","none",NULL,0,"1928-02-15",1
-156,"Dick Atha",88,"Shooting Guard","Indiana State University","New York Knicks",3,1953,"1931-09-21",2
-157,"Chucky Atkins",48,"Point Guard and Shooting Guard","South Florida","none",NULL,0,"1974-08-14",11
-158,"Al Attles",86,"Point Guard","North Carolina A&T","Philadelphia Warriors",7,1960,"1936-11-07",11
-159,"Chet Aubuchon",88,"Guard","Michigan State","none",NULL,0,"1916-05-18",1
-160,"Stacey Augmon",54,"Shooting Guard and Small Forward","UNLV","Atlanta Hawks",9,1991,"1968-08-01",15
-161,"D.J. Augustin",35,"Point Guard","Texas","Charlotte Bobcats",9,2008,"1987-11-10",0
-162,"James Augustine",38,"Power Forward","Illinois","Orlando Magic",11,2006,"1984-02-27",2
-163,"Isaac Austin",53,"Center","Arizona State","Utah Jazz",21,1991,"1969-08-18",9
-164,"Johnny Austin",78,"Shooting Guard","Boston College","Boston Celtics",8,1966,"1944-08-31",2
-165,"Ken Austin",61,"Small Forward","Rice University","Detroit Pistons",8,1983,"1961-07-15",1
-166,"Deni Avdija",21,"Small Forward","none","Washington Wizards",9,2020,"2001-01-03",0
-167,"Anthony Avent",53,"Power Forward","Seton Hall","Atlanta Hawks",15,1991,"1969-10-18",6
-168,"Bird Averitt",68,"Shooting Guard","Pepperdine","Portland Trail Blazers",3,1973,"1952-07-22",5
-169,"William Avery",43,"Point Guard","Duke","Minnesota Timberwolves",14,1999,"1979-08-08",3
-170,"Dennis Awtrey",74,"Center","Santa Clara","Philadelphia 76ers",12,1970,"1948-02-22",12
-171,"Joel Ayayi",22,"Shooting Guard","Gonzaga","none",NULL,0,"2000-03-05",0
-172,"Gustavo Ayón",37,"Center and Power Forward","none","none",NULL,0,"1985-04-01",3
-173,"Jeff Ayres",35,"Power Forward and Center","Arizona State","Sacramento Kings",1,2009,"1987-04-29",6
-174,"Deandre Ayton",24,"Center","Arizona","Phoenix Suns",1,2018,"1998-07-23",0
-175,"Kelenna Azubuike",38,"Shooting Guard and Small Forward","Kentucky","none",NULL,0,"1983-12-16",5
-176,"Udoka Azubuike",23,"Center","Kansas","Utah Jazz",27,2020,"1999-09-17",0
-177,"Jimmy Butler",0,"noData","noData","noData",0,0,NULL,0
-178,"Duncan Robinson",0,"noData","noData","noData",0,0,NULL,0
-179,"Kendrick Nunn",0,"noData","noData","noData",0,0,NULL,0
-180,"Goran Dragić",0,"noData","noData","noData",0,0,NULL,0
-181,"Tyler Herro",0,"noData","noData","noData",0,0,NULL,0
-182,"Andre Iguodala",0,"noData","noData","noData",0,0,NULL,0
-183,"Dewayne Dedmon",0,"noData","noData","noData",0,0,NULL,0
-184,"Gabe Vincent",0,"noData","noData","noData",0,0,NULL,0
-185,"Nemanja Bjelica",0,"noData","noData","noData",0,0,NULL,0
-186,"KZ Okpala",0,"noData","noData","noData",0,0,NULL,0
-187,"Max Strus",0,"noData","noData","noData",0,0,NULL,0
-188,"Udonis Haslem",0,"noData","noData","noData",0,0,NULL,0
-189,"Khris Middleton",0,"noData","noData","noData",0,0,NULL,0
-190,"Jrue Holiday",0,"noData","noData","noData",0,0,NULL,0
-191,"Donte DiVincenzo",0,"noData","noData","noData",0,0,NULL,0
-192,"Brook Lopez",0,"noData","noData","noData",0,0,NULL,0
-193,"P.J. Tucker",0,"noData","noData","noData",0,0,NULL,0
-194,"Bobby Portis",0,"noData","noData","noData",0,0,NULL,0
-195,"Bryn Forbes",0,"noData","noData","noData",0,0,NULL,0
-196,"Pat Connaughton",0,"noData","noData","noData",0,0,NULL,0
-197,"Mamadi Diakite",0,"noData","noData","noData",0,0,NULL,0
-198,"Sam Merrill",0,"noData","noData","noData",0,0,NULL,0
-199,"Jordan Nwora",0,"noData","noData","noData",0,0,NULL,0
-200,"Elijah Bryant",0,"noData","noData","noData",0,0,NULL,0
-201,"Axel Toupane",0,"noData","noData","noData",0,0,NULL,0
-202,"Jeff Teague",0,"noData","noData","noData",0,0,NULL,0
-203,"Luka Dončić",0,"noData","noData","noData",0,0,NULL,0
-204,"Dorian Finney-Smith",0,"noData","noData","noData",0,0,NULL,0
-205,"Maxi Kleber",0,"noData","noData","noData",0,0,NULL,0
-206,"Kristaps Porziņģis",0,"noData","noData","noData",0,0,NULL,0
-207,"Tim Hardaway Jr.",0,"noData","noData","noData",0,0,NULL,0
-208,"Jalen Brunson",0,"noData","noData","noData",0,0,NULL,0
-209,"Josh Richardson",0,"noData","noData","noData",0,0,NULL,0
-210,"Nicolò Melli",0,"noData","noData","noData",0,0,NULL,0
-211,"Dwight Powell",0,"noData","noData","noData",0,0,NULL,0
-212,"Willie Cauley-Stein",0,"noData","noData","noData",0,0,NULL,0
-213,"Josh Green",0,"noData","noData","noData",0,0,NULL,0
-214,"Nate Hinton",0,"noData","noData","noData",0,0,NULL,0
-215,"Trey Burke",0,"noData","noData","noData",0,0,NULL,0
-216,"Tyler Bey",0,"noData","noData","noData",0,0,NULL,0
-217,"Boban Marjanović",0,"noData","noData","noData",0,0,NULL,0
-218,"Kawhi Leonard",0,"noData","noData","noData",0,0,NULL,0
-219,"Paul George",0,"noData","noData","noData",0,0,NULL,0
-220,"Marcus Morris",0,"noData","noData","noData",0,0,NULL,0
-221,"Ivica Zubac",0,"noData","noData","noData",0,0,NULL,0
-222,"Patrick Beverley",0,"noData","noData","noData",0,0,NULL,0
-223,"Nicolas Batum",0,"noData","noData","noData",0,0,NULL,0
-224,"Rajon Rondo",0,"noData","noData","noData",0,0,NULL,0
-225,"Reggie Jackson",0,"noData","noData","noData",0,0,NULL,0
-226,"Serge Ibaka",0,"noData","noData","noData",0,0,NULL,0
-227,"Terance Mann",0,"noData","noData","noData",0,0,NULL,0
-228,"Yogi Ferrell",0,"noData","noData","noData",0,0,NULL,0
-229,"DeMarcus Cousins",0,"noData","noData","noData",0,0,NULL,0
-230,"Luke Kennard",0,"noData","noData","noData",0,0,NULL,0
-231,"Patrick Patterson",0,"noData","noData","noData",0,0,NULL,0
-232,"Amir Coffey",0,"noData","noData","noData",0,0,NULL,0
-233,"Jayson Tatum",0,"noData","noData","noData",0,0,NULL,0
-234,"Marcus Smart",0,"noData","noData","noData",0,0,NULL,0
-235,"Evan Fournier",0,"noData","noData","noData",0,0,NULL,0
-236,"Kemba Walker",0,"noData","noData","noData",0,0,NULL,0
-237,"Tristan Thompson",0,"noData","noData","noData",0,0,NULL,0
-238,"Robert Williams",0,"noData","noData","noData",0,0,NULL,0
-239,"Jabari Parker",0,"noData","noData","noData",0,0,NULL,0
-240,"Aaron Nesmith",0,"noData","noData","noData",0,0,NULL,0
-241,"Payton Pritchard",0,"noData","noData","noData",0,0,NULL,0
-242,"Tremont Waters",0,"noData","noData","noData",0,0,NULL,0
-243,"Grant Williams",0,"noData","noData","noData",0,0,NULL,0
-244,"Semi Ojeleye",0,"noData","noData","noData",0,0,NULL,0
-245,"Carsen Edwards",0,"noData","noData","noData",0,0,NULL,0
-246,"Romeo Langford",0,"noData","noData","noData",0,0,NULL,0
-247,"Luke Kornet",0,"noData","noData","noData",0,0,NULL,0
-248,"Kevin Durant",0,"noData","noData","noData",0,0,NULL,0
-249,"Kyrie Irving",0,"noData","noData","noData",0,0,NULL,0
-250,"Joe Harris",0,"noData","noData","noData",0,0,NULL,0
-251,"James Harden",0,"noData","noData","noData",0,0,NULL,0
-252,"Blake Griffin",0,"noData","noData","noData",0,0,NULL,0
-253,"Jeff Green",0,"noData","noData","noData",0,0,NULL,0
-254,"Bruce Brown",0,"noData","noData","noData",0,0,NULL,0
-255,"Landry Shamet",0,"noData","noData","noData",0,0,NULL,0
-256,"Nic Claxton",0,"noData","noData","noData",0,0,NULL,0
-257,"Reggie Perry",0,"noData","noData","noData",0,0,NULL,0
-258,"Alize Johnson",0,"noData","noData","noData",0,0,NULL,0
-259,"Mike James",0,"noData","noData","noData",0,0,NULL,0
-260,"DeAndre Jordan",0,"noData","noData","noData",0,0,NULL,0
-261,"Timothé Luwawu-Cabarrot",0,"noData","noData","noData",0,0,NULL,0
-262,"Tyler Johnson",0,"noData","noData","noData",0,0,NULL,0
-263,"Damian Lillard",0,"noData","noData","noData",0,0,NULL,0
-264,"Norman Powell",0,"noData","noData","noData",0,0,NULL,0
-265,"CJ McCollum",0,"noData","noData","noData",0,0,NULL,0
-266,"Robert Covington",0,"noData","noData","noData",0,0,NULL,0
-267,"Jusuf Nurkić",0,"noData","noData","noData",0,0,NULL,0
-268,"Anfernee Simons",0,"noData","noData","noData",0,0,NULL,0
-269,"Enes Freedom",0,"noData","noData","noData",0,0,NULL,0
-270,"Derrick Jones Jr.",0,"noData","noData","noData",0,0,NULL,0
-271,"T.J. Leaf",0,"noData","noData","noData",0,0,NULL,0
-272,"Harry Giles",0,"noData","noData","noData",0,0,NULL,0
-273,"Keljin Blevins",0,"noData","noData","noData",0,0,NULL,0
-274,"Nassir Little",0,"noData","noData","noData",0,0,NULL,0
-275,"CJ Elleby",0,"noData","noData","noData",0,0,NULL,0
-276,"Rondae Hollis-Jefferson",0,"noData","noData","noData",0,0,NULL,0
-277,"Michael Porter Jr.",0,"noData","noData","noData",0,0,NULL,0
-278,"Nikola Jokić",0,"noData","noData","noData",0,0,NULL,0
-279,"Austin Rivers",0,"noData","noData","noData",0,0,NULL,0
-280,"Facundo Campazzo",0,"noData","noData","noData",0,0,NULL,0
-281,"Aaron Gordon",0,"noData","noData","noData",0,0,NULL,0
-282,"Monte Morris",0,"noData","noData","noData",0,0,NULL,0
-283,"Markus Howard",0,"noData","noData","noData",0,0,NULL,0
-284,"JaMychal Green",0,"noData","noData","noData",0,0,NULL,0
-285,"Paul Millsap",0,"noData","noData","noData",0,0,NULL,0
-286,"Bol Bol",0,"noData","noData","noData",0,0,NULL,0
-287,"Vlatko Čančar",0,"noData","noData","noData",0,0,NULL,0
-288,"JaVale McGee",0,"noData","noData","noData",0,0,NULL,0
-289,"Zeke Nnaji",0,"noData","noData","noData",0,0,NULL,0
-290,"Shaquille Harrison",0,"noData","noData","noData",0,0,NULL,0
-291,"Russell Westbrook",0,"noData","noData","noData",0,0,NULL,0
-292,"Bradley Beal",0,"noData","noData","noData",0,0,NULL,0
-293,"Rui Hachimura",0,"noData","noData","noData",0,0,NULL,0
-294,"Raul Neto",0,"noData","noData","noData",0,0,NULL,0
-295,"Alex Len",0,"noData","noData","noData",0,0,NULL,0
-296,"Dāvis Bertāns",0,"noData","noData","noData",0,0,NULL,0
-297,"Ish Smith",0,"noData","noData","noData",0,0,NULL,0
-298,"Daniel Gafford",0,"noData","noData","noData",0,0,NULL,0
-299,"Robin Lopez",0,"noData","noData","noData",0,0,NULL,0
-300,"Isaac Bonga",0,"noData","noData","noData",0,0,NULL,0
-301,"Chandler Hutchison",0,"noData","noData","noData",0,0,NULL,0
-302,"Anthony Gill",0,"noData","noData","noData",0,0,NULL,0
-303,"Garrison Mathews",0,"noData","noData","noData",0,0,NULL,0
-304,"Cassius Winston",0,"noData","noData","noData",0,0,NULL,0
-305,"Ben Simmons",0,"noData","noData","noData",0,0,NULL,0
-306,"Tobias Harris",0,"noData","noData","noData",0,0,NULL,0
-307,"Seth Curry",0,"noData","noData","noData",0,0,NULL,0
-308,"Danny Green",0,"noData","noData","noData",0,0,NULL,0
-309,"Joel Embiid",0,"noData","noData","noData",0,0,NULL,0
-310,"George Hill",0,"noData","noData","noData",0,0,NULL,0
-311,"Dwight Howard",0,"noData","noData","noData",0,0,NULL,0
-312,"Matisse Thybulle",0,"noData","noData","noData",0,0,NULL,0
-313,"Shake Milton",0,"noData","noData","noData",0,0,NULL,0
-314,"Tyrese Maxey",0,"noData","noData","noData",0,0,NULL,0
-315,"Furkan Korkmaz",0,"noData","noData","noData",0,0,NULL,0
-316,"Isaiah Joe",0,"noData","noData","noData",0,0,NULL,0
-317,"Anthony Tolliver",0,"noData","noData","noData",0,0,NULL,0
-318,"Mike Scott",0,"noData","noData","noData",0,0,NULL,0
-319,"Paul Reed",0,"noData","noData","noData",0,0,NULL,0
-320,"Anthony Davis",0,"noData","noData","noData",0,0,NULL,0
-321,"LeBron James",0,"noData","noData","noData",0,0,NULL,0
-322,"Kentavious Caldwell-Pope",0,"noData","noData","noData",0,0,NULL,0
-323,"Dennis Schröder",0,"noData","noData","noData",0,0,NULL,0
-324,"Andre Drummond",0,"noData","noData","noData",0,0,NULL,0
-325,"Alex Caruso",0,"noData","noData","noData",0,0,NULL,0
-326,"Kyle Kuzma",0,"noData","noData","noData",0,0,NULL,0
-327,"Montrezl Harrell",0,"noData","noData","noData",0,0,NULL,0
-328,"Wesley Matthews",0,"noData","noData","noData",0,0,NULL,0
-329,"Talen Horton-Tucker",0,"noData","noData","noData",0,0,NULL,0
-330,"Jared Dudley",0,"noData","noData","noData",0,0,NULL,0
-331,"Marc Gasol",0,"noData","noData","noData",0,0,NULL,0
-332,"Alfonzo McKinnie",0,"noData","noData","noData",0,0,NULL,0
-333,"Markieff Morris",0,"noData","noData","noData",0,0,NULL,0
-334,"Ben McLemore",0,"noData","noData","noData",0,0,NULL,0
-335,"Devin Booker",0,"noData","noData","noData",0,0,NULL,0
-336,"Mikal Bridges",0,"noData","noData","noData",0,0,NULL,0
-337,"Chris Paul",0,"noData","noData","noData",0,0,NULL,0
-338,"Jae Crowder",0,"noData","noData","noData",0,0,NULL,0
-339,"Cameron Johnson",0,"noData","noData","noData",0,0,NULL,0
-340,"Cameron Payne",0,"noData","noData","noData",0,0,NULL,0
-341,"Dario Šarić",0,"noData","noData","noData",0,0,NULL,0
-342,"Torrey Craig",0,"noData","noData","noData",0,0,NULL,0
-343,"ETwaun Moore",0,"noData","noData","noData",0,0,NULL,0
-344,"Jevon Carter",0,"noData","noData","noData",0,0,NULL,0
-345,"Frank Kaminsky",0,"noData","noData","noData",0,0,NULL,0
-346,"Jalen Smith",0,"noData","noData","noData",0,0,NULL,0
-347,"Langston Galloway",0,"noData","noData","noData",0,0,NULL,0
-348,"Trae Young",0,"noData","noData","noData",0,0,NULL,0
-349,"John Collins",0,"noData","noData","noData",0,0,NULL,0
-350,"Clint Capela",0,"noData","noData","noData",0,0,NULL,0
-351,"Bogdan Bogdanović",0,"noData","noData","noData",0,0,NULL,0
-352,"DeAndre Hunter",0,"noData","noData","noData",0,0,NULL,0
-353,"Kevin Huerter",0,"noData","noData","noData",0,0,NULL,0
-354,"Danilo Gallinari",0,"noData","noData","noData",0,0,NULL,0
-355,"Tony Snell",0,"noData","noData","noData",0,0,NULL,0
-356,"Lou Williams",0,"noData","noData","noData",0,0,NULL,0
-357,"Onyeka Okongwu",0,"noData","noData","noData",0,0,NULL,0
-358,"Kris Dunn",0,"noData","noData","noData",0,0,NULL,0
-359,"Skylar Mays",0,"noData","noData","noData",0,0,NULL,0
-360,"Nathan Knight",0,"noData","noData","noData",0,0,NULL,0
-361,"Bruno Fernando",0,"noData","noData","noData",0,0,NULL,0
-362,"Solomon Hill",0,"noData","noData","noData",0,0,NULL,0
-363,"Julius Randle",0,"noData","noData","noData",0,0,NULL,0
-364,"RJ Barrett",0,"noData","noData","noData",0,0,NULL,0
-365,"Nerlens Noel",0,"noData","noData","noData",0,0,NULL,0
-366,"Reggie Bullock",0,"noData","noData","noData",0,0,NULL,0
-367,"Elfrid Payton",0,"noData","noData","noData",0,0,NULL,0
-368,"Derrick Rose",0,"noData","noData","noData",0,0,NULL,0
-369,"Alec Burks",0,"noData","noData","noData",0,0,NULL,0
-370,"Taj Gibson",0,"noData","noData","noData",0,0,NULL,0
-371,"Immanuel Quickley",0,"noData","noData","noData",0,0,NULL,0
-372,"Obi Toppin",0,"noData","noData","noData",0,0,NULL,0
-373,"Frank Ntilikina",0,"noData","noData","noData",0,0,NULL,0
-374,"Kevin Knox",0,"noData","noData","noData",0,0,NULL,0
-375,"Norvel Pelle",0,"noData","noData","noData",0,0,NULL,0
-376,"Theo Pinson",0,"noData","noData","noData",0,0,NULL,0
-377,"Jared Harper",0,"noData","noData","noData",0,0,NULL,0
-378,"Jonas Valančiūnas",0,"noData","noData","noData",0,0,NULL,0
-379,"Dillon Brooks",0,"noData","noData","noData",0,0,NULL,0
-380,"Ja Morant",0,"noData","noData","noData",0,0,NULL,0
-381,"Jaren Jackson Jr.",0,"noData","noData","noData",0,0,NULL,0
-382,"Desmond Bane",0,"noData","noData","noData",0,0,NULL,0
-383,"DeAnthony Melton",0,"noData","noData","noData",0,0,NULL,0
-384,"Tyus Jones",0,"noData","noData","noData",0,0,NULL,0
-385,"Xavier Tillman Sr.",0,"noData","noData","noData",0,0,NULL,0
-386,"John Konchar",0,"noData","noData","noData",0,0,NULL,0
-387,"Justise Winslow",0,"noData","noData","noData",0,0,NULL,0
-388,"Tim Frazier",0,"noData","noData","noData",0,0,NULL,0
-389,"Brandon Clarke",0,"noData","noData","noData",0,0,NULL,0
-390,"Killian Tillie",0,"noData","noData","noData",0,0,NULL,0
-391,"Royce ONeale",0,"noData","noData","noData",0,0,NULL,0
-392,"Mike Conley",0,"noData","noData","noData",0,0,NULL,0
-393,"Bojan Bogdanović",0,"noData","noData","noData",0,0,NULL,0
-394,"Joe Ingles",0,"noData","noData","noData",0,0,NULL,0
-395,"Rudy Gobert",0,"noData","noData","noData",0,0,NULL,0
-396,"Jordan Clarkson",0,"noData","noData","noData",0,0,NULL,0
-397,"Derrick Favors",0,"noData","noData","noData",0,0,NULL,0
-398,"Georges Niang",0,"noData","noData","noData",0,0,NULL,0
-399,"Miye Oni",0,"noData","noData","noData",0,0,NULL,0
-400,"Juwan Morgan",0,"noData","noData","noData",0,0,NULL,0
-401,"Ersan İlyasova",0,"noData","noData","noData",0,0,NULL,0
-402,"Matt Thomas",0,"noData","noData","noData",0,0,NULL,0
-403,"Jarrell Brantley",0,"noData","noData","noData",0,0,NULL,0
-404,"Trent Forrest",0,"noData","noData","noData",0,0,NULL,0
-405,"Donovan Mitchell",0,"noData","noData","noData",0,0,NULL,0
-406,"Chris Chiozza",0,"noData","noData","noData",0,0,NULL,0
-407,"Daniel Oturu",0,"noData","noData","noData",0,0,NULL,0
-408,"Justin Jackson",0,"noData","noData","noData",0,0,NULL,0
-409,"Devontae Cacok",0,"noData","noData","noData",0,0,NULL,0
-410,"Tacko Fall",0,"noData","noData","noData",0,0,NULL,0
-411,"Rayjon Tucker",0,"noData","noData","noData",0,0,NULL,0
-412,"Elijah Hughes",0,"noData","noData","noData",0,0,NULL,0
-413,"Will Barton",0,"noData","noData","noData",0,0,NULL,0
-414,"Jay Scrubb",0,"noData","noData","noData",0,0,NULL,0
-415,"Cam Reddish",0,"noData","noData","noData",0,0,NULL,0
-416,"Abdel Nader",0,"noData","noData","noData",0,0,NULL,0
-417,"Danuel House Jr.",0,"noData","noData","noData",0,0,NULL,0
-418,"Hassan Whiteside",0,"noData","noData","noData",0,0,NULL,0
-419,"Juancho Hernangómez",0,"noData","noData","noData",0,0,NULL,0
-420,"Rudy Gay",0,"noData","noData","noData",0,0,NULL,0
-421,"Eric Paschall",0,"noData","noData","noData",0,0,NULL,0
-422,"Jared Butler",0,"noData","noData","noData",0,0,NULL,0
-423,"Spencer Dinwiddie",0,"noData","noData","noData",0,0,NULL,0
-424,"Sterling Brown",0,"noData","noData","noData",0,0,NULL,0
-425,"Marquese Chriss",0,"noData","noData","noData",0,0,NULL,0
-426,"Karl-Anthony Towns",0,"noData","noData","noData",0,0,NULL,0
-427,"Anthony Edwards",0,"noData","noData","noData",0,0,NULL,0
-428,"DAngelo Russell",0,"noData","noData","noData",0,0,NULL,0
-429,"Jarred Vanderbilt",0,"noData","noData","noData",0,0,NULL,0
-430,"Malik Beasley",0,"noData","noData","noData",0,0,NULL,0
-431,"Jaden McDaniels",0,"noData","noData","noData",0,0,NULL,0
-432,"Taurean Prince",0,"noData","noData","noData",0,0,NULL,0
-433,"Jordan McLaughlin",0,"noData","noData","noData",0,0,NULL,0
-434,"Naz Reid",0,"noData","noData","noData",0,0,NULL,0
-435,"Josh Okogie",0,"noData","noData","noData",0,0,NULL,0
-436,"Jaylen Nowell",0,"noData","noData","noData",0,0,NULL,0
-437,"Leandro Bolmaro",0,"noData","noData","noData",0,0,NULL,0
-438,"Greg Monroe",0,"noData","noData","noData",0,0,NULL,0
-439,"Jake Layman",0,"noData","noData","noData",0,0,NULL,0
-440,"Ziaire Williams",0,"noData","noData","noData",0,0,NULL,0
-441,"Jarrett Culver",0,"noData","noData","noData",0,0,NULL,0
-442,"Pascal Siakam",0,"noData","noData","noData",0,0,NULL,0
-443,"Fred VanVleet",0,"noData","noData","noData",0,0,NULL,0
-444,"Scottie Barnes",0,"noData","noData","noData",0,0,NULL,0
-445,"Gary Trent Jr.",0,"noData","noData","noData",0,0,NULL,0
-446,"Chris Boucher",0,"noData","noData","noData",0,0,NULL,0
-447,"Khem Birch",0,"noData","noData","noData",0,0,NULL,0
-448,"Thaddeus Young",0,"noData","noData","noData",0,0,NULL,0
-449,"Yuta Watanabe",0,"noData","noData","noData",0,0,NULL,0
-450,"Dalano Banton",0,"noData","noData","noData",0,0,NULL,0
-451,"Armoni Brooks",0,"noData","noData","noData",0,0,NULL,0
-452,"Malachi Flynn",0,"noData","noData","noData",0,0,NULL,0
-453,"Svi Mykhailiuk",0,"noData","noData","noData",0,0,NULL,0
-454,"Myles Powell",0,"noData","noData","noData",0,0,NULL,0
-455,"Charlie Brown Jr.",0,"noData","noData","noData",0,0,NULL,0
-456,"Charles Bassey",0,"noData","noData","noData",0,0,NULL,0
-457,"Bones Hyland",0,"noData","noData","noData",0,0,NULL,0
-458,"Jordan Poole",0,"noData","noData","noData",0,0,NULL,0
-459,"Andrew Wiggins",0,"noData","noData","noData",0,0,NULL,0
-460,"Klay Thompson",0,"noData","noData","noData",0,0,NULL,0
-461,"Draymond Green",0,"noData","noData","noData",0,0,NULL,0
-462,"Kevon Looney",0,"noData","noData","noData",0,0,NULL,0
-463,"Otto Porter Jr.",0,"noData","noData","noData",0,0,NULL,0
-464,"Stephen Curry",0,"noData","noData","noData",0,0,NULL,0
-465,"Gary Payton II",0,"noData","noData","noData",0,0,NULL,0
-466,"Juan Toscano-Anderson",0,"noData","noData","noData",0,0,NULL,0
-467,"Damion Lee",0,"noData","noData","noData",0,0,NULL,0
-468,"Jonathan Kuminga",0,"noData","noData","noData",0,0,NULL,0
-469,"Moses Moody",0,"noData","noData","noData",0,0,NULL,0
-470,"Delon Wright",0,"noData","noData","noData",0,0,NULL,0
-471,"Gorgui Dieng",0,"noData","noData","noData",0,0,NULL,0
-472,"Jalen Johnson",0,"noData","noData","noData",0,0,NULL,0
-473,"Kyle Lowry",0,"noData","noData","noData",0,0,NULL,0
-474,"Omer Yurtseven",0,"noData","noData","noData",0,0,NULL,0
-475,"Caleb Martin",0,"noData","noData","noData",0,0,NULL,0
-476,"Haywood Highsmith",0,"noData","noData","noData",0,0,NULL,0
-477,"Victor Oladipo",0,"noData","noData","noData",0,0,NULL,0
-478,"Patty Mills",0,"noData","noData","noData",0,0,NULL,0
-479,"Kessler Edwards",0,"noData","noData","noData",0,0,NULL,0
-480,"DayRon Sharpe",0,"noData","noData","noData",0,0,NULL,0
-481,"Cam Thomas",0,"noData","noData","noData",0,0,NULL,0
-482,"Al Horford",0,"noData","noData","noData",0,0,NULL,0
-483,"Jaylen Brown",0,"noData","noData","noData",0,0,NULL,0
-484,"Daniel Theis",0,"noData","noData","noData",0,0,NULL,0
-485,"Derrick White",0,"noData","noData","noData",0,0,NULL,0
-486,"Nik Stauskas",0,"noData","noData","noData",0,0,NULL,0
-487,"Malik Fitts",0,"noData","noData","noData",0,0,NULL,0
-488,"Sam Hauser",0,"noData","noData","noData",0,0,NULL,0
-489,"DeMar DeRozan",0,"noData","noData","noData",0,0,NULL,0
-490,"Nikola Vučević",0,"noData","noData","noData",0,0,NULL,0
-491,"Zach LaVine",0,"noData","noData","noData",0,0,NULL,0
-492,"Patrick Williams",0,"noData","noData","noData",0,0,NULL,0
-493,"Coby White",0,"noData","noData","noData",0,0,NULL,0
-494,"Javonte Green",0,"noData","noData","noData",0,0,NULL,0
-495,"Ayo Dosunmu",0,"noData","noData","noData",0,0,NULL,0
-496,"Tony Bradley",0,"noData","noData","noData",0,0,NULL,0
-497,"Marko Simonovic",0,"noData","noData","noData",0,0,NULL,0
-498,"Troy Brown Jr.",0,"noData","noData","noData",0,0,NULL,0
-499,"Luca Vildoza",0,"noData","noData","noData",0,0,NULL,0
-500,"Brandon Ingram",0,"noData","noData","noData",0,0,NULL,0
-501,"Herbert Jones",0,"noData","noData","noData",0,0,NULL,0
-502,"Jaxson Hayes",0,"noData","noData","noData",0,0,NULL,0
-503,"Trey Murphy III",0,"noData","noData","noData",0,0,NULL,0
-504,"Larry Nance Jr.",0,"noData","noData","noData",0,0,NULL,0
-505,"Naji Marshall",0,"noData","noData","noData",0,0,NULL,0
-506,"Devonte Graham",0,"noData","noData","noData",0,0,NULL,0
-507,"Garrett Temple",0,"noData","noData","noData",0,0,NULL,0
-508,"Willy Hernangómez",0,"noData","noData","noData",0,0,NULL,0
-509,"Bismack Biyombo",0,"noData","noData","noData",0,0,NULL,0
-510,"Ish Wainright",0,"noData","noData","noData",0,0,NULL,0
-511,"Aaron Holiday",0,"noData","noData","noData",0,0,NULL,0
-512,"Jaden Springer",0,"noData","noData","noData",0,0,NULL,0
+"name","age","position","college","draftteam","draftposition","draftyear","born","experience"
+"Alaa Abdelnaby",54,"Power Forward","Duke","Portland Trail Blazers",25,1990,"1968-06-24",5
+"Zaid Abdul-Aziz",76,"Center and Power Forward","Iowa State","Cincinnati Royals",5,1968,"1946-04-07",10
+"Kareem Abdul-Jabbar",75,"Center","UCLA","Milwaukee Bucks",1,1969,"1947-04-16",20
+"Mahmoud Abdul-Rauf",53,"Point Guard","LSU","Denver Nuggets",3,1990,"1969-03-09",9
+"Tariq Abdul-Wahad",48,"Shooting Guard","Michigan, San Jose State","Sacramento Kings",11,1997,"1974-11-03",6
+"Shareef Abdur-Rahim",46,"Power Forward, Small Forward, and Center","California","Vancouver Grizzlies",3,1996,"1976-12-11",12
+"Tom Abernethy",68,"Small Forward and Power Forward",Indiana,"Los Angeles Lakers",9,1976,1954-05-06,5
+"Forest Able",90,"Guard","Western Kentucky","Syracuse Nationals",5,1956,"1932-07-27",1
+"John Abramovic",81,"Forward","Salem University","none",0,0,"1919-02-09",2
+"Álex Abrines",29,"Shooting Guard","none",Oklahoma City Thunder,2,2013,"1993-08-01",0
+"Precious Achiuwa",23,"Center and Power Forward","Memphis","Miami Heat",20,2020,"1999-09-19",0
+"Alex Acker",39,"Shooting Guard","Pepperdine","Detroit Pistons",30,2005,"1983-01-21",2
+"Don Ackerman",80,"Point Guard","Long Island University","New York Knicks",2,1953,"1930-09-04",1
+"Mark Acres",60,"Center","Oral Roberts","Dallas Mavericks",16,1985,"1962-11-15",6
+"Bud Acton",80,"Small Forward","Hillsdale College","none",0,0,"1942-01-11",1
+"Quincy Acy",32,"Power Forward and Small Forward","Baylor","Toronto Raptors",7,2012,"1990-10-06",0
+"Alvan Adams",68,"Center and Power Forward","Oklahoma","Phoenix Suns",4,1975,"1954-07-19",13
+"Don Adams",66,"Small Forward","Northwestern","San Diego Rockets",1,1970,"1947-11-27",7
+"George Adams",73,"Small Forward","Gardner-Webb University","Milwaukee Bucks",16,1972,"1949-05-15",3
+"Hassan Adams",38,"Shooting Guard","Arizona","New Jersey Nets",24,2006,"1984-06-20",2
+"Jaylen Adams",26,"Point Guard","St. Bonaventure","none",0,0,"1996-05-04",0
+"Jordan Adams",28,"Shooting Guard","UCLA","Memphis Grizzlies",22,2014,"1994-07-08",2
+"Michael Adams",59,"Point Guard","Boston College","Sacramento Kings",19,1985,"1963-01-19",11
+"Steven Adams",29,"Center","Pitt","Oklahoma City Thunder",12,2013,"1993-07-20",0
+"Rafael Addison",58,"Small Forward","Syracuse","Phoenix Suns",15,1986,"1964-07-22",6
+"Bam Adebayo",25,"Center and Power Forward","Kentucky","Miami Heat",14,2017,"1997-07-18",0
+"Deng Adel",25,"Small Forward","Louisville","none",0,0,"1997-02-01",0
+"Rick Adelman",76,"Point Guard","Loyola Marymount","San Diego Rockets",1,1968,"1946-06-16",7
+"Jeff Adrien",36,"Power Forward","UConn","none",0,0,"1986-02-10",5
+"Arron Afflalo",37,"Shooting Guard and Small Forward","UCLA","Detroit Pistons",27,2007,"1985-10-15",11
+"Ochai Agbaji",22,"Shooting Guard","Kansas","Cleveland Cavaliers",14,2022,"2000-04-20",0
+"Maurice Ager",38,"Shooting Guard","Michigan State","Dallas Mavericks",28,2006,"1984-02-09",4
+"Mark Aguirre",63,"Small Forward","DePaul","Dallas Mavericks",1,1981,"1959-12-10",13
+"Blake Ahearn",38,"Point Guard","Missouri State","none",0,0,"1984-05-27",3
+"Danny Ainge",63,"Shooting Guard and Point Guard","BYU","Boston Celtics",8,1981,"1959-03-17",14
+"Matt Aitch",62,"Power Forward","Moberly Area Community College, Michigan State","Detroit Pistons",2,1967,"1944-09-21",1
+"Alexis Ajinça",34,"Center and Power Forward","none","Charlotte Bobcats",20,2008,"1988-05-06",7
+"Henry Akin",75,"Power Forward and Center","Morehead State University","New York Knicks",1,1966,"1944-07-31",3
+"Josh Akognon",36,"Point Guard","Washington State, Cal State Fullerton","none",0,0,"1986-02-10",1
+"DeVaughn Akoon-Purcell",29,"Shooting Guard","Illinois State","none",0,0,"1993-06-05",0
+"Solomon Alabi",34,"Center","Florida State","Dallas Mavericks",20,2010,"1988-03-21",2
+"Mark Alarie",59,"Power Forward","Duke","Denver Nuggets",18,1986,"1963-12-11",5
+"Gary Alcorn",70,"Center","Fresno State","Minneapolis Lakers",1,1959,"1936-10-08",2
+"Santi Aldama",21,"Power Forward","Loyola (MD)","Utah Jazz",30,2021,"2001-01-10",0
+"Furkan Aldemir",31,"Power Forward","none","Los Angeles Clippers",23,2012,"1991-08-09",1
+"Cole Aldrich",34,"Center","Kansas","New Orleans Hornets",11,2010,"1988-10-31",8
+"LaMarcus Aldridge",37,"Power Forward and Center","Texas","Chicago Bulls",2,2006,"1985-07-19",0
+"Chuck Aleksinas",63,"Center","Kentucky, UConn","Chicago Bulls",7,1982,"1959-02-26",1
+"Cliff Alexander",27,"Power Forward","Kansas","none",0,0,"1995-11-16",1
+"Cory Alexander",49,"Point Guard and Shooting Guard","Virginia","San Antonio Spurs",29,1995,"1973-06-22",7
+"Courtney Alexander",45,"Point Guard and Shooting Guard","Virginia, Fresno State","Orlando Magic",13,2000,"1977-04-27",3
+"Gary Alexander",53,"Power Forward","South Florida","none",0,0,"1969-11-01",1
+"Joe Alexander",35,"Small Forward","West Virginia","Milwaukee Bucks",8,2008,"1986-12-26",2
+"Kyle Alexander",26,"Center","Tennessee","none",0,0,"1996-10-21",0
+"Ty-Shon Alexander",24,"Shooting Guard","Creighton","none",0,0,"1998-07-16",0
+"Victor Alexander",53,"Center","Iowa State","Golden State Warriors",17,1991,"1969-08-31",5
+"Nickeil Alexander-Walker",24,"Shooting Guard","Virginia Tech","Brooklyn Nets",17,2019,"1998-09-02",0
+"Steve Alford",58,"Point Guard","Indiana","Dallas Mavericks",3,1987,"1964-11-23",4
+"Rawle Alkins",25,"Shooting Guard","Arizona","none",0,0,"1997-10-29",0
+"Bill Allen",0,"Center","New Mexico State","none",0,0,"1945-01-01",1
+"Bob Allen",76,"Power Forward","Marshall","San Francisco Warriors",7,1968,"1946-07-17",1
+"Grayson Allen",27,"Shooting Guard","Duke","Utah Jazz",21,2018,"1995-10-08",0
+"Jarrett Allen",24,"Center","Texas","Brooklyn Nets",22,2017,"1998-04-21",0
+"Jerome Allen",49,"Shooting Guard","Penn","Minnesota Timberwolves",20,1995,"1973-01-28",2
+"Kadeem Allen",29,"Point Guard","Arizona","Boston Celtics",23,2017,"1993-01-15",0
+"Lavoy Allen",33,"Power Forward and Center","Temple","Philadelphia 76ers",20,2011,"1989-02-04",6
+"Lucius Allen",75,"Point Guard","UCLA","Seattle SuperSonics",3,1969,"1947-09-26",10
+"Malik Allen",44,"Power Forward","Villanova","none",0,0,"1978-06-27",10
+"Randy Allen",57,"Shooting Guard","Florida State","none",0,0,"1965-01-26",2
+"Ray Allen",47,"Shooting Guard","UConn","Minnesota Timberwolves",5,1996,"1975-07-20",18
+"Tony Allen",40,"Shooting Guard, Small Forward, and Point Guard","Butler County Community College, Oklahoma State","Boston Celtics",25,2004,"1982-01-11",14
+"Willie Allen",73,"Power Forward","Miami (FL)","Baltimore Bullets",9,1971,"1949-02-08",1
+"Odis Allison",73,"Small Forward","UNLV","Golden State Warriors",8,1971,"1949-10-02",1
+"Lance Allred",41,"Center","Utah, Weber State","none",0,0,"1981-02-02",1
+"Darrell Allums",64,"Power Forward","UCLA","Dallas Mavericks",11,1980,"1958-09-12",1
+"Morris Almond",37,"Shooting Guard","Rice University","Utah Jazz",25,2007,"1985-02-02",3
+"Derrick Alston",50,"Center","Duquesne","Philadelphia 76ers",6,1994,"1972-08-20",3
+"Rafer Alston",46,"Point Guard","Fresno State","Milwaukee Bucks",10,1998,"1976-07-24",11
+"Peter Aluma",46,"Center","Liberty","none",0,0,"1973-04-23",1
+"Jose Alvarado",24,"Point Guard","Georgia Tech","none",0,0,"1998-04-12",0
+"John Amaechi",52,"Center and Power Forward","Vanderbilt, Penn State","none",0,0,"1970-11-26",5
+"Ashraf Amaya",51,"Power Forward","Southern Illinois","none",0,0,"1971-11-23",2
+"Al-Farouq Aminu",32,"Power Forward and Small Forward","Wake Forest","Los Angeles Clippers",8,2010,"1990-09-21",0
+"Lou Amundson",40,"Power Forward","UNLV","none",0,0,"1982-12-07",10
+"Bob Anderegg",85,"Small Forward","Michigan State","New York Knicks",6,1959,"1937-08-24",1
+"Chris Andersen",44,"Center and Power Forward","Blinn College","none",0,0,"1978-07-07",15
+"David Andersen",42,"Power Forward and Center","none","Atlanta Hawks",8,2002,"1980-06-23",2
+"Alan Anderson",40,"Small Forward and Shooting Guard","Michigan State","none",0,0,"1982-10-16",8
+"Andy Anderson",73,"Shooting Guard and Point Guard","Canisius","Boston Celtics",9,1967,"1945-07-06",3
+"Antonio Anderson",37,"Small Forward","Memphis","none",0,0,"1985-06-05",1
+"Cliff Anderson",76,"Shooting Guard","Saint Joseph's","Los Angeles Lakers",4,1967,"1944-09-07",4
+"Dan Anderson",79,"Center","Augsburg College","Philadelphia 76ers",3,1965,"1943-02-15",2
+"Dan Anderson",71,"Point Guard and Shooting Guard","USC","Portland Trail Blazers",2,1974,"1951-01-01",2
+"Derek Anderson",48,"Shooting Guard, Small Forward, and Point Guard","Ohio State, Kentucky","Cleveland Cavaliers",13,1997,"1974-07-18",11
+"Dwight Anderson",59,"Point Guard","Kentucky, USC","Washington Bullets",18,1982,"1960-12-28",1
+"Eric Anderson",48,"Power Forward","Indiana","none",0,0,"1970-05-26",2
+"Greg Anderson",58,"Power Forward and Center","Houston","San Antonio Spurs",23,1987,"1964-06-22",10
+"J.J. Anderson",62,"Small Forward","Bradley","Philadelphia 76ers",13,1982,"1960-09-23",3
+"James Anderson",33,"Shooting Guard and Small Forward","Oklahoma State","San Antonio Spurs",20,2010,"1989-03-25",5
+"Jerome Anderson",55,"Shooting Guard","West Virginia","Boston Celtics",17,1975,"1953-10-09",2
+"Justin Anderson",29,"Small Forward and Shooting Guard","Virginia","Dallas Mavericks",21,2015,"1993-11-19",0
+"Kenny Anderson",52,"Point Guard","Georgia Tech","New Jersey Nets",2,1991,"1970-10-09",14
+"Kim Anderson",67,"Small Forward","Missouri","Portland Trail Blazers",6,1978,"1955-05-12",1
+"Kyle Anderson",29,"Small Forward and Power Forward","UCLA","San Antonio Spurs",30,2014,"1993-09-20",0
+"Michael Anderson",56,"Point Guard","Drexel","Indiana Pacers",23,1988,"1966-03-23",1
+"Nick Anderson",54,"Shooting Guard and Small Forward","Illinois","Orlando Magic",11,1989,"1968-01-20",13
+"Richard Anderson",62,"Power Forward and Center","UC Santa Barbara","San Diego Clippers",9,1982,"1960-11-19",6
+"Ron Anderson",64,"Small Forward","Fresno State","Cleveland Cavaliers",3,1984,"1958-10-15",10
+"Ryan Anderson",34,"Power Forward and Center","California","New Jersey Nets",21,2008,"1988-05-06",12
+"Shandon Anderson",48,"Shooting Guard and Small Forward","Georgia","Utah Jazz",25,1996,"1973-12-31",10
+"Willie Anderson",55,"Shooting Guard and Small Forward","Georgia","San Antonio Spurs",10,1988,"1967-01-08",9
+"Wally Anderzunas",43,"Small Forward","Creighton","Detroit Pistons",6,1969,"1946-01-11",1
+"Martynas Andriuškevičius",36,"Center","none","Orlando Magic",14,2005,"1986-03-12",1
+"Don Anielak",65,"Forward","Missouri State","New York Knicks",8,1954,"1930-11-01",1
+"Ike Anigbogu",24,"Center","UCLA","Indiana Pacers",17,2017,"1998-10-17",0
+"Michael Ansley",55,"Small Forward","Alabama","Orlando Magic",10,1989,"1967-02-08",3
+"Chris Anstey",47,"Center","none","Portland Trail Blazers",18,1997,"1975-01-01",3
+"Giannis Antetokounmpo",28,"Power Forward, Small Forward, Point Guard, and Shooting Guard","none","Milwaukee Bucks",15,2013,"1994-12-06",0
+"Kostas Antetokounmpo",25,"Power Forward","Dayton","Philadelphia 76ers",30,2018,"1997-11-20",0
+"Thanasis Antetokounmpo",30,"Small Forward","none","New York Knicks",21,2014,"1992-07-18",0
+"Carmelo Anthony",38,"Small Forward and Power Forward","Syracuse","Denver Nuggets",3,2003,"1984-05-29",0
+"Cole Anthony",22,"Point Guard","UNC","Orlando Magic",15,2020,"2000-05-15",0
+"Greg Anthony",55,"Point Guard","University of Portland, UNLV","New York Knicks",12,1991,"1967-11-15",11
+"Joel Anthony",40,"Center and Power Forward","UNLV","none",0,0,"1982-08-09",10
+"Pero Antić",40,"Center","none","none",0,0,"1982-07-29",2
+"OG Anunoby",25,"Small Forward","Indiana","Toronto Raptors",23,2017,"1997-07-17",0
+"Keith Appling",30,"Point Guard","Michigan State","none",0,0,"1992-02-13",1
+"Rafael Araújo",42,"Center","BYU","Toronto Raptors",8,2004,"1980-08-12",3
+"Stacey Arceneaux",79,"Forward","Iowa State","none",0,0,"1936-02-17",1
+"Robert Archibald",39,"Power Forward and Center","Illinois","Memphis Grizzlies",3,2002,"1980-03-29",2
+"Tiny Archibald",74,"Point Guard","Texas-El Paso","Cincinnati Royals",2,1970,"1948-09-02",13
+"Ryan Arcidiacono",28,"Point Guard","Villanova","none",0,0,"1994-03-26",0
+"Jim Ard",74,"Center","Cincinnati","Seattle SuperSonics",6,1970,"1948-09-19",8
+"Gilbert Arenas",40,"Point Guard","Arizona","Golden State Warriors",2,2001,"1982-01-06",11
+"Trevor Ariza",37,"Small Forward and Shooting Guard","UCLA","New York Knicks",14,2004,"1985-06-30",0
+"Paul Arizin",78,"Small Forward","Villanova","Philadelphia Warriors",3,1950,"1928-04-09",10
+"Joe Arlauckas",57,"Small Forward","Niagara University","Sacramento Kings",5,1987,"1965-07-20",1
+"B.J. Armstrong",55,"Point Guard","Iowa","Chicago Bulls",18,1989,"1967-09-09",11
+"Bob Armstrong",82,"Center/Forward","Michigan State","Rochester Royals",2,1955,"1933-06-17",1
+"Brandon Armstrong",42,"Shooting Guard","Pepperdine","Houston Rockets",23,2001,"1980-06-16",3
+"Curly Armstrong",64,"Guard/Forward","Indiana","none",0,0,"1918-11-01",3
+"Darrell Armstrong",54,"Point Guard","Fayetteville State University","none",0,0,"1968-06-22",14
+"Hilton Armstrong",38,"Center and Power Forward","UConn","New Orleans/Oklahoma City Hornets",12,2006,"1984-11-11",6
+"Tate Armstrong",67,"Shooting Guard","Duke","Chicago Bulls",13,1977,"1955-10-05",2
+"Jesse Arnelle",86,"Power Forward","Penn State","Fort Wayne Pistons",7,1955,"1933-12-30",1
+"Jay Arnette",83,"Shooting Guard and Point Guard","Texas","Cincinnati Royals",1,1960,"1938-12-19",3
+"Bob Arnzen",75,"Small Forward","Notre Dame","Detroit Pistons",4,1969,"1947-11-03",4
+"Carlos Arroyo",43,"Point Guard and Shooting Guard","Florida International University","none",0,0,"1979-07-30",9
+"Darrell Arthur",34,"Power Forward and Small Forward","Kansas","New Orleans Hornets",27,2008,"1988-03-25",9
+"John Arthurs",75,"Guard","Tulane","Milwaukee Bucks",2,1969,"1947-08-15",1
+"Jamel Artis",29,"Shooting Guard","Pitt","none",0,0,"1993-01-12",1
+"Ömer Aşık",36,"Center","none","Portland Trail Blazers",6,2008,"1986-07-04",8
+"Vincent Askew",56,"Shooting Guard","Memphis","Philadelphia 76ers",16,1987,"1966-02-28",9
+"Keith Askins",54,"Small Forward","Alabama","none",0,0,"1967-12-15",9
+"Don Asmonga",85,"Guard","Alliance College","none",0,0,"1928-02-15",1
+"Dick Atha",88,"Shooting Guard","Indiana State University","New York Knicks",3,1953,"1931-09-21",2
+"Chucky Atkins",48,"Point Guard and Shooting Guard","South Florida","none",0,0,"1974-08-14",11
+"Al Attles",86,"Point Guard","North Carolina A&T","Philadelphia Warriors",7,1960,"1936-11-07",11
+"Chet Aubuchon",88,"Guard","Michigan State","none",0,0,"1916-05-18",1
+"Stacey Augmon",54,"Shooting Guard and Small Forward","UNLV","Atlanta Hawks",9,1991,"1968-08-01",15
+"D.J. Augustin",35,"Point Guard","Texas","Charlotte Bobcats",9,2008,"1987-11-10",0
+"James Augustine",38,"Power Forward","Illinois","Orlando Magic",11,2006,"1984-02-27",2
+"Isaac Austin",53,"Center","Arizona State","Utah Jazz",21,1991,"1969-08-18",9
+"Johnny Austin",78,"Shooting Guard","Boston College","Boston Celtics",8,1966,"1944-08-31",2
+"Ken Austin",61,"Small Forward","Rice University","Detroit Pistons",8,1983,"1961-07-15",1
+"Deni Avdija",21,"Small Forward","none","Washington Wizards",9,2020,"2001-01-03",0
+"Anthony Avent",53,"Power Forward","Seton Hall","Atlanta Hawks",15,1991,"1969-10-18",6
+"Bird Averitt",68,"Shooting Guard","Pepperdine","Portland Trail Blazers",3,1973,"1952-07-22",5
+"William Avery",43,"Point Guard","Duke","Minnesota Timberwolves",14,1999,"1979-08-08",3
+"Dennis Awtrey",74,"Center","Santa Clara","Philadelphia 76ers",12,1970,"1948-02-22",12
+"Joel Ayayi",22,"Shooting Guard","Gonzaga","none",0,0,"2000-03-05",0
+"Gustavo Ayón",37,"Center and Power Forward","none","none",0,0,"1985-04-01",3
+"Jeff Ayres",35,"Power Forward and Center","Arizona State","Sacramento Kings",1,2009,"1987-04-29",6
+"Deandre Ayton",24,"Center","Arizona","Phoenix Suns",1,2018,"1998-07-23",0
+"Kelenna Azubuike",38,"Shooting Guard and Small Forward","Kentucky","none",0,0,"1983-12-16",5
+"Udoka Azubuike",23,"Center","Kansas","Utah Jazz",27,2020,"1999-09-17",0

@@ -1,85 +1,74 @@
 package newController;
 
-import com.opencsv.CSVReader;
-import com.sun.istack.NotNull;
 import database.OpenCSV;
-import newModel.Player;
-import org.hibernate.SessionFactory;
-import profesor.model.Magazine;
+import newModel.Team;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
 import java.lang.reflect.Field;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class PlayerController {
+public class TeamController {
     private final Connection connection;
     private EntityManagerFactory entityManagerFactory;
     private final Scanner sc;
     private List<Field> fields;
 
-    public PlayerController(Connection connection) {
+    public TeamController(Connection connection) {
         this.connection = connection;
         sc = new Scanner(System.in);
-        fields = Arrays.stream(Player.class.getDeclaredFields()).toList();
+        fields = Arrays.stream(Team.class.getDeclaredFields()).toList();
     }
 
-    public PlayerController(Connection connection, EntityManagerFactory entityManagerFactory) {
+    public TeamController(Connection connection, EntityManagerFactory entityManagerFactory) {
         this.connection = connection;
         this.entityManagerFactory = entityManagerFactory;
         sc = new Scanner(System.in);
-        fields = Arrays.stream(Player.class.getDeclaredFields()).toList();
+        fields = Arrays.stream(Team.class.getDeclaredFields()).toList();
     }
 
-    private int selectPlayer() throws NumberFormatException {
+    private int selectTeam() throws NumberFormatException {
         System.out.println("What element do you want to select?");
-        listPlayers();
+        listTeams();
         System.out.print("Selected id: ");
         return Integer.parseInt(sc.nextLine());
     }
 
-    public void newPlayer() {
-        Player player = new Player();
+    public void newTeam() {
+        Team Team = new Team();
         for (int i = 1; i < fields.size(); i++) {
             try {
                 System.out.print(fields.get(i).getName() + ": ");
                 switch (fields.get(i).getName()) {
-                    case "name" -> player.setName(sc.nextLine());
-                    case "age" -> player.setAge(Integer.parseInt(sc.nextLine()));
-                    case "position" -> player.setPosition(sc.nextLine());
-                    case "college" -> player.setCollege(sc.nextLine());
-                    case "draftTeam" -> player.setDraftTeam(sc.nextLine());
-                    case "draftPos" -> player.setDraftPos(Integer.parseInt(sc.nextLine()));
-                    case "draftYear" -> player.setDraftYear(Integer.parseInt(sc.nextLine()));
+                    case "name" -> Team.setName(sc.nextLine());
+                    case "age" -> Team.setAge(Integer.parseInt(sc.nextLine()));
+                    case "position" -> Team.setPosition(sc.nextLine());
+                    case "college" -> Team.setCollege(sc.nextLine());
+                    case "draftTeam" -> Team.setDraftTeam(sc.nextLine());
+                    case "draftPos" -> Team.setDraftPos(Integer.parseInt(sc.nextLine()));
+                    case "draftYear" -> Team.setDraftYear(Integer.parseInt(sc.nextLine()));
                     case "born" -> {
                         System.out.println(" -- Format: yyyy-MM-dd -- ");
-                        player.setBorn(new SimpleDateFormat("yyyy-MM-dd").parse(sc.nextLine()));
+                        Team.setBorn(new SimpleDateFormat("yyyy-MM-dd").parse(sc.nextLine()));
                     }
-                    case "expCareer" -> player.setExpCareer(Integer.parseInt(sc.nextLine()));
+                    case "expCareer" -> Team.setExpCareer(Integer.parseInt(sc.nextLine()));
                 }
             } catch (NumberFormatException | ParseException e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 i--;
             }
         }
-        addPlayer(player);
+        addTeam(Team);
     }
 
-    public void updatePlayer() {
+    public void updateTeam() {
         boolean rep;
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -89,18 +78,18 @@ public class PlayerController {
                 System.out.println(" -- Do you want to filter (Y/N) ? --");
                 String value = sc.nextLine();
                 if (value.equalsIgnoreCase("Y")) {
-                    for (Player p : getCriteriaList(em)) {
+                    for (Team p : getCriteriaList(em)) {
                         System.out.println(" Updating -- " + p.toString());
                         updateFieldForm(p);
                         em.merge(p);
-                        System.out.println(" -- Player Updated -- ");
+                        System.out.println(" -- Team Updated -- ");
                     }
                 } else if (value.equalsIgnoreCase("N")) {
-                    Player player = em.find(Player.class, selectPlayer());
-                    System.out.println(" Updating -- " + player.toString());
-                    updateFieldForm(player);
-                    em.merge(player);
-                    System.out.println(" -- Player Updated -- ");
+                    Team Team = em.find(Team.class, selectTeam());
+                    System.out.println(" Updating -- " + Team.toString());
+                    updateFieldForm(Team);
+                    em.merge(Team);
+                    System.out.println(" -- Team Updated -- ");
                 } else {
                     throw new NumberFormatException();
                 }
@@ -114,7 +103,7 @@ public class PlayerController {
         em.close();
     }
 
-    public void deletePlayer() {
+    public void deleteTeam() {
         EntityManager em = entityManagerFactory.createEntityManager();
 
         String value;
@@ -124,16 +113,16 @@ public class PlayerController {
             System.out.println(" -- Do you want to filter (Y/N) ? --");
             value = sc.nextLine();
             if (value.equalsIgnoreCase("Y")) {
-                for (Player p : getCriteriaList(em)) {
+                for (Team p : getCriteriaList(em)) {
                     em.remove(p);
                     System.out.println(" -- " + p.toString());
-                    System.out.println(" -- Player Deleted -- ");
+                    System.out.println(" -- Team Deleted -- ");
                 }
             } else if (value.equalsIgnoreCase("N")) {
-                Player player = em.find(Player.class, selectPlayer());
-                em.remove(player);
-                System.out.println(" -- " + player.toString());
-                System.out.println(" -- Player Deleted -- ");
+                Team Team = em.find(Team.class, selectTeam());
+                em.remove(Team);
+                System.out.println(" -- " + Team.toString());
+                System.out.println(" -- Team Deleted -- ");
             } else {
                 throw new NumberFormatException();
             }
@@ -145,7 +134,7 @@ public class PlayerController {
         em.close();
     }
 
-    public void updateFieldForm(Player player){
+    public void updateFieldForm(Team Team){
         boolean rep;
         do {
             rep = false;
@@ -162,18 +151,18 @@ public class PlayerController {
                 else if (opt != 0) {
                     System.out.print("New " + fields.get(opt).getName() + " value: ");
                     switch (fields.get(opt).getName()) {
-                        case "name" -> player.setName(sc.nextLine());
-                        case "age" -> player.setAge(Integer.parseInt(sc.nextLine()));
-                        case "position" -> player.setPosition(sc.nextLine());
-                        case "college" -> player.setCollege(sc.nextLine());
-                        case "draftTeam" -> player.setDraftTeam(sc.nextLine());
-                        case "draftPos" -> player.setDraftPos(Integer.parseInt(sc.nextLine()));
-                        case "draftYear" -> player.setDraftYear(Integer.parseInt(sc.nextLine()));
+                        case "name" -> Team.setName(sc.nextLine());
+                        case "age" -> Team.setAge(Integer.parseInt(sc.nextLine()));
+                        case "position" -> Team.setPosition(sc.nextLine());
+                        case "college" -> Team.setCollege(sc.nextLine());
+                        case "draftTeam" -> Team.setDraftTeam(sc.nextLine());
+                        case "draftPos" -> Team.setDraftPos(Integer.parseInt(sc.nextLine()));
+                        case "draftYear" -> Team.setDraftYear(Integer.parseInt(sc.nextLine()));
                         case "born" -> {
                             System.out.println(" -- Format: yyyy-MM-dd -- ");
-                            player.setBorn(new SimpleDateFormat("yyyy-MM-dd").parse(sc.nextLine()));
+                            Team.setBorn(new SimpleDateFormat("yyyy-MM-dd").parse(sc.nextLine()));
                         }
-                        case "expCareer" -> player.setExpCareer(Integer.parseInt(sc.nextLine()));
+                        case "expCareer" -> Team.setExpCareer(Integer.parseInt(sc.nextLine()));
                     }
                     System.out.println("Do you want to update anything else? (Y/N)");
                     if (sc.nextLine().equalsIgnoreCase("Y")) rep = true;
@@ -185,15 +174,15 @@ public class PlayerController {
         } while (rep);
     }
 
-    private List<Player> getCriteriaList(EntityManager em) throws ParseException {
+    private List<Team> getCriteriaList(EntityManager em) throws ParseException {
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Player> q = cb.createQuery(Player.class);
-        Root<Player> c = q.from(Player.class);
+        CriteriaQuery<Team> q = cb.createQuery(Team.class);
+        Root<Team> c = q.from(Team.class);
         q.select(c);
 
         String option;
 
-        listPlayers();
+        listTeams();
 
         System.out.println(" -- What attribute do you want to filter for? --");
         for (int i = 1; i < fields.size(); i++) {
@@ -246,62 +235,62 @@ public class PlayerController {
         return em.createQuery(q).getResultList();
     }
 
-    public List<Player> readPlayerFile(String path) {
+    public List<Team> readTeamFile(String path) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        List<Player> playerList = new ArrayList();
+        List<Team> TeamList = new ArrayList();
         boolean first = false;
         for (String[] data : OpenCSV.readCSV(path)) {
             try {
                 if (!first) first = true;
                 else
-                    playerList.add(new Player(data[0], data[2], data[3], data[4], Integer.parseInt(data[5]), dateFormat.parse(data[7]), Integer.parseInt(data[1]), Integer.parseInt(data[6]), Integer.parseInt(data[8])));
+                    TeamList.add(new Team(data[0], data[2], data[3], data[4], Integer.parseInt(data[5]), dateFormat.parse(data[7]), Integer.parseInt(data[1]), Integer.parseInt(data[6]), Integer.parseInt(data[8])));
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
         }
-        return playerList;
+        return TeamList;
     }
 
-    public void addPlayer(Player player) {
+    public void addTeam(Team Team) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        Player playerExists = em.find(Player.class, player.getPlayerId());
-        if (playerExists == null) {
-            em.persist(player);
-            System.out.println("*** Player Inserted ***");
+        Team TeamExists = em.find(Team.class, Team.getTeamId());
+        if (TeamExists == null) {
+            em.persist(Team);
+            System.out.println("*** Team Inserted ***");
         }
         em.getTransaction().commit();
         em.close();
     }
 
-    public void listPlayers() {
+    public void listTeams() {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        List<Player> result = em.createQuery("from Player", Player.class)
-                .getResultList().stream().sorted(Comparator.comparingInt(Player::getPlayerId)).toList();
-        for (Player player : result) {
-            System.out.println(player.toString());
+        List<Team> result = em.createQuery("from Team", Team.class)
+                .getResultList().stream().sorted(Comparator.comparingInt(Team::getTeamId)).toList();
+        for (Team Team : result) {
+            System.out.println(Team.toString());
         }
         em.getTransaction().commit();
         em.close();
     }
 
-    public void deletePlayer(Integer playerId) {
+    public void deleteTeam(Integer TeamId) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        Player player = em.find(Player.class, playerId);
-        em.remove(player);
+        Team Team = em.find(Team.class, TeamId);
+        em.remove(Team);
         em.getTransaction().commit();
         em.close();
     }
 
-    public void clearPlayers() {
+    public void clearTeams() {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        List<Player> result = em.createQuery("from Player", Player.class)
+        List<Team> result = em.createQuery("from Team", Team.class)
                 .getResultList();
-        for (Player player : result) {
-            deletePlayer(player.getPlayerId());
+        for (Team Team : result) {
+            deleteTeam(Team.getTeamId());
         }
         em.getTransaction().commit();
         em.close();
