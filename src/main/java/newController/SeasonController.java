@@ -1,7 +1,7 @@
 package newController;
 
 import database.OpenCSV;
-import newModel.Team;
+import newModel.Season;
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.EntityManager;
@@ -15,9 +15,9 @@ import java.util.*;
 
 
 /**
- * Class that have all the methods to control a Team Object from the Database.
+ * Class that have all the methods to control a Season Object from the Database.
  */
-public class TeamController {
+public class SeasonController {
     /**
      * Connection Object that has all the Database connection.
      */
@@ -31,93 +31,73 @@ public class TeamController {
      */
     private final Scanner sc;
     /**
-     * Field List from the Teams Object
+     * Field List from the Seasons Object
      */
     private final List<Field> fields;
+    private final TeamController teamController;
 
     /**
-     * Constructor for TeamController
+     * Constructor for SeasonController
      *
      * @param connection connection to the database
      */
-    public TeamController(Connection connection) {
+    public SeasonController(Connection connection) {
         this.connection = connection;
         sc = new Scanner(System.in);
-        fields = Arrays.stream(Team.class.getDeclaredFields()).toList();
+        fields = Arrays.stream(Season.class.getDeclaredFields()).toList();
+        teamController = new TeamController(connection);
     }
 
     /**
-     * Constructor for TeamController
+     * Constructor for SeasonController
      *
      * @param connection           connection to the database
      * @param entityManagerFactory entity Manager for Model Objects
      */
 
-    public TeamController(Connection connection, EntityManagerFactory entityManagerFactory) {
+    public SeasonController(Connection connection, EntityManagerFactory entityManagerFactory) {
         this.connection = connection;
         this.entityManagerFactory = entityManagerFactory;
         sc = new Scanner(System.in);
-        fields = Arrays.stream(Team.class.getDeclaredFields()).toList();
-    }
-
-
-    /**
-     * Method to get the specified Team Object
-     *
-     * @return Team.
-     */
-    public Team getTeamNull() {
-        EntityManager em = entityManagerFactory.createEntityManager();
-        return em.find(Team.class, selectTeam(true));
+        fields = Arrays.stream(Season.class.getDeclaredFields()).toList();
+        teamController = new TeamController(connection, entityManagerFactory);
     }
 
     /**
-     * Method that return the object that had been specified in teamId.
+     * Shows all the Seasons and let you introduce 1 id.
      *
-     * @param teamId id form the Team
-     * @return The Team Object
-     */
-    public Team getTeam(int teamId) {
-        EntityManager em = entityManagerFactory.createEntityManager();
-        return em.find(Team.class, teamId);
-    }
-
-    /**
-     * Shows all the Teams and let you introduce 1 id.
-     *
-     * @return Team ID
+     * @return Season ID
      * @throws NumberFormatException when no number character is introduced.
      */
-    private int selectTeam(boolean foreignPetition) throws NumberFormatException {
+    private int selectSeason() throws NumberFormatException {
         System.out.println("What element do you want to select?");
-        listTeams();
-        if (foreignPetition) System.out.println(" -- Introuce 0 to leave it Blank -- ");
+        listSeasons();
         System.out.print("Selected id: ");
         return Integer.parseInt(sc.nextLine());
     }
 
     /**
-     * Form to introduce new Team
+     * Form to introduce new Season
      */
-    public void newTeam() {
-        Team team = new Team();
+    public void newSeason() {
+        Season season = new Season();
         for (int i = 1; i < fields.size(); i++) {
             try {
                 System.out.print(fields.get(i).getName() + ": ");
-                setter4Fields(team, i);
+                setter4Fields(season, i);
             } catch (NumberFormatException e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 i--;
             }
         }
-        addTeam(team);
+        addSeason(season);
     }
 
 
     /**
-     * Update Team information and let you decide if you want to filtes some values
+     * Update Season information and let you decide if you want to filtes some values
      */
-    public void updateTeam() {
+    public void updateSeason() {
         boolean rep;
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -127,24 +107,24 @@ public class TeamController {
                 System.out.println(" -- Do you want to filter (Y/N) ? --");
                 String value = sc.nextLine();
                 if (value.equalsIgnoreCase("Y")) {
-                    List<Team> teams = getCriteriaList(em);
-                    if (teams != null && teams.size() != 0) {
-                        for (Team t : teams) {
-                            System.out.println(" Updating -- " + t.toString());
-                            updateFieldForm(t);
-                            em.merge(t);
-                            System.out.println(" -- Team Updated -- ");
+                    List<Season> seasons = getCriteriaList(em);
+                    if (seasons != null && seasons.size() != 0) {
+                        for (Season s : seasons) {
+                            System.out.println(" Updating -- " + s.toString());
+                            updateFieldForm(s);
+                            em.merge(s);
+                            System.out.println(" -- Season Updated -- ");
                         }
                     } else {
                         System.out.println(" -- No value founded... --");
                     }
                 } else if (value.equalsIgnoreCase("N")) {
-                    Team team = em.find(Team.class, selectTeam(false));
-                    if (team != null) {
-                        System.out.println(" Updating -- " + team);
-                        updateFieldForm(team);
-                        em.merge(team);
-                        System.out.println(" -- Team Updated -- ");
+                    Season season = em.find(Season.class, selectSeason());
+                    if (season != null) {
+                        System.out.println(" Updating -- " + season);
+                        updateFieldForm(season);
+                        em.merge(season);
+                        System.out.println(" -- Season Updated -- ");
                     } else {
                         System.out.println(" -- No value founded... --");
                     }
@@ -162,9 +142,9 @@ public class TeamController {
     }
 
     /**
-     * Delete Team from Database
+     * Delete Season from Database
      */
-    public void deleteTeam() {
+    public void deleteSeason() {
         EntityManager em = entityManagerFactory.createEntityManager();
 
         String value;
@@ -174,22 +154,23 @@ public class TeamController {
             System.out.println(" -- Do you want to filter (Y/N) ? --");
             value = sc.nextLine();
             if (value.equalsIgnoreCase("Y")) {
-                List<Team> teams = getCriteriaList(em);
-                if (teams != null && teams.size() != 0) {
-                    for (Team t : teams) {
-                        em.remove(t);
-                        System.out.println(" -- " + t.toString());
-                        System.out.println(" -- Team Deleted -- ");
+                List<Season> seasons = getCriteriaList(em);
+                if (seasons != null && seasons.size() != 0) {
+                    for (Season s : seasons) {
+                        em.remove(s);
+                        System.out.println(" -- " + s.toString());
+                        System.out.println(" -- Season Deleted -- ");
                     }
                 } else {
                     System.out.println(" -- No value founded... --");
                 }
             } else if (value.equalsIgnoreCase("N")) {
-                Team team = em.find(Team.class, selectTeam(false));
-                if (team != null) {
-                    em.remove(team);
-                    System.out.println(" -- " + team);
-                    System.out.println(" -- Team Deleted -- ");
+
+                Season season = em.find(Season.class, selectSeason());
+                if (season != null) {
+                    em.remove(season);
+                    System.out.println(" -- " + season);
+                    System.out.println(" -- Season Deleted -- ");
                 } else {
                     System.out.println(" -- No value founded... --");
                 }
@@ -207,9 +188,9 @@ public class TeamController {
     /**
      * Shows you all the Fields of the Class and let you decide what values you want to change.
      *
-     * @param team Team to update
+     * @param season Season to update
      */
-    public void updateFieldForm(Team team) {
+    public void updateFieldForm(Season season) {
         boolean rep;
         do {
             rep = false;
@@ -225,7 +206,7 @@ public class TeamController {
                 if (opt < 0 || opt > fields.size() - 1) throw new NumberFormatException();
                 else if (opt != 0) {
                     System.out.print("New " + fields.get(opt).getName() + " value: ");
-                    setter4Fields(team, opt);
+                    setter4Fields(season, opt);
                     System.out.println("Do you want to update anything else? (Y/N)");
                     if (sc.nextLine().equalsIgnoreCase("Y")) rep = true;
                 }
@@ -237,21 +218,21 @@ public class TeamController {
     }
 
     /**
-     * Method to get the List of Teams that agree with the Restrictions you define.
+     * Method to get the List of Seasons that agree with the Restrictions you define.
      *
      * @param em Entity Manager to make the Criteria
-     * @return List of Teams that agree with the criteria
+     * @return List of Seasons that agree with the criteria
      */
-    private List<Team> getCriteriaList(@NotNull EntityManager em) {
+    private List<Season> getCriteriaList(@NotNull EntityManager em) {
         boolean rep;
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Team> q = cb.createQuery(Team.class);
-        Root<Team> c = q.from(Team.class);
+        CriteriaQuery<Season> q = cb.createQuery(Season.class);
+        Root<Season> c = q.from(Season.class);
         q.select(c);
 
         String option;
 
-        listTeams();
+        listSeasons();
 
         System.out.println(" -- What attribute do you want to filter for? --");
         for (int i = 1; i < fields.size(); i++) {
@@ -268,46 +249,24 @@ public class TeamController {
                     && !option.equalsIgnoreCase("=") && !option.equalsIgnoreCase("!="))
                 rep = true;
         } while (rep);
-
-        //TODO CHANGE THE VALUES
         System.out.print("Define the value to compare in " + filter.getName() + " : ");
         do {
             rep = false;
             try {
                 switch (filter.getName()) {
-                    case "name", "location", "conference" -> {
+                    case "year", "league", "MVP", "ROTY", "PPG_Leader", "RGP_Leader", "APG_Leader", "WS_Leader" -> {
                         if (option.equalsIgnoreCase("=")) {
                             q.where(
-                                    cb.equal(c.get(filter.getName()), sc.nextLine())
+                                    cb.like(c.get(filter.getName()), sc.nextLine())
                             );
                         } else {
                             q.where(
-                                    cb.notEqual(c.get(filter.getName()), sc.nextLine())
-                            );
-                        }
-                    }
-                    case "totalGames", "wins", "loses", "playoffAppearances", "conferenceChampions", "championships" -> {
-
-                        if (option.equalsIgnoreCase("=")) {
-                            q.where(
-                                    cb.equal(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
-                            );
-                        } else if (option.equalsIgnoreCase("!=")) {
-                            q.where(
-                                    cb.notEqual(c.get(filter.getName()), sc.nextLine())
-                            );
-                        } else if (option.equalsIgnoreCase(">")) {
-                            q.where(
-                                    cb.greaterThan(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
-                            );
-                        } else if (option.equalsIgnoreCase("<")) {
-                            q.where(
-                                    cb.lessThan(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
+                                    cb.notLike(c.get(filter.getName()), sc.nextLine())
                             );
                         }
                     }
                     default -> {
-                        System.out.println(" -- We can't filter for that field... --");
+                        System.out.println("\n -- We can't filter for that field... --");
                         return null;
                     }
                 }
@@ -322,20 +281,20 @@ public class TeamController {
     /**
      * Switch that filter for what setter to apply depending on the position of Class Fields List
      *
-     * @param team Team Object to set new Values
-     * @param pos  postion of field in Fields List
+     * @param season Season Object to set new Values
+     * @param pos    postion of field in Fields List
      */
-    private void setter4Fields(Team team, int pos) {
+    private void setter4Fields(Season season, int pos) {
         switch (fields.get(pos).getName()) {
-            case "name" -> team.setName(sc.nextLine());
-            case "location" -> team.setLocation(sc.nextLine());
-            case "totalGames" -> team.setTotalGames(Integer.parseInt(sc.nextLine()));
-            case "wins" -> team.setWins(Integer.parseInt(sc.nextLine()));
-            case "loses" -> team.setLoses(Integer.parseInt(sc.nextLine()));
-            case "playoffAppearances" -> team.setPlayoffAppearances(Integer.parseInt(sc.nextLine()));
-            case "conferenceChampions" -> team.setConferenceChampions(Integer.parseInt(sc.nextLine()));
-            case "championships" -> team.setChampionships(Integer.parseInt(sc.nextLine()));
-            case "conference" -> team.setConference(sc.nextLine());
+            case "year" -> season.setYear(sc.nextLine());
+            case "league" -> season.setLeague(sc.nextLine());
+            case "champion" -> season.setChampion(teamController.getTeamNull());
+            case "MVP" -> season.setMVP(sc.nextLine());
+            case "ROTY" -> season.setROTY(sc.nextLine());
+            case "PPG_Leader" -> season.setPPG_Leader(sc.nextLine());
+            case "RGP_Leader" -> season.setRGP_Leader(sc.nextLine());
+            case "APG_Leader" -> season.setAPG_Leader(sc.nextLine());
+            case "WS_Leader" -> season.setWS_Leader(sc.nextLine());
         }
     }
 
@@ -343,80 +302,80 @@ public class TeamController {
      * Method transform the data from a CSV into Objects
      *
      * @param path path of the csv
-     * @return List of Teams imported from the csv
+     * @return List of Seasons imported from the csv
      */
-    public List<Team> readTeamFile(String path) {
-        List<Team> TeamList = new ArrayList<>();
+    public List<Season> readSeasonFile(String path) {
+        List<Season> seasonList = new ArrayList<>();
         boolean first = false;
         for (String[] data : OpenCSV.readCSV(path)) {
             try {
                 if (!first) first = true;
                 else
-                    TeamList.add(new Team(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5]), Integer.parseInt(data[6]), Integer.parseInt(data[7]), data[8]));
+                    seasonList.add(new Season(data[0], data[1], teamController.getTeam(Integer.parseInt(data[2])), data[3], data[4], data[5], data[6], data[7], data[8]));
             } catch (NumberFormatException e) {
                 System.out.println("*** Error, bad value or format.***");
                 throw new RuntimeException(e);
             }
         }
-        return TeamList;
+        return seasonList;
     }
 
     /**
-     * Method to add a Team into the Database
+     * Method to add a Season into the Database
      *
-     * @param team Team to add
+     * @param Season Season to add
      */
-    public void addTeam(@NotNull Team team) {
+    public void addSeason(@NotNull Season Season) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        Team teamExists = em.find(Team.class, team.getTeamId());
-        if (teamExists == null) {
-            em.persist(team);
-            System.out.println("*** Team Inserted ***");
+        Season SeasonExists = em.find(Season.class, Season.getSeasonId());
+        if (SeasonExists == null) {
+            em.persist(Season);
+            System.out.println("*** Season Inserted ***");
         }
         em.getTransaction().commit();
         em.close();
     }
 
     /**
-     * Lists all the Teams that are in the Database
+     * Lists all the Seasons that are in the Database
      */
-    public void listTeams() {
+    public void listSeasons() {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        List<Team> result = em.createQuery("from Team", Team.class)
-                .getResultList().stream().sorted(Comparator.comparingInt(Team::getTeamId)).toList();
-        for (Team Team : result) {
-            System.out.println(Team.toString());
+        List<Season> result = em.createQuery("from Season", Season.class)
+                .getResultList().stream().sorted(Comparator.comparingInt(Season::getSeasonId)).toList();
+        for (Season season : result) {
+            System.out.println(season.toString());
         }
         em.getTransaction().commit();
         em.close();
     }
 
     /**
-     * Delete a Team from the ID.
+     * Delete a Season from the ID.
      *
-     * @param teamId Team id
+     * @param seasonId Season id
      */
-    public void deleteTeam(Integer teamId) {
+    public void deleteSeason(Integer seasonId) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        Team Team = em.find(Team.class, teamId);
-        em.remove(Team);
+        Season season = em.find(Season.class, seasonId);
+        em.remove(season);
         em.getTransaction().commit();
         em.close();
     }
 
     /**
-     * Drops all the Teams from the Database.
+     * Drops all the Seasons from the Database.
      */
-    public void clearTeams() {
+    public void clearSeasons() {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        List<Team> result = em.createQuery("from Team", Team.class)
+        List<Season> result = em.createQuery("from Season", Season.class)
                 .getResultList();
-        for (Team Team : result) {
-            deleteTeam(Team.getTeamId());
+        for (Season season : result) {
+            deleteSeason(season.getSeasonId());
         }
         em.getTransaction().commit();
         em.close();

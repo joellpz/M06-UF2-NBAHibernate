@@ -1,8 +1,10 @@
 import database.Additions;
 import database.ConnectionFactory;
 import newController.PlayerController;
+import newController.SeasonController;
 import newController.TeamController;
 import newModel.Player;
+import newModel.Season;
 import newModel.Team;
 import newView.Menu;
 import org.hibernate.HibernateException;
@@ -52,6 +54,7 @@ public class Main {
 
         PlayerController playerController = new PlayerController(c, entityManagerFactory);
         TeamController teamController = new TeamController(c, entityManagerFactory);
+        SeasonController seasonController = new SeasonController(c, entityManagerFactory);
 
 //        DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
 //        Player player1 = new Player("Joel1", "position", "college", "draftTeam", 5 , dateFormat.parse("1990-12-12"),25, 1990, 5);
@@ -80,7 +83,7 @@ public class Main {
                     switch (menu.dataMenu()) {
                         case 1 -> playerController.listPlayers();
                         case 2 -> teamController.listTeams();
-//                        case 3 -> seasonController.listSeasons();
+                        case 3 -> seasonController.listSeasons();
 //                        case 4 -> pseasonController.showPlayerSeasons();
                     }
                 }
@@ -89,7 +92,7 @@ public class Main {
                     switch (menu.dataMenu()) {
                         case 1 -> playerController.newPlayer();
                         case 2 -> teamController.newTeam();
-//                        case 3 -> seasonController.newSeason();
+                        case 3 -> seasonController.newSeason();
 //                        case 4 -> pseasonController.newPlayerSeasons();
                     }
                 }
@@ -98,7 +101,7 @@ public class Main {
                     switch (menu.dataMenu()) {
                         case 1 -> playerController.updatePlayer();
                         case 2 -> teamController.updateTeam();
-//                        case 3 -> seasonController.updateSeason();
+                        case 3 -> seasonController.updateSeason();
 //                        case 4 -> pseasonController.updatePlayerSeasons();
                     }
                 }
@@ -107,7 +110,7 @@ public class Main {
                     switch (menu.dataMenu()) {
                         case 1 -> playerController.deletePlayer();
                         case 2 -> teamController.deleteTeam();
-//                        case 3 -> seasonController.deleteSeason();
+                        case 3 -> seasonController.deleteSeason();
 //                        case 4 -> pseasonController.deletePlayerSeasons();
 
                     }
@@ -124,6 +127,11 @@ public class Main {
                         for (Team t : teamController.readTeamFile("data/csv/teams.csv")) {
                             System.out.println(t);
                             teamController.addTeam(t);
+                        }
+
+                        for (Season s : seasonController.readSeasonFile("data/csv/seasons.csv")) {
+                            System.out.println(s);
+                            seasonController.addSeason(s);
                         }
 
 

@@ -3,9 +3,9 @@ package newModel;
 import javax.persistence.*;
 
 
-//@Entity
-//@Access(AccessType.FIELD)
-//@Table(name = "seasons")
+@Entity
+@Access(AccessType.FIELD)
+@Table(name = "seasons")
 public class Season {
 
     @Id
@@ -19,7 +19,7 @@ public class Season {
     String league;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idteam")
+    @JoinColumn(name = "champion")
     Team champion;
 
     @Column(name = "mvp",length = 45)
@@ -30,13 +30,13 @@ public class Season {
     @Column(name = "pointsleader",length = 45)
     String PPG_Leader;
 
-    @Column(name = "pointsleader",length = 45)
+    @Column(name = "reboundsleader",length = 45)
     String RGP_Leader;
 
-    @Column(name = "reboundsleader",length = 45)
+    @Column(name = "assistsleader",length = 45)
     String APG_Leader;
 
-    @Column(name = "winssharesleader",length = 45)
+    @Column(name = "winsharesleader",length = 45)
     String WS_Leader;
 
 
@@ -159,9 +159,10 @@ public class Season {
     @Override
     public String toString() {
         return "Season{" +
-                "year='" + year + '\'' +
+                "seasonId='" + seasonId + '\'' +
+                ", year='" + year + '\'' +
                 ", league='" + league + '\'' +
-                ", champion='" + champion + '\'' +
+                ", champion='" + champion.getName() + '\'' +
                 ", MVP='" + MVP + '\'' +
                 ", ROTY='" + ROTY + '\'' +
                 ", PPG_Leader='" + PPG_Leader + '\'' +

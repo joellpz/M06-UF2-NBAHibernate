@@ -105,18 +105,27 @@ public class PlayerController {
                 System.out.println(" -- Do you want to filter (Y/N) ? --");
                 String value = sc.nextLine();
                 if (value.equalsIgnoreCase("Y")) {
-                    for (Player p : getCriteriaList(em)) {
-                        System.out.println(" Updating -- " + p.toString());
-                        updateFieldForm(p);
-                        em.merge(p);
-                        System.out.println(" -- Player Updated -- ");
+                    List<Player> players = getCriteriaList(em);
+                    if (players != null && players.size() != 0) {
+                        for (Player p : players) {
+                            System.out.println(" Updating -- " + p.toString());
+                            updateFieldForm(p);
+                            em.merge(p);
+                            System.out.println(" -- Player Updated -- ");
+                        }
+                    } else {
+                        System.out.println(" -- No value founded... --");
                     }
                 } else if (value.equalsIgnoreCase("N")) {
                     Player player = em.find(Player.class, selectPlayer());
-                    System.out.println(" Updating -- " + player.toString());
-                    updateFieldForm(player);
-                    em.merge(player);
-                    System.out.println(" -- Player Updated -- ");
+                    if (player != null) {
+                        System.out.println(" Updating -- " + player);
+                        updateFieldForm(player);
+                        em.merge(player);
+                        System.out.println(" -- Player Updated -- ");
+                    } else {
+                        System.out.println(" -- No value founded... --");
+                    }
                 } else {
                     throw new NumberFormatException();
                 }
@@ -143,16 +152,25 @@ public class PlayerController {
             System.out.println(" -- Do you want to filter (Y/N) ? --");
             value = sc.nextLine();
             if (value.equalsIgnoreCase("Y")) {
-                for (Player p : getCriteriaList(em)) {
-                    em.remove(p);
-                    System.out.println(" -- " + p.toString());
-                    System.out.println(" -- Player Deleted -- ");
+                List<Player> players = getCriteriaList(em);
+                if (players != null && players.size() != 0) {
+                    for (Player p : players) {
+                        em.remove(p);
+                        System.out.println(" -- " + p.toString());
+                        System.out.println(" -- Player Deleted -- ");
+                    }
+                } else {
+                    System.out.println(" -- No value founded... --");
                 }
             } else if (value.equalsIgnoreCase("N")) {
                 Player player = em.find(Player.class, selectPlayer());
-                em.remove(player);
-                System.out.println(" -- " + player.toString());
-                System.out.println(" -- Player Deleted -- ");
+                if (player != null) {
+                    em.remove(player);
+                    System.out.println(" -- " + player);
+                    System.out.println(" -- Player Deleted -- ");
+                } else {
+                    System.out.println(" -- No value founded... --");
+                }
             } else {
                 throw new NumberFormatException();
             }
@@ -199,6 +217,7 @@ public class PlayerController {
 
     /**
      * Method to get the List of Players that agree with the Restrictions you define.
+     *
      * @param em Entity Manager to make the Criteria
      * @return List of Players that agree with the criteria
      */
@@ -265,7 +284,10 @@ public class PlayerController {
                             );
                         }
                     }
-                    default -> System.out.println(" -- We can't filter for that field... --");
+                    default -> {
+                        System.out.println(" -- We can't filter for that field... --");
+                        return null;
+                    }
                 }
             } catch (NumberFormatException e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
@@ -278,8 +300,9 @@ public class PlayerController {
 
     /**
      * Switch that filter for what setter to apply depending on the position of Class Fields List
+     *
      * @param player Player Object to set new Values
-     * @param pos postion of field in Fields List
+     * @param pos    postion of field in Fields List
      * @throws ParseException Bad format into Date
      */
     private void setter4Fields(Player player, int pos) throws ParseException {
@@ -302,6 +325,7 @@ public class PlayerController {
 
     /**
      * Method transform the data from a CSV into Objects
+     *
      * @param path path of the csv
      * @return List of Players imported from the csv
      */
@@ -324,6 +348,7 @@ public class PlayerController {
 
     /**
      * Method to add a Player into the Database
+     *
      * @param player Player to add
      */
     public void addPlayer(@NotNull Player player) {
@@ -357,6 +382,7 @@ public class PlayerController {
 
     /**
      * Delete a Player from the ID.
+     *
      * @param playerId Player id
      */
     public void deletePlayer(Integer playerId) {

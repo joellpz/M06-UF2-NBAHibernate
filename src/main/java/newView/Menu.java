@@ -20,6 +20,7 @@ public class Menu {
                 option = Integer.parseInt(br.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("valor no válido");
+                option = -5;
             }
         } while (option < 0 || option > 5);
 
@@ -45,8 +46,7 @@ public class Menu {
                 option = Integer.parseInt(br.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("valor no válido");
-                e.printStackTrace();
-
+                option = -5;
             }
         } while (option < 0 || option > 4);
         return option;
