@@ -157,7 +157,7 @@ public class Player implements Serializable {
 
         return "Player{" +
                 "playerId='" + playerId + '\'' +
-                "name='" + name + '\'' +
+                ", name='" + name + '\'' +
                 ", born='" + born + '\'' +
                 ", age=" + age +
                 ", college='" + college + '\'' +

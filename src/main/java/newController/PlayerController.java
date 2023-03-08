@@ -1,43 +1,60 @@
 package newController;
 
-import com.opencsv.CSVReader;
-import com.sun.istack.NotNull;
 import database.OpenCSV;
 import newModel.Player;
-import org.hibernate.SessionFactory;
-import profesor.model.Magazine;
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
 import java.lang.reflect.Field;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * Class that have all the methods to control a Player Object from the Database.
+ */
 public class PlayerController {
+    /**
+     * Connection Object that has all the Database connection.
+     */
     private final Connection connection;
+    /**
+     * Entity Manager Factory
+     */
     private EntityManagerFactory entityManagerFactory;
+    /**
+     * Scanner Object to get Terminal Input
+     */
     private final Scanner sc;
-    private List<Field> fields;
+    /**
+     * Field List from the Teams Object
+     */
+    private final List<Field> fields;
 
+    /**
+     * Constructor for PlayerController
+     *
+     * @param connection connection to the database
+     */
     public PlayerController(Connection connection) {
         this.connection = connection;
         sc = new Scanner(System.in);
         fields = Arrays.stream(Player.class.getDeclaredFields()).toList();
     }
 
+
+    /**
+     * Constructor for PlayerController
+     *
+     * @param connection           connection to the database
+     * @param entityManagerFactory entity Manager for Model Objects
+     */
     public PlayerController(Connection connection, EntityManagerFactory entityManagerFactory) {
         this.connection = connection;
         this.entityManagerFactory = entityManagerFactory;
@@ -45,6 +62,12 @@ public class PlayerController {
         fields = Arrays.stream(Player.class.getDeclaredFields()).toList();
     }
 
+    /**
+     * Shows all the Players and let you introduce 1 id.
+     *
+     * @return Player ID
+     * @throws NumberFormatException when no number character is introduced.
+     */
     private int selectPlayer() throws NumberFormatException {
         System.out.println("What element do you want to select?");
         listPlayers();
@@ -52,25 +75,15 @@ public class PlayerController {
         return Integer.parseInt(sc.nextLine());
     }
 
+    /**
+     * Form to introduce new Player
+     */
     public void newPlayer() {
         Player player = new Player();
         for (int i = 1; i < fields.size(); i++) {
             try {
                 System.out.print(fields.get(i).getName() + ": ");
-                switch (fields.get(i).getName()) {
-                    case "name" -> player.setName(sc.nextLine());
-                    case "age" -> player.setAge(Integer.parseInt(sc.nextLine()));
-                    case "position" -> player.setPosition(sc.nextLine());
-                    case "college" -> player.setCollege(sc.nextLine());
-                    case "draftTeam" -> player.setDraftTeam(sc.nextLine());
-                    case "draftPos" -> player.setDraftPos(Integer.parseInt(sc.nextLine()));
-                    case "draftYear" -> player.setDraftYear(Integer.parseInt(sc.nextLine()));
-                    case "born" -> {
-                        System.out.println(" -- Format: yyyy-MM-dd -- ");
-                        player.setBorn(new SimpleDateFormat("yyyy-MM-dd").parse(sc.nextLine()));
-                    }
-                    case "expCareer" -> player.setExpCareer(Integer.parseInt(sc.nextLine()));
-                }
+                setter4Fields(player, i);
             } catch (NumberFormatException | ParseException e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 i--;
@@ -79,6 +92,9 @@ public class PlayerController {
         addPlayer(player);
     }
 
+    /**
+     * Update Player information and let you decide if you want to filtes some values
+     */
     public void updatePlayer() {
         boolean rep;
         EntityManager em = entityManagerFactory.createEntityManager();
@@ -104,7 +120,7 @@ public class PlayerController {
                 } else {
                     throw new NumberFormatException();
                 }
-            } catch (NumberFormatException | ParseException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
@@ -114,6 +130,9 @@ public class PlayerController {
         em.close();
     }
 
+    /**
+     * Delete Player from Database
+     */
     public void deletePlayer() {
         EntityManager em = entityManagerFactory.createEntityManager();
 
@@ -137,7 +156,7 @@ public class PlayerController {
             } else {
                 throw new NumberFormatException();
             }
-        } catch (NumberFormatException | ParseException e) {
+        } catch (NumberFormatException e) {
             System.out.println("*** Error, bad value or format.***");
             System.out.println(" ** Exiting **");
         }
@@ -145,7 +164,12 @@ public class PlayerController {
         em.close();
     }
 
-    public void updateFieldForm(Player player){
+    /**
+     * Shows you all the Fields of the Class and let you decide what values you want to change.
+     *
+     * @param player Player to update
+     */
+    public void updateFieldForm(Player player) {
         boolean rep;
         do {
             rep = false;
@@ -161,20 +185,7 @@ public class PlayerController {
                 if (opt < 0 || opt > fields.size() - 1) throw new NumberFormatException();
                 else if (opt != 0) {
                     System.out.print("New " + fields.get(opt).getName() + " value: ");
-                    switch (fields.get(opt).getName()) {
-                        case "name" -> player.setName(sc.nextLine());
-                        case "age" -> player.setAge(Integer.parseInt(sc.nextLine()));
-                        case "position" -> player.setPosition(sc.nextLine());
-                        case "college" -> player.setCollege(sc.nextLine());
-                        case "draftTeam" -> player.setDraftTeam(sc.nextLine());
-                        case "draftPos" -> player.setDraftPos(Integer.parseInt(sc.nextLine()));
-                        case "draftYear" -> player.setDraftYear(Integer.parseInt(sc.nextLine()));
-                        case "born" -> {
-                            System.out.println(" -- Format: yyyy-MM-dd -- ");
-                            player.setBorn(new SimpleDateFormat("yyyy-MM-dd").parse(sc.nextLine()));
-                        }
-                        case "expCareer" -> player.setExpCareer(Integer.parseInt(sc.nextLine()));
-                    }
+                    setter4Fields(player, opt);
                     System.out.println("Do you want to update anything else? (Y/N)");
                     if (sc.nextLine().equalsIgnoreCase("Y")) rep = true;
                 }
@@ -185,7 +196,14 @@ public class PlayerController {
         } while (rep);
     }
 
-    private List<Player> getCriteriaList(EntityManager em) throws ParseException {
+
+    /**
+     * Method to get the List of Players that agree with the Restrictions you define.
+     * @param em Entity Manager to make the Criteria
+     * @return List of Players that agree with the criteria
+     */
+    private List<Player> getCriteriaList(@NotNull EntityManager em) {
+        boolean rep;
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Player> q = cb.createQuery(Player.class);
         Root<Player> c = q.from(Player.class);
@@ -202,67 +220,113 @@ public class PlayerController {
         System.out.print("Selected: ");
         Field filter = fields.get(Integer.parseInt(sc.nextLine()));
         do {
+            rep = false;
             System.out.println("*** What type of criteria would you use (<, >, = , !=) ? ***");
             System.out.println("*** Be consequence of the type of data are you trying to filter. ***");
             option = sc.nextLine();
-        } while (!option.equalsIgnoreCase(">") && !option.equalsIgnoreCase("<") && !option.equalsIgnoreCase("=") && !option.equalsIgnoreCase("!="));
+            if (!option.equalsIgnoreCase(">") && !option.equalsIgnoreCase("<")
+                    && !option.equalsIgnoreCase("=") && !option.equalsIgnoreCase("!="))
+                rep = true;
+        } while (rep);
 
-        System.out.print("Define the value to compare " + filter.getName() + " : ");
-        switch (filter.getName()) {
-            case "name", "draftTeam", "college", "position" -> {
-                if (option.equalsIgnoreCase("=")) {
-                    q.where(
-                            cb.equal(c.get(filter.getName()), sc.nextLine())
-                    );
-                } else {
-                    q.where(
-                            cb.notEqual(c.get(filter.getName()), sc.nextLine())
-                    );
+        System.out.print("Define the value to compare in " + filter.getName() + " : ");
+        do {
+            rep = false;
+            try {
+                switch (filter.getName()) {
+                    case "name", "draftTeam", "college", "position" -> {
+                        if (option.equalsIgnoreCase("=")) {
+                            q.where(
+                                    cb.equal(c.get(filter.getName()), sc.nextLine())
+                            );
+                        } else {
+                            q.where(
+                                    cb.notEqual(c.get(filter.getName()), sc.nextLine())
+                            );
+                        }
+                    }
+                    case "age", "draftPos", "draftYear", "expCareer" -> {
+
+                        if (option.equalsIgnoreCase("=")) {
+                            q.where(
+                                    cb.equal(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
+                            );
+                        } else if (option.equalsIgnoreCase("!=")) {
+                            q.where(
+                                    cb.notEqual(c.get(filter.getName()), sc.nextLine())
+                            );
+                        } else if (option.equalsIgnoreCase(">")) {
+                            q.where(
+                                    cb.greaterThan(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
+                            );
+                        } else if (option.equalsIgnoreCase("<")) {
+                            q.where(
+                                    cb.lessThan(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
+                            );
+                        }
+                    }
+                    default -> System.out.println(" -- We can't filter for that field... --");
                 }
+            } catch (NumberFormatException e) {
+                System.out.println("*** Error, bad value or format. Try Again ***");
+                rep = true;
             }
-            case "age", "draftPos", "draftYear", "expCareer" -> {
-
-                if (option.equalsIgnoreCase("=")) {
-                    q.where(
-                            cb.equal(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
-                    );
-                } else if (option.equalsIgnoreCase("!=")) {
-                    q.where(
-                            cb.notEqual(c.get(filter.getName()), sc.nextLine())
-                    );
-                } else if (option.equalsIgnoreCase(">")) {
-                    q.where(
-                            cb.greaterThan(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
-                    );
-                } else if (option.equalsIgnoreCase("<")) {
-                    q.where(
-                            cb.lessThan(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
-                    );
-                }
-            }
-            default -> System.out.println(" -- We can't filter for that field... --");
-        }
-
+        } while (rep);
         return em.createQuery(q).getResultList();
     }
 
+
+    /**
+     * Switch that filter for what setter to apply depending on the position of Class Fields List
+     * @param player Player Object to set new Values
+     * @param pos postion of field in Fields List
+     * @throws ParseException Bad format into Date
+     */
+    private void setter4Fields(Player player, int pos) throws ParseException {
+        switch (fields.get(pos).getName()) {
+            case "name" -> player.setName(sc.nextLine());
+            case "age" -> player.setAge(Integer.parseInt(sc.nextLine()));
+            case "position" -> player.setPosition(sc.nextLine());
+            case "college" -> player.setCollege(sc.nextLine());
+            case "draftTeam" -> player.setDraftTeam(sc.nextLine());
+            case "draftPos" -> player.setDraftPos(Integer.parseInt(sc.nextLine()));
+            case "draftYear" -> player.setDraftYear(Integer.parseInt(sc.nextLine()));
+            case "born" -> {
+                System.out.println(" -- Format: yyyy-MM-dd -- ");
+                player.setBorn(new SimpleDateFormat("yyyy-MM-dd").parse(sc.nextLine()));
+            }
+            case "expCareer" -> player.setExpCareer(Integer.parseInt(sc.nextLine()));
+        }
+    }
+
+
+    /**
+     * Method transform the data from a CSV into Objects
+     * @param path path of the csv
+     * @return List of Players imported from the csv
+     */
     public List<Player> readPlayerFile(String path) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        List<Player> playerList = new ArrayList();
+        List<Player> playerList = new ArrayList<>();
         boolean first = false;
         for (String[] data : OpenCSV.readCSV(path)) {
             try {
                 if (!first) first = true;
                 else
                     playerList.add(new Player(data[0], data[2], data[3], data[4], Integer.parseInt(data[5]), dateFormat.parse(data[7]), Integer.parseInt(data[1]), Integer.parseInt(data[6]), Integer.parseInt(data[8])));
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
+            } catch (NumberFormatException | ParseException e) {
+                System.out.println("*** Error, bad value or format.***");
             }
         }
         return playerList;
     }
 
-    public void addPlayer(Player player) {
+
+    /**
+     * Method to add a Player into the Database
+     * @param player Player to add
+     */
+    public void addPlayer(@NotNull Player player) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         Player playerExists = em.find(Player.class, player.getPlayerId());
@@ -274,6 +338,10 @@ public class PlayerController {
         em.close();
     }
 
+
+    /**
+     * Lists all the Players that are in the Database
+     */
     public void listPlayers() {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -286,6 +354,11 @@ public class PlayerController {
         em.close();
     }
 
+
+    /**
+     * Delete a Player from the ID.
+     * @param playerId Player id
+     */
     public void deletePlayer(Integer playerId) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -295,6 +368,10 @@ public class PlayerController {
         em.close();
     }
 
+
+    /**
+     * Drops all the Players from the Database.
+     */
     public void clearPlayers() {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();

@@ -2,6 +2,7 @@ package newController;
 
 import database.OpenCSV;
 import newModel.Team;
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,21 +12,48 @@ import javax.persistence.criteria.Root;
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class TeamController {
-    private final Connection connection;
-    private EntityManagerFactory entityManagerFactory;
-    private final Scanner sc;
-    private List<Field> fields;
 
+/**
+ * Class that have all the methods to control a Team Object from the Database.
+ */
+public class TeamController {
+    /**
+     * Connection Object that has all the Database connection.
+     */
+    private final Connection connection;
+    /**
+     * Entity Manager Factory
+     */
+    private EntityManagerFactory entityManagerFactory;
+    /**
+     * Scanner Object to get Terminal Input
+     */
+    private final Scanner sc;
+    /**
+     * Field List from the Teams Object
+     */
+    private final List<Field> fields;
+
+    /**
+     * Constructor for TeamController
+     *
+     * @param connection connection to the database
+     */
     public TeamController(Connection connection) {
         this.connection = connection;
         sc = new Scanner(System.in);
         fields = Arrays.stream(Team.class.getDeclaredFields()).toList();
     }
+
+    /**
+     * Constructor for TeamController
+     *
+     * @param connection           connection to the database
+     * @param entityManagerFactory entity Manager for Model Objects
+     */
 
     public TeamController(Connection connection, EntityManagerFactory entityManagerFactory) {
         this.connection = connection;
@@ -34,6 +62,12 @@ public class TeamController {
         fields = Arrays.stream(Team.class.getDeclaredFields()).toList();
     }
 
+    /**
+     * Shows all the Teams and let you introduce 1 id.
+     *
+     * @return Team ID
+     * @throws NumberFormatException when no number character is introduced.
+     */
     private int selectTeam() throws NumberFormatException {
         System.out.println("What element do you want to select?");
         listTeams();
@@ -41,33 +75,27 @@ public class TeamController {
         return Integer.parseInt(sc.nextLine());
     }
 
+    /**
+     * Form to introduce new Team
+     */
     public void newTeam() {
-        Team Team = new Team();
+        Team team = new Team();
         for (int i = 1; i < fields.size(); i++) {
             try {
                 System.out.print(fields.get(i).getName() + ": ");
-                switch (fields.get(i).getName()) {
-                    case "name" -> Team.setName(sc.nextLine());
-                    case "age" -> Team.setAge(Integer.parseInt(sc.nextLine()));
-                    case "position" -> Team.setPosition(sc.nextLine());
-                    case "college" -> Team.setCollege(sc.nextLine());
-                    case "draftTeam" -> Team.setDraftTeam(sc.nextLine());
-                    case "draftPos" -> Team.setDraftPos(Integer.parseInt(sc.nextLine()));
-                    case "draftYear" -> Team.setDraftYear(Integer.parseInt(sc.nextLine()));
-                    case "born" -> {
-                        System.out.println(" -- Format: yyyy-MM-dd -- ");
-                        Team.setBorn(new SimpleDateFormat("yyyy-MM-dd").parse(sc.nextLine()));
-                    }
-                    case "expCareer" -> Team.setExpCareer(Integer.parseInt(sc.nextLine()));
-                }
-            } catch (NumberFormatException | ParseException e) {
+                setter4Fields(team, i);
+            } catch (NumberFormatException e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 i--;
             }
         }
-        addTeam(Team);
+        addTeam(team);
     }
 
+
+    /**
+     * Update Team information and let you decide if you want to filtes some values
+     */
     public void updateTeam() {
         boolean rep;
         EntityManager em = entityManagerFactory.createEntityManager();
@@ -78,10 +106,10 @@ public class TeamController {
                 System.out.println(" -- Do you want to filter (Y/N) ? --");
                 String value = sc.nextLine();
                 if (value.equalsIgnoreCase("Y")) {
-                    for (Team p : getCriteriaList(em)) {
-                        System.out.println(" Updating -- " + p.toString());
-                        updateFieldForm(p);
-                        em.merge(p);
+                    for (Team t : getCriteriaList(em)) {
+                        System.out.println(" Updating -- " + t.toString());
+                        updateFieldForm(t);
+                        em.merge(t);
                         System.out.println(" -- Team Updated -- ");
                     }
                 } else if (value.equalsIgnoreCase("N")) {
@@ -93,7 +121,7 @@ public class TeamController {
                 } else {
                     throw new NumberFormatException();
                 }
-            } catch (NumberFormatException | ParseException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
@@ -103,6 +131,9 @@ public class TeamController {
         em.close();
     }
 
+    /**
+     * Delete Team from Database
+     */
     public void deleteTeam() {
         EntityManager em = entityManagerFactory.createEntityManager();
 
@@ -113,9 +144,9 @@ public class TeamController {
             System.out.println(" -- Do you want to filter (Y/N) ? --");
             value = sc.nextLine();
             if (value.equalsIgnoreCase("Y")) {
-                for (Team p : getCriteriaList(em)) {
-                    em.remove(p);
-                    System.out.println(" -- " + p.toString());
+                for (Team t : getCriteriaList(em)) {
+                    em.remove(t);
+                    System.out.println(" -- " + t.toString());
                     System.out.println(" -- Team Deleted -- ");
                 }
             } else if (value.equalsIgnoreCase("N")) {
@@ -126,7 +157,7 @@ public class TeamController {
             } else {
                 throw new NumberFormatException();
             }
-        } catch (NumberFormatException | ParseException e) {
+        } catch (NumberFormatException e) {
             System.out.println("*** Error, bad value or format.***");
             System.out.println(" ** Exiting **");
         }
@@ -134,7 +165,12 @@ public class TeamController {
         em.close();
     }
 
-    public void updateFieldForm(Team Team){
+    /**
+     * Shows you all the Fields of the Class and let you decide what values you want to change.
+     *
+     * @param team Team to update
+     */
+    public void updateFieldForm(Team team) {
         boolean rep;
         do {
             rep = false;
@@ -150,31 +186,25 @@ public class TeamController {
                 if (opt < 0 || opt > fields.size() - 1) throw new NumberFormatException();
                 else if (opt != 0) {
                     System.out.print("New " + fields.get(opt).getName() + " value: ");
-                    switch (fields.get(opt).getName()) {
-                        case "name" -> Team.setName(sc.nextLine());
-                        case "age" -> Team.setAge(Integer.parseInt(sc.nextLine()));
-                        case "position" -> Team.setPosition(sc.nextLine());
-                        case "college" -> Team.setCollege(sc.nextLine());
-                        case "draftTeam" -> Team.setDraftTeam(sc.nextLine());
-                        case "draftPos" -> Team.setDraftPos(Integer.parseInt(sc.nextLine()));
-                        case "draftYear" -> Team.setDraftYear(Integer.parseInt(sc.nextLine()));
-                        case "born" -> {
-                            System.out.println(" -- Format: yyyy-MM-dd -- ");
-                            Team.setBorn(new SimpleDateFormat("yyyy-MM-dd").parse(sc.nextLine()));
-                        }
-                        case "expCareer" -> Team.setExpCareer(Integer.parseInt(sc.nextLine()));
-                    }
+                    setter4Fields(team, opt);
                     System.out.println("Do you want to update anything else? (Y/N)");
                     if (sc.nextLine().equalsIgnoreCase("Y")) rep = true;
                 }
-            } catch (NumberFormatException | ParseException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
         } while (rep);
     }
 
-    private List<Team> getCriteriaList(EntityManager em) throws ParseException {
+    /**
+     * Method to get the List of Teams that agree with the Restrictions you define.
+     *
+     * @param em Entity Manager to make the Criteria
+     * @return List of Teams that agree with the criteria
+     */
+    private List<Team> getCriteriaList(@NotNull EntityManager em) {
+        boolean rep;
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Team> q = cb.createQuery(Team.class);
         Root<Team> c = q.from(Team.class);
@@ -191,78 +221,124 @@ public class TeamController {
         System.out.print("Selected: ");
         Field filter = fields.get(Integer.parseInt(sc.nextLine()));
         do {
+            rep = false;
             System.out.println("*** What type of criteria would you use (<, >, = , !=) ? ***");
             System.out.println("*** Be consequence of the type of data are you trying to filter. ***");
             option = sc.nextLine();
-        } while (!option.equalsIgnoreCase(">") && !option.equalsIgnoreCase("<") && !option.equalsIgnoreCase("=") && !option.equalsIgnoreCase("!="));
+            if (!option.equalsIgnoreCase(">") && !option.equalsIgnoreCase("<")
+                    && !option.equalsIgnoreCase("=") && !option.equalsIgnoreCase("!="))
+                rep = true;
+        } while (rep);
 
-        System.out.print("Define the value to compare " + filter.getName() + " : ");
-        switch (filter.getName()) {
-            case "name", "draftTeam", "college", "position" -> {
-                if (option.equalsIgnoreCase("=")) {
-                    q.where(
-                            cb.equal(c.get(filter.getName()), sc.nextLine())
-                    );
-                } else {
-                    q.where(
-                            cb.notEqual(c.get(filter.getName()), sc.nextLine())
-                    );
+        //TODO CHANGE THE VALUES
+        System.out.print("Define the value to compare in " + filter.getName() + " : ");
+        do {
+            rep = false;
+            try {
+                switch (filter.getName()) {
+                    case "name", "location", "conference"-> {
+                        if (option.equalsIgnoreCase("=")) {
+                            q.where(
+                                    cb.equal(c.get(filter.getName()), sc.nextLine())
+                            );
+                        } else {
+                            q.where(
+                                    cb.notEqual(c.get(filter.getName()), sc.nextLine())
+                            );
+                        }
+                    }
+                    case "totalGames", "wins", "loses", "playoffAppearances", "conferenceChampions", "championships" -> {
+
+                        if (option.equalsIgnoreCase("=")) {
+                            q.where(
+                                    cb.equal(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
+                            );
+                        } else if (option.equalsIgnoreCase("!=")) {
+                            q.where(
+                                    cb.notEqual(c.get(filter.getName()), sc.nextLine())
+                            );
+                        } else if (option.equalsIgnoreCase(">")) {
+                            q.where(
+                                    cb.greaterThan(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
+                            );
+                        } else if (option.equalsIgnoreCase("<")) {
+                            q.where(
+                                    cb.lessThan(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
+                            );
+                        }
+                    }
+                    default -> System.out.println(" -- We can't filter for that field... --");
                 }
+            } catch (NumberFormatException e) {
+                System.out.println("*** Error, bad value or format. Try Again ***");
+                rep = true;
             }
-            case "age", "draftPos", "draftYear", "expCareer" -> {
-
-                if (option.equalsIgnoreCase("=")) {
-                    q.where(
-                            cb.equal(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
-                    );
-                } else if (option.equalsIgnoreCase("!=")) {
-                    q.where(
-                            cb.notEqual(c.get(filter.getName()), sc.nextLine())
-                    );
-                } else if (option.equalsIgnoreCase(">")) {
-                    q.where(
-                            cb.greaterThan(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
-                    );
-                } else if (option.equalsIgnoreCase("<")) {
-                    q.where(
-                            cb.lessThan(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
-                    );
-                }
-            }
-            default -> System.out.println(" -- We can't filter for that field... --");
-        }
-
+        } while (rep);
         return em.createQuery(q).getResultList();
     }
 
+    /**
+     * Switch that filter for what setter to apply depending on the position of Class Fields List
+     *
+     * @param team Team Object to set new Values
+     * @param pos  postion of field in Fields List
+     */
+    private void setter4Fields(Team team, int pos) {
+        switch (fields.get(pos).getName()) {
+            case "name" -> team.setName(sc.nextLine());
+            case "location" -> team.setLocation(sc.nextLine());
+            case "totalGames" -> team.setTotalGames(Integer.parseInt(sc.nextLine()));
+            case "wins" -> team.setWins(Integer.parseInt(sc.nextLine()));
+            case "loses" -> team.setLoses(Integer.parseInt(sc.nextLine()));
+            case "playoffAppearances" -> team.setPlayoffAppearances(Integer.parseInt(sc.nextLine()));
+            case "conferenceChampions" -> team.setConferenceChampions(Integer.parseInt(sc.nextLine()));
+            case "championships" -> team.setChampionships(Integer.parseInt(sc.nextLine()));
+            case "conference" -> team.setConference(sc.nextLine());
+        }
+    }
+
+    /**
+     * Method transform the data from a CSV into Objects
+     *
+     * @param path path of the csv
+     * @return List of Teams imported from the csv
+     */
     public List<Team> readTeamFile(String path) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        List<Team> TeamList = new ArrayList();
+        List<Team> TeamList = new ArrayList<>();
         boolean first = false;
         for (String[] data : OpenCSV.readCSV(path)) {
             try {
                 if (!first) first = true;
                 else
-                    TeamList.add(new Team(data[0], data[2], data[3], data[4], Integer.parseInt(data[5]), dateFormat.parse(data[7]), Integer.parseInt(data[1]), Integer.parseInt(data[6]), Integer.parseInt(data[8])));
-            } catch (ParseException e) {
+                    TeamList.add(new Team(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5]), Integer.parseInt(data[6]), Integer.parseInt(data[7]), data[8]));
+            } catch (NumberFormatException e) {
+                System.out.println("*** Error, bad value or format.***");
                 throw new RuntimeException(e);
             }
         }
         return TeamList;
     }
 
-    public void addTeam(Team Team) {
+    /**
+     * Method to add a Team into the Database
+     *
+     * @param team Team to add
+     */
+    public void addTeam(@NotNull Team team) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        Team TeamExists = em.find(Team.class, Team.getTeamId());
-        if (TeamExists == null) {
-            em.persist(Team);
+        Team teamExists = em.find(Team.class, team.getTeamId());
+        if (teamExists == null) {
+            em.persist(team);
             System.out.println("*** Team Inserted ***");
         }
         em.getTransaction().commit();
         em.close();
     }
 
+    /**
+     * Lists all the Teams that are in the Database
+     */
     public void listTeams() {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -275,15 +351,23 @@ public class TeamController {
         em.close();
     }
 
-    public void deleteTeam(Integer TeamId) {
+    /**
+     * Delete a Team from the ID.
+     *
+     * @param teamId Team id
+     */
+    public void deleteTeam(Integer teamId) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        Team Team = em.find(Team.class, TeamId);
+        Team Team = em.find(Team.class, teamId);
         em.remove(Team);
         em.getTransaction().commit();
         em.close();
     }
 
+    /**
+     * Drops all the Teams from the Database.
+     */
     public void clearTeams() {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();

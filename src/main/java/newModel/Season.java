@@ -2,6 +2,10 @@ package newModel;
 
 import javax.persistence.*;
 
+
+//@Entity
+//@Access(AccessType.FIELD)
+//@Table(name = "seasons")
 public class Season {
 
     @Id

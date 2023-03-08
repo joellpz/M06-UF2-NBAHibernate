@@ -1,10 +1,11 @@
 package newModel;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+
+@Entity
+@Access(AccessType.FIELD)
+@Table(name = "teams")
 public class Team {
     @Id
     @Column(name = "idteam")
@@ -15,7 +16,7 @@ public class Team {
     @Column(name = "location", length = 45)
     String location;
     @Column(name = "games")
-    int games;
+    int totalGames;
     @Column(name = "wins")
     int wins;
     @Column(name = "loses")
@@ -34,7 +35,7 @@ public class Team {
      *
      * @param name                Nombre
      * @param location            Ubicación
-     * @param games               Partidos
+     * @param totalGames               Partidos
      * @param wins                Ganados
      * @param loses               Perdidos
      * @param playoffAppearances  Apariciones PlayOff
@@ -42,11 +43,11 @@ public class Team {
      * @param championships       Campeón NBA
      * @param conference          Conferencia
      */
-    public Team(String name, String location, int games, int wins, int loses,
+    public Team(String name, String location, int totalGames, int wins, int loses,
                 int playoffAppearances, int conferenceChampions, int championships, String conference) {
         this.name = name;
         this.location = location;
-        this.games = games;
+        this.totalGames = totalGames;
         this.wins = wins;
         this.loses = loses;
         this.playoffAppearances = playoffAppearances;
@@ -85,12 +86,12 @@ public class Team {
         this.location = location;
     }
 
-    public int getGames() {
-        return games;
+    public int getTotalGames() {
+        return totalGames;
     }
 
-    public void setGames(int games) {
-        this.games = games;
+    public void setTotalGames(int totalGames) {
+        this.totalGames = totalGames;
     }
 
     public int getWins() {
@@ -149,9 +150,10 @@ public class Team {
     @Override
     public String toString() {
         return "Team{" +
-                "name='" + name + '\'' +
+                "teamId='" + teamId + '\'' +
+                ", name='" + name + '\'' +
                 ", location='" + location + '\'' +
-                ", games=" + games +
+                ", games=" + totalGames +
                 ", wins=" + wins +
                 ", loses=" + loses +
                 ", playoffAppearances=" + playoffAppearances +

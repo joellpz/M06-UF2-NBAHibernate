@@ -1,30 +1,22 @@
-import java.io.IOException;
-import java.sql.Connection;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 import database.Additions;
-import newController.PlayerController;
-import newModel.Player;
-import profesor.controller.ArticleController;
-import profesor.controller.AuthorController;
-import profesor.controller.MagazineController;
 import database.ConnectionFactory;
-import profesor.model.*;
+import newController.PlayerController;
+import newController.TeamController;
+import newModel.Player;
+import newModel.Team;
+import newView.Menu;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import newView.Menu;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.sql.Connection;
+import java.text.ParseException;
+import java.util.Scanner;
 
 //TODO Los pasos a seguir son los siguientes:
 
@@ -59,6 +51,7 @@ public class Main {
 
 
         PlayerController playerController = new PlayerController(c, entityManagerFactory);
+        TeamController teamController = new TeamController(c, entityManagerFactory);
 
 //        DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
 //        Player player1 = new Player("Joel1", "position", "college", "draftTeam", 5 , dateFormat.parse("1990-12-12"),25, 1990, 5);
@@ -86,7 +79,7 @@ public class Main {
                     //Show Tables
                     switch (menu.dataMenu()) {
                         case 1 -> playerController.listPlayers();
-//                        case 2 -> teamController.listTeams();
+                        case 2 -> teamController.listTeams();
 //                        case 3 -> seasonController.listSeasons();
 //                        case 4 -> pseasonController.showPlayerSeasons();
                     }
@@ -95,7 +88,7 @@ public class Main {
                     //Insert Data
                     switch (menu.dataMenu()) {
                         case 1 -> playerController.newPlayer();
-//                        case 2 -> teamController.newTeam();
+                        case 2 -> teamController.newTeam();
 //                        case 3 -> seasonController.newSeason();
 //                        case 4 -> pseasonController.newPlayerSeasons();
                     }
@@ -104,7 +97,7 @@ public class Main {
                     //Update Data
                     switch (menu.dataMenu()) {
                         case 1 -> playerController.updatePlayer();
-//                        case 2 -> teamController.updateTeam();
+                        case 2 -> teamController.updateTeam();
 //                        case 3 -> seasonController.updateSeason();
 //                        case 4 -> pseasonController.updatePlayerSeasons();
                     }
@@ -113,7 +106,7 @@ public class Main {
                     //Delete data
                     switch (menu.dataMenu()) {
                         case 1 -> playerController.deletePlayer();
-//                        case 2 -> teamController.deleteTeam();
+                        case 2 -> teamController.deleteTeam();
 //                        case 3 -> seasonController.deleteSeason();
 //                        case 4 -> pseasonController.deletePlayerSeasons();
 
@@ -127,6 +120,12 @@ public class Main {
                             System.out.println(p);
                             playerController.addPlayer(p);
                         }
+
+                        for (Team t : teamController.readTeamFile("data/csv/teams.csv")) {
+                            System.out.println(t);
+                            teamController.addTeam(t);
+                        }
+
 
                         //TODO PONER EL RESTO DE OBJETOS
                     }
