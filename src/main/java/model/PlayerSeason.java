@@ -28,17 +28,17 @@ public class PlayerSeason implements Serializable {
     int fgAttempts;
     @Column(name = "fgperc")
     float fgPerc;
-    @Column(name = "3PTSFG")
+    @Column(name = "PTSFG3")
     int fgPts3;
-    @Column(name = "3PFGAttempts")
+    @Column(name = "PFGAttempts3")
     int pfgAttempts3;
-    @Column(name = "3PFGPerc")
+    @Column(name = "PFGPerc3")
     float pfgPerc3;
-    @Column(name = "2PtsFG")
+    @Column(name = "PtsFG2")
     int fgPts2;
-    @Column(name = "2PFGAttempts")
+    @Column(name = "PFGAttempts2")
     int pfgAttempts2;
-    @Column(name = "2PFGPerc")
+    @Column(name = "PFGPerc2")
     float pfgPerc2;
     @Column(name = "effectivegoalperc")
     float effGoalPerc;
@@ -145,9 +145,7 @@ public class PlayerSeason implements Serializable {
     @Override
     public String toString() {
         return "PlayerSeasons{" +
-                "playerId=" + playerSeasonId.playerId +
-                ", seasonId=" + playerSeasonId.seasonId +
-                ", teamId=" + playerSeasonId.teamId +
+                playerSeasonId +
                 ", age=" + age +
                 ", league='" + league + '\'' +
                 ", position='" + position + '\'' +

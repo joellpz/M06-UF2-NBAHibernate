@@ -87,7 +87,7 @@ public class Main {
                         case 1 -> playerController.listPlayers();
                         case 2 -> teamController.listTeams();
                         case 3 -> seasonController.listSeasons();
-//                        case 4 -> pseasonController.showPlayerSeasons();
+                        case 4 -> playerSeasonController.listPlayerSeasons();
                     }
                 }
                 case 2 -> {
@@ -96,7 +96,7 @@ public class Main {
                         case 1 -> playerController.newPlayer();
                         case 2 -> teamController.newTeam();
                         case 3 -> seasonController.newSeason();
-//                        case 4 -> pseasonController.newPlayerSeasons();
+                        case 4 -> playerSeasonController.newPlayerSeason();
                     }
                 }
                 case 3 -> {
@@ -105,7 +105,7 @@ public class Main {
                         case 1 -> playerController.updatePlayer();
                         case 2 -> teamController.updateTeam();
                         case 3 -> seasonController.updateSeason();
-//                        case 4 -> pseasonController.updatePlayerSeasons();
+                        case 4 -> playerSeasonController.updatePlayerSeason();
                     }
                 }
                 case 4 -> {
@@ -114,7 +114,7 @@ public class Main {
                         case 1 -> playerController.deletePlayer();
                         case 2 -> teamController.deleteTeam();
                         case 3 -> seasonController.deleteSeason();
-//                        case 4 -> pseasonController.deletePlayerSeasons();
+                        case 4 -> playerSeasonController.deletePlayerSeason();
 
                     }
                 }

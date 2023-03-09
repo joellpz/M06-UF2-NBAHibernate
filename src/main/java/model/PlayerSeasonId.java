@@ -7,30 +7,30 @@ import java.util.Objects;
 @Embeddable
 public class PlayerSeasonId implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn(name = "idplayer")
-    protected Player playerId;
+    @JoinColumn(name = "idplayer")
+    protected Player idPlayer;
     @ManyToOne(fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn(name = "idseason")
+    @JoinColumn(name = "idseason")
     protected Season seasonId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn(name = "idteam")
+    @JoinColumn(name = "idteam")
     protected Team teamId;
 
     public PlayerSeasonId() {
     }
 
-    public PlayerSeasonId(Player playerId, Season seasonId, Team teamId) {
-        this.playerId = playerId;
+    public PlayerSeasonId(Player idPlayer, Season seasonId, Team teamId) {
+        this.idPlayer = idPlayer;
         this.seasonId = seasonId;
         this.teamId = teamId;
     }
 
-    public Player getPlayerId() {
-        return playerId;
+    public Player getIdPlayer() {
+        return idPlayer;
     }
 
-    public void setPlayerId(Player playerId) {
-        this.playerId = playerId;
+    public void setIdPlayer(Player idPlayer) {
+        this.idPlayer = idPlayer;
     }
 
     public Season getSeasonId() {
@@ -54,18 +54,18 @@ public class PlayerSeasonId implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PlayerSeasonId that = (PlayerSeasonId) o;
-        return getPlayerId().equals(that.getPlayerId()) && getSeasonId().equals(that.getSeasonId()) && getTeamId().equals(that.getTeamId());
+        return getIdPlayer().equals(that.getIdPlayer()) && getSeasonId().equals(that.getSeasonId()) && getTeamId().equals(that.getTeamId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPlayerId(), getSeasonId(), getTeamId());
+        return Objects.hash(getIdPlayer(), getSeasonId(), getTeamId());
     }
 
     @Override
     public String toString() {
-        return "playerId=" + playerId.getName() +
-                ", seasonId=" + seasonId.getYear() +
-                ", teamId=" + teamId.getName();
+        return "playerId=" + idPlayer.getPlayerId() +":"+ idPlayer.getName()+
+                ", seasonId=" + seasonId.getSeasonId()+":"+seasonId.getYear() +
+                ", teamId=" + teamId.getTeamId()+":"+teamId.getName();
     }
 }

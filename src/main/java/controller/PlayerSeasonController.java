@@ -1,6 +1,7 @@
 package controller;
 
 import database.OpenCSV;
+import model.Player;
 import net.bytebuddy.jar.asm.Type;
 import model.PlayerSeason;
 import model.PlayerSeasonId;
@@ -52,9 +53,9 @@ public class PlayerSeasonController {
         this.connection = connection;
         sc = new Scanner(System.in);
         fields = Arrays.stream(PlayerSeason.class.getDeclaredFields()).toList();
-        playerController = new PlayerController(connection,entityManagerFactory);
-        teamController = new TeamController(connection,entityManagerFactory);
-        seasonController = new SeasonController(connection,entityManagerFactory);
+        playerController = new PlayerController(connection, entityManagerFactory);
+        teamController = new TeamController(connection, entityManagerFactory);
+        seasonController = new SeasonController(connection, entityManagerFactory);
     }
 
 
@@ -69,9 +70,9 @@ public class PlayerSeasonController {
         this.entityManagerFactory = entityManagerFactory;
         sc = new Scanner(System.in);
         fields = Arrays.stream(PlayerSeason.class.getDeclaredFields()).toList();
-        playerController = new PlayerController(connection,entityManagerFactory);
-        teamController = new TeamController(connection,entityManagerFactory);
-        seasonController = new SeasonController(connection,entityManagerFactory);
+        playerController = new PlayerController(connection, entityManagerFactory);
+        teamController = new TeamController(connection, entityManagerFactory);
+        seasonController = new SeasonController(connection, entityManagerFactory);
     }
 
     /**
@@ -92,7 +93,7 @@ public class PlayerSeasonController {
      */
     public void newPlayerSeason() {
         PlayerSeason playerSeason = new PlayerSeason();
-        for (int i = 1; i < fields.size(); i++) {
+        for (int i = 0; i < fields.size(); i++) {
             try {
                 System.out.print(fields.get(i).getName() + ": ");
                 setter4Fields(playerSeason, i);
@@ -204,16 +205,18 @@ public class PlayerSeasonController {
         do {
             rep = false;
             System.out.println("What attribute do you want to update?");
-            for (int i = 1; i < fields.size(); i++) {
-                System.out.println((i) + ": " + fields.get(i).getName());
+            for (int i = 0; i < fields.size(); i++) {
+                if (i == 0) {
+                    System.out.println("0. idPlayer / idSeason / idTeam");
+                } else System.out.println((i) + ": " + fields.get(i).getName());
             }
-            System.out.println("0: Exit");
+            System.out.println("-1: Exit");
             System.out.print("Selected: ");
             try {
                 int opt = Integer.parseInt(sc.nextLine());
 
-                if (opt < 0 || opt > fields.size() - 1) throw new NumberFormatException();
-                else if (opt != 0) {
+                if (opt < -1 || opt > fields.size() - 1) throw new NumberFormatException();
+                else if (opt != -1) {
                     System.out.print("New " + fields.get(opt).getName() + " value: ");
                     setter4Fields(playerSeason, opt);
                     System.out.println("Do you want to update anything else? (Y/N)");
@@ -264,7 +267,7 @@ public class PlayerSeasonController {
         do {
             rep = false;
             try {
-                if (filter.getGenericType().equals("class java.lang.String")) {
+                if (filter.getGenericType().toString().equals("class java.lang.String")) {
                     if (option.equalsIgnoreCase("=")) {
                         q.where(
                                 cb.equal(c.get(filter.getName()), sc.nextLine())
@@ -274,7 +277,7 @@ public class PlayerSeasonController {
                                 cb.notEqual(c.get(filter.getName()), sc.nextLine())
                         );
                     }
-                } else if (filter.getGenericType().equals("int") || filter.getGenericType().equals("float")) {
+                } else if (filter.getGenericType().toString().equals("int") || filter.getGenericType().toString().equals("float")) {
                     if (option.equalsIgnoreCase("=")) {
                         q.where(
                                 cb.equal(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
@@ -292,7 +295,7 @@ public class PlayerSeasonController {
                                 cb.lessThan(c.get(filter.getName()), Integer.parseInt(sc.nextLine()))
                         );
                     }
-                } else if (filter.getGenericType().equals("class model.PlayerSeasonId")) {
+                } else if (filter.getGenericType().toString().equals("class model.PlayerSeasonId")) {
 
                 } else {
                     System.out.println(" -- We can't filter for that field... --");
@@ -315,8 +318,10 @@ public class PlayerSeasonController {
      * @throws ParseException Bad format into Date
      */
     private void setter4Fields(PlayerSeason playerSeason, int pos) throws ParseException {
+        System.out.println(fields.get(pos).getName());
         switch (fields.get(pos).getName()) {
-            case "playerSeasonId" -> playerSeason.setPlayerSeasonId(new PlayerSeasonId(playerController.getPlayer(),seasonController.getSeason(),teamController.getTeam()));
+            case "playerSeasonId" ->
+                    playerSeason.setPlayerSeasonId(new PlayerSeasonId(playerController.getPlayer(), seasonController.getSeason(), teamController.getTeam()));
             case "age" -> playerSeason.setAge(Integer.parseInt(sc.nextLine()));
             case "league" -> playerSeason.setLeague(sc.nextLine());
             case "position" -> playerSeason.setPosition(sc.nextLine());
@@ -363,13 +368,13 @@ public class PlayerSeasonController {
             try {
                 if (!first) first = true;
                 else
-                    PlayerSeasonList.add(new PlayerSeason(new PlayerSeasonId(playerController.getPlayer(Integer.parseInt(data[0])),seasonController.getSeason(Integer.parseInt(data[1])),teamController.getTeam(Integer.parseInt(data[2]))),
-                            Integer.parseInt(data[3]),data[4],data[5],Integer.parseInt(data[6]),Integer.parseInt(data[7]),Integer.parseInt(data[8]),
-                            Integer.parseInt(data[9]),Integer.parseInt(data[10]),Float.parseFloat(data[11]),Integer.parseInt(data[12]),Integer.parseInt(data[13]),
-                            Float.parseFloat(data[14]),Integer.parseInt(data[15]),Integer.parseInt(data[16]),Float.parseFloat(data[17]),Float.parseFloat(data[18]),
-                            Integer.parseInt(data[19]),Integer.parseInt(data[20]),Float.parseFloat(data[21]),Integer.parseInt(data[22]),Integer.parseInt(data[23]),
-                            Integer.parseInt(data[24]),Integer.parseInt(data[25]),Integer.parseInt(data[26]),Integer.parseInt(data[27]),Integer.parseInt(data[28]),
-                            Integer.parseInt(data[29]),Integer.parseInt(data[30]),Integer.parseInt(data[31])));
+                    PlayerSeasonList.add(new PlayerSeason(new PlayerSeasonId(playerController.getPlayer(Integer.parseInt(data[0])), seasonController.getSeason(Integer.parseInt(data[1])), teamController.getTeam(Integer.parseInt(data[2]))),
+                            Integer.parseInt(data[3]), data[4], data[5], Integer.parseInt(data[6]), Integer.parseInt(data[7]), Integer.parseInt(data[8]),
+                            Integer.parseInt(data[9]), Integer.parseInt(data[10]), Float.parseFloat(data[11]), Integer.parseInt(data[12]), Integer.parseInt(data[13]),
+                            Float.parseFloat(data[14]), Integer.parseInt(data[15]), Integer.parseInt(data[16]), Float.parseFloat(data[17]), Float.parseFloat(data[18]),
+                            Integer.parseInt(data[19]), Integer.parseInt(data[20]), Float.parseFloat(data[21]), Integer.parseInt(data[22]), Integer.parseInt(data[23]),
+                            Integer.parseInt(data[24]), Integer.parseInt(data[25]), Integer.parseInt(data[26]), Integer.parseInt(data[27]), Integer.parseInt(data[28]),
+                            Integer.parseInt(data[29]), Integer.parseInt(data[30]), Integer.parseInt(data[31])));
             } catch (NumberFormatException e) {
                 System.out.println("*** Error, bad value or format.***");
             }
@@ -386,8 +391,7 @@ public class PlayerSeasonController {
     public void addPlayerSeason(@NotNull PlayerSeason playerSeason) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        System.out.println(playerSeason.getPlayerSeasonId());
-        PlayerSeason PlayerSeasonExists = em.find(PlayerSeason.class,playerSeason.getPlayerSeasonId());
+        PlayerSeason PlayerSeasonExists = em.find(PlayerSeason.class, playerSeason.getPlayerSeasonId());
         if (PlayerSeasonExists == null) {
             em.persist(playerSeason);
             System.out.println("*** PlayerSeason Inserted ***");
@@ -404,7 +408,7 @@ public class PlayerSeasonController {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         List<PlayerSeason> result = em.createQuery("from PlayerSeason", PlayerSeason.class)
-                .getResultList().stream().sorted().toList();
+                .getResultList().stream().sorted(Comparator.comparingInt(o -> o.getPlayerSeasonId().getIdPlayer().getPlayerId())).toList();
         for (PlayerSeason PlayerSeason : result) {
             System.out.println(PlayerSeason.toString());
         }
