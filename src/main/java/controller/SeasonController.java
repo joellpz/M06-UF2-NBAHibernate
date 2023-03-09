@@ -1,7 +1,7 @@
-package newController;
+package controller;
 
 import database.OpenCSV;
-import newModel.Season;
+import model.Season;
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.EntityManager;
@@ -61,6 +61,27 @@ public class SeasonController {
         sc = new Scanner(System.in);
         fields = Arrays.stream(Season.class.getDeclaredFields()).toList();
         teamController = new TeamController(connection, entityManagerFactory);
+    }
+
+    /**
+     * Method that return the object that had been specified in seasonId.
+     *
+     * @param seasonId id form the Player
+     * @return The Player Object
+     */
+    public Season getSeason(int seasonId) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        return em.find(Season.class, seasonId);
+    }
+
+    /**
+     * Method that return the object that had been specified in seasonId.
+     *
+     * @return The Season Object
+     */
+    public Season getSeason() {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        return em.find(Season.class, selectSeason());
     }
 
     /**
@@ -262,6 +283,17 @@ public class SeasonController {
                         } else {
                             q.where(
                                     cb.notLike(c.get(filter.getName()), sc.nextLine())
+                            );
+                        }
+                    }
+                    case "champion" ->{
+                        if (option.equalsIgnoreCase("=")) {
+                            q.where(
+                                    cb.equal(c.get(filter.getName()), teamController.getTeamNull())
+                            );
+                        } else {
+                            q.where(
+                                    cb.notEqual(c.get(filter.getName()), teamController.getTeamNull())
                             );
                         }
                     }

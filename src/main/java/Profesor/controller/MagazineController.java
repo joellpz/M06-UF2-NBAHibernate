@@ -1,6 +1,6 @@
-package profesor.controller;
+package Profesor.controller;
 
-import profesor.model.Magazine;
+import Profesor.model.Magazine;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

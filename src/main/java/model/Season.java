@@ -1,4 +1,4 @@
-package newModel;
+package model;
 
 import javax.persistence.*;
 
@@ -162,7 +162,7 @@ public class Season {
                 "seasonId='" + seasonId + '\'' +
                 ", year='" + year + '\'' +
                 ", league='" + league + '\'' +
-                ", champion='" + champion.getName() + '\'' +
+                ", champion='" + champion + '\'' +
                 ", MVP='" + MVP + '\'' +
                 ", ROTY='" + ROTY + '\'' +
                 ", PPG_Leader='" + PPG_Leader + '\'' +

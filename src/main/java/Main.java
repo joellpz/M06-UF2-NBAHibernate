@@ -1,12 +1,14 @@
 import database.Additions;
 import database.ConnectionFactory;
-import newController.PlayerController;
-import newController.SeasonController;
-import newController.TeamController;
-import newModel.Player;
-import newModel.Season;
-import newModel.Team;
-import newView.Menu;
+import controller.PlayerController;
+import controller.PlayerSeasonController;
+import controller.SeasonController;
+import controller.TeamController;
+import model.Player;
+import model.PlayerSeason;
+import model.Season;
+import model.Team;
+import view.Menu;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -55,6 +57,7 @@ public class Main {
         PlayerController playerController = new PlayerController(c, entityManagerFactory);
         TeamController teamController = new TeamController(c, entityManagerFactory);
         SeasonController seasonController = new SeasonController(c, entityManagerFactory);
+        PlayerSeasonController playerSeasonController = new PlayerSeasonController(c, entityManagerFactory);
 
 //        DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
 //        Player player1 = new Player("Joel1", "position", "college", "draftTeam", 5 , dateFormat.parse("1990-12-12"),25, 1990, 5);
@@ -132,6 +135,11 @@ public class Main {
                         for (Season s : seasonController.readSeasonFile("data/csv/seasons.csv")) {
                             System.out.println(s);
                             seasonController.addSeason(s);
+                        }
+
+                        for (PlayerSeason ps : playerSeasonController.readPlayerSeasonFile("data/csv/playerseasons.csv")) {
+                            System.out.println(ps);
+                            playerSeasonController.addPlayerSeason(ps);
                         }
 
 

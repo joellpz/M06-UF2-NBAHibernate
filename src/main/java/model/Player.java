@@ -1,7 +1,4 @@
-package newModel;
-
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
+package model;
 
 import javax.persistence.*;
 import java.io.Serializable;

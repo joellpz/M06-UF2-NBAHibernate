@@ -1,7 +1,7 @@
-package newController;
+package controller;
 
 import database.OpenCSV;
-import newModel.Player;
+import model.Team;
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.EntityManager;
@@ -11,15 +11,13 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.lang.reflect.Field;
 import java.sql.Connection;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
+
 /**
- * Class that have all the methods to control a Player Object from the Database.
+ * Class that have all the methods to control a Team Object from the Database.
  */
-public class PlayerController {
+public class TeamController {
     /**
      * Connection Object that has all the Database connection.
      */
@@ -38,64 +36,98 @@ public class PlayerController {
     private final List<Field> fields;
 
     /**
-     * Constructor for PlayerController
+     * Constructor for TeamController
      *
      * @param connection connection to the database
      */
-    public PlayerController(Connection connection) {
+    public TeamController(Connection connection) {
         this.connection = connection;
         sc = new Scanner(System.in);
-        fields = Arrays.stream(Player.class.getDeclaredFields()).toList();
+        fields = Arrays.stream(Team.class.getDeclaredFields()).toList();
     }
 
-
     /**
-     * Constructor for PlayerController
+     * Constructor for TeamController
      *
      * @param connection           connection to the database
      * @param entityManagerFactory entity Manager for Model Objects
      */
-    public PlayerController(Connection connection, EntityManagerFactory entityManagerFactory) {
+
+    public TeamController(Connection connection, EntityManagerFactory entityManagerFactory) {
         this.connection = connection;
         this.entityManagerFactory = entityManagerFactory;
         sc = new Scanner(System.in);
-        fields = Arrays.stream(Player.class.getDeclaredFields()).toList();
+        fields = Arrays.stream(Team.class.getDeclaredFields()).toList();
+    }
+
+
+    /**
+     * Method to get the specified Team Object
+     *
+     * @return Team.
+     */
+    public Team getTeamNull() {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        return em.find(Team.class, selectTeam(true));
     }
 
     /**
-     * Shows all the Players and let you introduce 1 id.
+     * Method that return the object that had been specified in teamId.
      *
-     * @return Player ID
+     * @return The Team Object
+     */
+    public Team getTeam() {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        return em.find(Team.class, selectTeam(false));
+    }
+
+    /**
+     * Method that return the object that had been specified in teamId.
+     *
+     * @param teamId id form the Team
+     * @return The Team Object
+     */
+    public Team getTeam(int teamId) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        return em.find(Team.class, teamId);
+    }
+
+    /**
+     * Shows all the Teams and let you introduce 1 id.
+     *
+     * @return Team ID
      * @throws NumberFormatException when no number character is introduced.
      */
-    private int selectPlayer() throws NumberFormatException {
+    private int selectTeam(boolean foreignPetition) throws NumberFormatException {
         System.out.println("What element do you want to select?");
-        listPlayers();
+        listTeams();
+        if (foreignPetition) System.out.println(" -- Introuce 0 to leave it Blank -- ");
         System.out.print("Selected id: ");
         return Integer.parseInt(sc.nextLine());
     }
 
     /**
-     * Form to introduce new Player
+     * Form to introduce new Team
      */
-    public void newPlayer() {
-        Player player = new Player();
+    public void newTeam() {
+        Team team = new Team();
         for (int i = 1; i < fields.size(); i++) {
             try {
                 System.out.print(fields.get(i).getName() + ": ");
-                setter4Fields(player, i);
-            } catch (NumberFormatException | ParseException e) {
+                setter4Fields(team, i);
+            } catch (NumberFormatException e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 i--;
             }
         }
-        addPlayer(player);
+        addTeam(team);
     }
 
+
     /**
-     * Update Player information and let you decide if you want to filtes some values
+     * Update Team information and let you decide if you want to filtes some values
      */
-    public void updatePlayer() {
+    public void updateTeam() {
         boolean rep;
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -105,24 +137,24 @@ public class PlayerController {
                 System.out.println(" -- Do you want to filter (Y/N) ? --");
                 String value = sc.nextLine();
                 if (value.equalsIgnoreCase("Y")) {
-                    List<Player> players = getCriteriaList(em);
-                    if (players != null && players.size() != 0) {
-                        for (Player p : players) {
-                            System.out.println(" Updating -- " + p.toString());
-                            updateFieldForm(p);
-                            em.merge(p);
-                            System.out.println(" -- Player Updated -- ");
+                    List<Team> teams = getCriteriaList(em);
+                    if (teams != null && teams.size() != 0) {
+                        for (Team t : teams) {
+                            System.out.println(" Updating -- " + t.toString());
+                            updateFieldForm(t);
+                            em.merge(t);
+                            System.out.println(" -- Team Updated -- ");
                         }
                     } else {
                         System.out.println(" -- No value founded... --");
                     }
                 } else if (value.equalsIgnoreCase("N")) {
-                    Player player = em.find(Player.class, selectPlayer());
-                    if (player != null) {
-                        System.out.println(" Updating -- " + player);
-                        updateFieldForm(player);
-                        em.merge(player);
-                        System.out.println(" -- Player Updated -- ");
+                    Team team = em.find(Team.class, selectTeam(false));
+                    if (team != null) {
+                        System.out.println(" Updating -- " + team);
+                        updateFieldForm(team);
+                        em.merge(team);
+                        System.out.println(" -- Team Updated -- ");
                     } else {
                         System.out.println(" -- No value founded... --");
                     }
@@ -140,9 +172,9 @@ public class PlayerController {
     }
 
     /**
-     * Delete Player from Database
+     * Delete Team from Database
      */
-    public void deletePlayer() {
+    public void deleteTeam() {
         EntityManager em = entityManagerFactory.createEntityManager();
 
         String value;
@@ -152,22 +184,22 @@ public class PlayerController {
             System.out.println(" -- Do you want to filter (Y/N) ? --");
             value = sc.nextLine();
             if (value.equalsIgnoreCase("Y")) {
-                List<Player> players = getCriteriaList(em);
-                if (players != null && players.size() != 0) {
-                    for (Player p : players) {
-                        em.remove(p);
-                        System.out.println(" -- " + p.toString());
-                        System.out.println(" -- Player Deleted -- ");
+                List<Team> teams = getCriteriaList(em);
+                if (teams != null && teams.size() != 0) {
+                    for (Team t : teams) {
+                        em.remove(t);
+                        System.out.println(" -- " + t.toString());
+                        System.out.println(" -- Team Deleted -- ");
                     }
                 } else {
                     System.out.println(" -- No value founded... --");
                 }
             } else if (value.equalsIgnoreCase("N")) {
-                Player player = em.find(Player.class, selectPlayer());
-                if (player != null) {
-                    em.remove(player);
-                    System.out.println(" -- " + player);
-                    System.out.println(" -- Player Deleted -- ");
+                Team team = em.find(Team.class, selectTeam(false));
+                if (team != null) {
+                    em.remove(team);
+                    System.out.println(" -- " + team);
+                    System.out.println(" -- Team Deleted -- ");
                 } else {
                     System.out.println(" -- No value founded... --");
                 }
@@ -185,9 +217,9 @@ public class PlayerController {
     /**
      * Shows you all the Fields of the Class and let you decide what values you want to change.
      *
-     * @param player Player to update
+     * @param team Team to update
      */
-    public void updateFieldForm(Player player) {
+    public void updateFieldForm(Team team) {
         boolean rep;
         do {
             rep = false;
@@ -203,34 +235,33 @@ public class PlayerController {
                 if (opt < 0 || opt > fields.size() - 1) throw new NumberFormatException();
                 else if (opt != 0) {
                     System.out.print("New " + fields.get(opt).getName() + " value: ");
-                    setter4Fields(player, opt);
+                    setter4Fields(team, opt);
                     System.out.println("Do you want to update anything else? (Y/N)");
                     if (sc.nextLine().equalsIgnoreCase("Y")) rep = true;
                 }
-            } catch (NumberFormatException | ParseException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
         } while (rep);
     }
 
-
     /**
-     * Method to get the List of Players that agree with the Restrictions you define.
+     * Method to get the List of Teams that agree with the Restrictions you define.
      *
      * @param em Entity Manager to make the Criteria
-     * @return List of Players that agree with the criteria
+     * @return List of Teams that agree with the criteria
      */
-    private List<Player> getCriteriaList(@NotNull EntityManager em) {
+    private List<Team> getCriteriaList(@NotNull EntityManager em) {
         boolean rep;
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Player> q = cb.createQuery(Player.class);
-        Root<Player> c = q.from(Player.class);
+        CriteriaQuery<Team> q = cb.createQuery(Team.class);
+        Root<Team> c = q.from(Team.class);
         q.select(c);
 
         String option;
 
-        listPlayers();
+        listTeams();
 
         System.out.println(" -- What attribute do you want to filter for? --");
         for (int i = 1; i < fields.size(); i++) {
@@ -253,7 +284,7 @@ public class PlayerController {
             rep = false;
             try {
                 switch (filter.getName()) {
-                    case "name", "draftTeam", "college", "position" -> {
+                    case "name", "location", "conference" -> {
                         if (option.equalsIgnoreCase("=")) {
                             q.where(
                                     cb.equal(c.get(filter.getName()), sc.nextLine())
@@ -264,7 +295,7 @@ public class PlayerController {
                             );
                         }
                     }
-                    case "age", "draftPos", "draftYear", "expCareer" -> {
+                    case "totalGames", "wins", "loses", "playoffAppearances", "conferenceChampions", "championships" -> {
 
                         if (option.equalsIgnoreCase("=")) {
                             q.where(
@@ -297,114 +328,104 @@ public class PlayerController {
         return em.createQuery(q).getResultList();
     }
 
-
     /**
      * Switch that filter for what setter to apply depending on the position of Class Fields List
      *
-     * @param player Player Object to set new Values
-     * @param pos    postion of field in Fields List
-     * @throws ParseException Bad format into Date
+     * @param team Team Object to set new Values
+     * @param pos  postion of field in Fields List
      */
-    private void setter4Fields(Player player, int pos) throws ParseException {
+    private void setter4Fields(Team team, int pos) {
         switch (fields.get(pos).getName()) {
-            case "name" -> player.setName(sc.nextLine());
-            case "age" -> player.setAge(Integer.parseInt(sc.nextLine()));
-            case "position" -> player.setPosition(sc.nextLine());
-            case "college" -> player.setCollege(sc.nextLine());
-            case "draftTeam" -> player.setDraftTeam(sc.nextLine());
-            case "draftPos" -> player.setDraftPos(Integer.parseInt(sc.nextLine()));
-            case "draftYear" -> player.setDraftYear(Integer.parseInt(sc.nextLine()));
-            case "born" -> {
-                System.out.println(" -- Format: yyyy-MM-dd -- ");
-                player.setBorn(new SimpleDateFormat("yyyy-MM-dd").parse(sc.nextLine()));
-            }
-            case "expCareer" -> player.setExpCareer(Integer.parseInt(sc.nextLine()));
+            case "name" -> team.setName(sc.nextLine());
+            case "location" -> team.setLocation(sc.nextLine());
+            case "totalGames" -> team.setTotalGames(Integer.parseInt(sc.nextLine()));
+            case "wins" -> team.setWins(Integer.parseInt(sc.nextLine()));
+            case "loses" -> team.setLoses(Integer.parseInt(sc.nextLine()));
+            case "playoffAppearances" -> team.setPlayoffAppearances(Integer.parseInt(sc.nextLine()));
+            case "conferenceChampions" -> team.setConferenceChampions(Integer.parseInt(sc.nextLine()));
+            case "championships" -> team.setChampionships(Integer.parseInt(sc.nextLine()));
+            case "conference" -> team.setConference(sc.nextLine());
         }
     }
-
 
     /**
      * Method transform the data from a CSV into Objects
      *
      * @param path path of the csv
-     * @return List of Players imported from the csv
+     * @return List of Teams imported from the csv
      */
-    public List<Player> readPlayerFile(String path) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        List<Player> playerList = new ArrayList<>();
+    public List<Team> readTeamFile(String path) {
+        List<Team> TeamList = new ArrayList<>();
         boolean first = false;
         for (String[] data : OpenCSV.readCSV(path)) {
             try {
                 if (!first) first = true;
                 else
-                    playerList.add(new Player(data[0], data[2], data[3], data[4], Integer.parseInt(data[5]), dateFormat.parse(data[7]), Integer.parseInt(data[1]), Integer.parseInt(data[6]), Integer.parseInt(data[8])));
-            } catch (NumberFormatException | ParseException e) {
+                    TeamList.add(new Team(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5]), Integer.parseInt(data[6]), Integer.parseInt(data[7]), data[8]));
+            } catch (NumberFormatException e) {
                 System.out.println("*** Error, bad value or format.***");
+                throw new RuntimeException(e);
             }
         }
-        return playerList;
+        return TeamList;
     }
 
-
     /**
-     * Method to add a Player into the Database
+     * Method to add a Team into the Database
      *
-     * @param player Player to add
+     * @param team Team to add
      */
-    public void addPlayer(@NotNull Player player) {
+    public void addTeam(@NotNull Team team) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        Player playerExists = em.find(Player.class, player.getPlayerId());
-        if (playerExists == null) {
-            em.persist(player);
-            System.out.println("*** Player Inserted ***");
+        Team teamExists = em.find(Team.class, team.getTeamId());
+        if (teamExists == null) {
+            em.persist(team);
+            System.out.println("*** Team Inserted ***");
         }
         em.getTransaction().commit();
         em.close();
     }
 
-
     /**
-     * Lists all the Players that are in the Database
+     * Lists all the Teams that are in the Database
      */
-    public void listPlayers() {
+    public void listTeams() {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        List<Player> result = em.createQuery("from Player", Player.class)
-                .getResultList().stream().sorted(Comparator.comparingInt(Player::getPlayerId)).toList();
-        for (Player player : result) {
-            System.out.println(player.toString());
+        List<Team> result = em.createQuery("from Team", Team.class)
+                .getResultList().stream().sorted(Comparator.comparingInt(Team::getTeamId)).toList();
+        for (Team Team : result) {
+            System.out.println(Team.toString());
         }
         em.getTransaction().commit();
         em.close();
     }
 
-
     /**
-     * Delete a Player from the ID.
+     * Delete a Team from the ID.
      *
-     * @param playerId Player id
+     * @param teamId Team id
      */
-    public void deletePlayer(Integer playerId) {
+    public void deleteTeam(Integer teamId) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        Player player = em.find(Player.class, playerId);
-        em.remove(player);
+        Team Team = em.find(Team.class, teamId);
+        em.remove(Team);
         em.getTransaction().commit();
         em.close();
     }
 
-
     /**
-     * Drops all the Players from the Database.
+     * Drops all the Teams from the Database.
      */
-    public void clearPlayers() {
+    public void clearTeams() {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        List<Player> result = em.createQuery("from Player", Player.class)
+        List<Team> result = em.createQuery("from Team", Team.class)
                 .getResultList();
-        for (Player player : result) {
-            deletePlayer(player.getPlayerId());
+        for (Team Team : result) {
+            deleteTeam(Team.getTeamId());
         }
         em.getTransaction().commit();
         em.close();

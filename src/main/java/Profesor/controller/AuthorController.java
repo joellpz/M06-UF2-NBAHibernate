@@ -1,6 +1,6 @@
-package profesor.controller;
+package Profesor.controller;
 
-import profesor.model.Author;
+import Profesor.model.Author;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,4 +1,4 @@
-package profesor.model;
+package Profesor.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
