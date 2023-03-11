@@ -96,22 +96,22 @@ CREATE TABLE IF NOT EXISTS public.teams
 ALTER TABLE IF EXISTS public.playerseasons
     ADD CONSTRAINT playerseasons_idplayer_fkey FOREIGN KEY (idplayer)
     REFERENCES public.players (idplayer) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION;
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
 
 
 ALTER TABLE IF EXISTS public.playerseasons
     ADD CONSTRAINT playerseasons_idseason_fkey FOREIGN KEY (idseason)
     REFERENCES public.seasons (idseason) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION;
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
 
 
 ALTER TABLE IF EXISTS public.playerseasons
     ADD CONSTRAINT playerseasons_idteam_fkey FOREIGN KEY (idteam)
     REFERENCES public.teams (idteam) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION;
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
 
 
 ALTER TABLE IF EXISTS public.seasons
