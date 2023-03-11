@@ -2,8 +2,23 @@ package view;
 
 import java.util.Scanner;
 
+/**
+ * Menu Class
+ */
 public class Menu {
     private final Scanner br = new Scanner(System.in);
+
+    /**
+     * Empty Menu Constructor
+     */
+    public Menu() {
+    }
+
+    /**
+     * main.Main menu
+     *
+     * @return option
+     */
     public int mainMenu() {
         int option = 0;
         do {

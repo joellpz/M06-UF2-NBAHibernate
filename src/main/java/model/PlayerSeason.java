@@ -3,6 +3,9 @@ package model;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * Class for entity PlayerSeason
+ */
 @Entity
 @Access(AccessType.FIELD)
 @Table(name = "playerseasons")

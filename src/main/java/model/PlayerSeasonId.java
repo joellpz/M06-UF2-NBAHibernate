@@ -4,8 +4,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Composite Primary Keys for PlayerSeason
+ */
 @Embeddable
-public class PlayerSeasonId implements Serializable {
+public final class PlayerSeasonId implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idplayer")
     protected Player idPlayer;

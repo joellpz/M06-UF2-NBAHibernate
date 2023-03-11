@@ -35,7 +35,7 @@ public class Team {
      *
      * @param name                Nombre
      * @param location            Ubicación
-     * @param totalGames               Partidos
+     * @param totalGames          Partidos
      * @param wins                Ganados
      * @param loses               Perdidos
      * @param playoffAppearances  Apariciones PlayOff
@@ -150,15 +150,15 @@ public class Team {
     @Override
     public String toString() {
         return "Team{" +
-                "teamId='" + teamId + '\'' +" | " +
-                "name='" + name + '\'' +" | " +
-                "location='" + location + '\'' +" | " +
-                "games=" + totalGames +" | " +
-                "wins=" + wins +" | " +
-                "loses=" + loses +" | " +
-                "playoffAppearances=" + playoffAppearances +" | " +
-                "conferenceChampions=" + conferenceChampions +" | " +
-                "championships=" + championships +" | " +
+                "teamId='" + teamId + '\'' + " | " +
+                "name='" + name + '\'' + " | " +
+                "location='" + location + '\'' + " | " +
+                "games=" + totalGames + " | " +
+                "wins=" + wins + " | " +
+                "loses=" + loses + " | " +
+                "playoffAppearances=" + playoffAppearances + " | " +
+                "conferenceChampions=" + conferenceChampions + " | " +
+                "championships=" + championships + " | " +
                 "conference=" + conference +
                 '}';
     }

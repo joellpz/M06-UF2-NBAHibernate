@@ -12,31 +12,31 @@ public class Season {
     @Column(name = "idseason")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int seasonId;
-    @Column(name = "years",length = 45)
+    @Column(name = "years", length = 45)
     String year;
 
-    @Column(name = "league",length = 45)
+    @Column(name = "league", length = 45)
     String league;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "champion")
     Team champion;
 
-    @Column(name = "mvp",length = 45)
+    @Column(name = "mvp", length = 45)
     String MVP;
 
-    @Column(name = "roty",length = 45)
+    @Column(name = "roty", length = 45)
     String ROTY;
-    @Column(name = "pointsleader",length = 45)
+    @Column(name = "pointsleader", length = 45)
     String PPG_Leader;
 
-    @Column(name = "reboundsleader",length = 45)
+    @Column(name = "reboundsleader", length = 45)
     String RGP_Leader;
 
-    @Column(name = "assistsleader",length = 45)
+    @Column(name = "assistsleader", length = 45)
     String APG_Leader;
 
-    @Column(name = "winsharesleader",length = 45)
+    @Column(name = "winsharesleader", length = 45)
     String WS_Leader;
 
 
@@ -159,16 +159,16 @@ public class Season {
     @Override
     public String toString() {
         return "Season{" +
-                "seasonId='" + seasonId + '\'' +" | " +
-                "year='" + year + '\'' +" | " +
-                "league='" + league + '\'' +" | " +
-                "champion='" + champion + '\'' +" | " +
-                "MVP='" + MVP + '\'' +" | " +
-                "ROTY='" + ROTY + '\'' +" | " +
-                "PPG_Leader='" + PPG_Leader + '\'' +" | " +
-                "RGP_Leader='" + RGP_Leader + '\'' +" | " +
-                "APG_Leader='" + APG_Leader + '\'' +" | " +
-                "WS_Leader='" + WS_Leader + '\''+
+                "seasonId='" + seasonId + '\'' + " | " +
+                "year='" + year + '\'' + " | " +
+                "league='" + league + '\'' + " | " +
+                "champion='" + champion + '\'' + " | " +
+                "MVP='" + MVP + '\'' + " | " +
+                "ROTY='" + ROTY + '\'' + " | " +
+                "PPG_Leader='" + PPG_Leader + '\'' + " | " +
+                "RGP_Leader='" + RGP_Leader + '\'' + " | " +
+                "APG_Leader='" + APG_Leader + '\'' + " | " +
+                "WS_Leader='" + WS_Leader + '\'' +
                 '}';
     }
 

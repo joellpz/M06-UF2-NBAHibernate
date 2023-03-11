@@ -1,3 +1,5 @@
+package main;
+
 import database.Additions;
 import database.ConnectionFactory;
 import controller.PlayerController;
@@ -119,31 +121,29 @@ public class Main {
                     }
                 }
                 case 5 -> {
-                    Additions.resetDB(c, "data/edr/postgres-script-nba.sql");
+                    Additions.resetDB(c, "src/main/resources/edr/postgres-script-nba.sql");
                     System.out.println(" ** Do you want to restore data from Source Files (Y/N)? **");
                     if (sc.nextLine().equalsIgnoreCase("Y")) {
-                        for (Player p : playerController.readPlayerFile("data/csv/players.csv")) {
+                        for (Player p : playerController.readPlayerFile("src/main/resources/csv/players.csv")) {
                             System.out.println(p);
                             playerController.addPlayer(p);
                         }
 
-                        for (Team t : teamController.readTeamFile("data/csv/teams.csv")) {
+                        for (Team t : teamController.readTeamFile("src/main/resources/csv/teams.csv")) {
                             System.out.println(t);
                             teamController.addTeam(t);
                         }
 
-                        for (Season s : seasonController.readSeasonFile("data/csv/seasons.csv")) {
+                        for (Season s : seasonController.readSeasonFile("src/main/resources/csv/seasons.csv")) {
                             System.out.println(s);
                             seasonController.addSeason(s);
                         }
 
-                        for (PlayerSeason ps : playerSeasonController.readPlayerSeasonFile("data/csv/playerseasons.csv")) {
+                        for (PlayerSeason ps : playerSeasonController.readPlayerSeasonFile("src/main/resources/csv/playerseasons.csv")) {
                             System.out.println(ps);
                             playerSeasonController.addPlayerSeason(ps);
                         }
 
-
-                        //TODO PONER EL RESTO DE OBJETOS
                     }
                 }
                 case 0 -> System.exit(0);

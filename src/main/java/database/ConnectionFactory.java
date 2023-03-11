@@ -7,6 +7,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * Class to control the connection.
+ */
 public class ConnectionFactory {
     // init database constants
     private static final String DATABASE_DRIVER = "org.postgresql.Driver";
@@ -76,7 +79,11 @@ public class ConnectionFactory {
         return properties;
     }
 
-    // connect database
+    /**
+     * connect database
+     *
+     * @return connection
+     */
     public Connection connect() {
         if (connection == null) {
 
@@ -108,7 +115,10 @@ public class ConnectionFactory {
         return connection;
     }
 
-    // disconnect database
+    /**
+     * disconnect database
+     */
+
     public void disconnect() {
         if (connection != null) {
             try {
