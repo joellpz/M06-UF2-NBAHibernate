@@ -106,7 +106,7 @@ public class PlayerController {
             try {
                 System.out.print(fields.get(i).getName() + ": ");
                 setter4Fields(player, i);
-            } catch (NumberFormatException | ParseException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 i--;
             }
@@ -151,7 +151,7 @@ public class PlayerController {
                 } else {
                     throw new NumberFormatException();
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
@@ -196,7 +196,7 @@ public class PlayerController {
             } else {
                 throw new NumberFormatException();
             }
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             System.out.println("*** Error, bad value or format.***");
             System.out.println(" ** Exiting **");
         }
@@ -229,7 +229,7 @@ public class PlayerController {
                     System.out.println("Do you want to update anything else? (Y/N)");
                     if (sc.nextLine().equalsIgnoreCase("Y")) rep = true;
                 }
-            } catch (NumberFormatException | ParseException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
@@ -311,7 +311,7 @@ public class PlayerController {
                         return null;
                     }
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
@@ -360,7 +360,7 @@ public class PlayerController {
                 if (!first) first = true;
                 else
                     playerList.add(new Player(data[0], data[2], data[3], data[4], Integer.parseInt(data[5]), dateFormat.parse(data[7]), Integer.parseInt(data[1]), Integer.parseInt(data[6]), Integer.parseInt(data[8])));
-            } catch (NumberFormatException | ParseException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format.***");
             }
         }

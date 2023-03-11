@@ -115,7 +115,7 @@ public class TeamController {
             try {
                 System.out.print(fields.get(i).getName() + ": ");
                 setter4Fields(team, i);
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 i--;
             }
@@ -161,7 +161,7 @@ public class TeamController {
                 } else {
                     throw new NumberFormatException();
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
@@ -206,7 +206,7 @@ public class TeamController {
             } else {
                 throw new NumberFormatException();
             }
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             System.out.println("*** Error, bad value or format.***");
             System.out.println(" ** Exiting **");
         }
@@ -239,7 +239,7 @@ public class TeamController {
                     System.out.println("Do you want to update anything else? (Y/N)");
                     if (sc.nextLine().equalsIgnoreCase("Y")) rep = true;
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
@@ -320,7 +320,7 @@ public class TeamController {
                         return null;
                     }
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
@@ -362,7 +362,7 @@ public class TeamController {
                 if (!first) first = true;
                 else
                     TeamList.add(new Team(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5]), Integer.parseInt(data[6]), Integer.parseInt(data[7]), data[8]));
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format.***");
                 throw new RuntimeException(e);
             }

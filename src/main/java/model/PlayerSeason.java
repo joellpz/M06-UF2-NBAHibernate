@@ -73,35 +73,35 @@ public class PlayerSeason implements Serializable {
      * Constructor for PlayerSeason
      *
      * @param playerSeasonId playerSeasonId
-     * @param age           age
-     * @param league        league
-     * @param position      position
-     * @param games         games
-     * @param gamesStarter  gamesStarter
-     * @param minutesPlayed minutesPlayed
-     * @param fieldGoals    fieldGoals
-     * @param fgAttempts    fgAttempts
-     * @param fgPerc        fgPerc
-     * @param fgPts3        fgPts3
-     * @param pfgAttempts3  pfgAttempts3
-     * @param pfgPerc3      pfgPerc3
-     * @param fgPts2        fgPts2
-     * @param pfgAttempts2  pfgAttempts2
-     * @param pfgPerc2      pfgPerc2
-     * @param effGoalPerc   effGoalPerc
-     * @param freeThrows    freeThrows
-     * @param freetAttempts freetAttempts
-     * @param ftPerc        ftPerc
-     * @param offRbds       offRbds
-     * @param defRbds       defRbds
-     * @param totalRbds     totalRbds
-     * @param assists       assists
-     * @param steals        steals
-     * @param blocks        blocks
-     * @param turnovers     turnovers
-     * @param fouls         fouls
-     * @param points        points
-     * @param tripleDouble  tripleDouble
+     * @param age            age
+     * @param league         league
+     * @param position       position
+     * @param games          games
+     * @param gamesStarter   gamesStarter
+     * @param minutesPlayed  minutesPlayed
+     * @param fieldGoals     fieldGoals
+     * @param fgAttempts     fgAttempts
+     * @param fgPerc         fgPerc
+     * @param fgPts3         fgPts3
+     * @param pfgAttempts3   pfgAttempts3
+     * @param pfgPerc3       pfgPerc3
+     * @param fgPts2         fgPts2
+     * @param pfgAttempts2   pfgAttempts2
+     * @param pfgPerc2       pfgPerc2
+     * @param effGoalPerc    effGoalPerc
+     * @param freeThrows     freeThrows
+     * @param freetAttempts  freetAttempts
+     * @param ftPerc         ftPerc
+     * @param offRbds        offRbds
+     * @param defRbds        defRbds
+     * @param totalRbds      totalRbds
+     * @param assists        assists
+     * @param steals         steals
+     * @param blocks         blocks
+     * @param turnovers      turnovers
+     * @param fouls          fouls
+     * @param points         points
+     * @param tripleDouble   tripleDouble
      */
     public PlayerSeason(PlayerSeasonId playerSeasonId, int age, String league, String position, int games, int gamesStarter, int minutesPlayed, int fieldGoals, int fgAttempts, float fgPerc, int fgPts3, int pfgAttempts3, float pfgPerc3, int fgPts2, int pfgAttempts2, float pfgPerc2, float effGoalPerc, int freeThrows, int freetAttempts, float ftPerc, int offRbds, int defRbds, int totalRbds, int assists, int steals, int blocks, int turnovers, int fouls, int points, int tripleDouble) {
         this.playerSeasonId = playerSeasonId;
@@ -146,35 +146,35 @@ public class PlayerSeason implements Serializable {
     public String toString() {
         return "PlayerSeasons{" +
                 playerSeasonId +
-                ", age=" + age +
-                ", league='" + league + '\'' +
-                ", position='" + position + '\'' +
-                ", games=" + games +
-                ", gamesStarter=" + gamesStarter +
-                ", minutesPlayed=" + minutesPlayed +
-                ", fieldGoals=" + fieldGoals +
-                ", fgAttempts=" + fgAttempts +
-                ", fgPerc=" + fgPerc +
-                ", fgPts3=" + fgPts3 +
-                ", pfgAttempts3=" + pfgAttempts3 +
-                ", pfgPerc3=" + pfgPerc3 +
-                ", fgPts2=" + fgPts2 +
-                ", pfgAttempts2=" + pfgAttempts2 +
-                ", pfgPerc2=" + pfgPerc2 +
-                ", effGoalPerc=" + effGoalPerc +
-                ", freeThrows=" + freeThrows +
-                ", freetAttempts=" + freetAttempts +
-                ", ftPerc=" + ftPerc +
-                ", offRbds=" + offRbds +
-                ", defRbds=" + defRbds +
-                ", totalRbds=" + totalRbds +
-                ", assists=" + assists +
-                ", steals=" + steals +
-                ", blocks=" + blocks +
-                ", turnovers=" + turnovers +
-                ", fouls=" + fouls +
-                ", points=" + points +
-                ", tripleDouble=" + tripleDouble +
+                "age=" + age + " | " +
+                "league='" + league + '\'' + " | " +
+                "position='" + position + '\'' +
+                "games=" + games + " | " +
+                "gamesStarter=" + gamesStarter + " | " +
+                "minutesPlayed=" + minutesPlayed + " | " +
+                "fieldGoals=" + fieldGoals + " | " +
+                "fgAttempts=" + fgAttempts + " | " +
+                "fgPerc=" + fgPerc + " | " +
+                "fgPts3=" + fgPts3 + " | " +
+                "pfgAttempts3=" + pfgAttempts3 + " | " +
+                "pfgPerc3=" + pfgPerc3 + " | " +
+                "fgPts2=" + fgPts2 + " | " +
+                "pfgAttempts2=" + pfgAttempts2 + " | " +
+                "pfgPerc2=" + pfgPerc2 + " | " +
+                "effGoalPerc=" + effGoalPerc + " | " +
+                "freeThrows=" + freeThrows + " | " +
+                "freetAttempts=" + freetAttempts + " | " +
+                "ftPerc=" + ftPerc + " | " +
+                "offRbds=" + offRbds + " | " +
+                "defRbds=" + defRbds + " | " +
+                "totalRbds=" + totalRbds + " | " +
+                "assists=" + assists + " | " +
+                "steals=" + steals + " | " +
+                "blocks=" + blocks + " | " +
+                "turnovers=" + turnovers + " | " +
+                "fouls=" + fouls + " | " +
+                "points=" + points + " | " +
+                "tripleDouble=" + tripleDouble +
                 '}';
     }
 

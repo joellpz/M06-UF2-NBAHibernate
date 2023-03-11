@@ -11,18 +11,18 @@ public class PlayerSeasonId implements Serializable {
     protected Player idPlayer;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idseason")
-    protected Season seasonId;
+    protected Season idSeason;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idteam")
-    protected Team teamId;
+    protected Team idTeam;
 
     public PlayerSeasonId() {
     }
 
-    public PlayerSeasonId(Player idPlayer, Season seasonId, Team teamId) {
+    public PlayerSeasonId(Player idPlayer, Season idSeason, Team idTeam) {
         this.idPlayer = idPlayer;
-        this.seasonId = seasonId;
-        this.teamId = teamId;
+        this.idSeason = idSeason;
+        this.idTeam = idTeam;
     }
 
     public Player getIdPlayer() {
@@ -33,20 +33,20 @@ public class PlayerSeasonId implements Serializable {
         this.idPlayer = idPlayer;
     }
 
-    public Season getSeasonId() {
-        return seasonId;
+    public Season getIdSeason() {
+        return idSeason;
     }
 
-    public void setSeasonId(Season seasonId) {
-        this.seasonId = seasonId;
+    public void setIdSeason(Season idSeason) {
+        this.idSeason = idSeason;
     }
 
-    public Team getTeamId() {
-        return teamId;
+    public Team getIdTeam() {
+        return idTeam;
     }
 
-    public void setTeamId(Team teamId) {
-        this.teamId = teamId;
+    public void setIdTeam(Team idTeam) {
+        this.idTeam = idTeam;
     }
 
     @Override
@@ -54,18 +54,18 @@ public class PlayerSeasonId implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PlayerSeasonId that = (PlayerSeasonId) o;
-        return getIdPlayer().equals(that.getIdPlayer()) && getSeasonId().equals(that.getSeasonId()) && getTeamId().equals(that.getTeamId());
+        return getIdPlayer().equals(that.getIdPlayer()) && getIdSeason().equals(that.getIdSeason()) && getIdTeam().equals(that.getIdTeam());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdPlayer(), getSeasonId(), getTeamId());
+        return Objects.hash(getIdPlayer(), getIdSeason(), getIdTeam());
     }
 
     @Override
     public String toString() {
-        return "playerId=" + idPlayer.getPlayerId() +":"+ idPlayer.getName()+
-                ", seasonId=" + seasonId.getSeasonId()+":"+seasonId.getYear() +
-                ", teamId=" + teamId.getTeamId()+":"+teamId.getName();
+        return "playerId=" + idPlayer.getPlayerId() + ":" + idPlayer.getName() + "|" +
+                "seasonId=" + idSeason.getSeasonId() + ":" + idSeason.getYear() + "|" +
+                "teamId=" + idTeam.getTeamId() + ":" + idTeam.getName() + "|";
     }
 }

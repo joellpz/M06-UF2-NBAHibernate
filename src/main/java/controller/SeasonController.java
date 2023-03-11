@@ -106,7 +106,7 @@ public class SeasonController {
             try {
                 System.out.print(fields.get(i).getName() + ": ");
                 setter4Fields(season, i);
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 i--;
             }
@@ -152,7 +152,7 @@ public class SeasonController {
                 } else {
                     throw new NumberFormatException();
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
@@ -198,7 +198,7 @@ public class SeasonController {
             } else {
                 throw new NumberFormatException();
             }
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             System.out.println("*** Error, bad value or format.***");
             System.out.println(" ** Exiting **");
         }
@@ -231,7 +231,7 @@ public class SeasonController {
                     System.out.println("Do you want to update anything else? (Y/N)");
                     if (sc.nextLine().equalsIgnoreCase("Y")) rep = true;
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
@@ -302,7 +302,7 @@ public class SeasonController {
                         return null;
                     }
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
@@ -344,7 +344,7 @@ public class SeasonController {
                 if (!first) first = true;
                 else
                     seasonList.add(new Season(data[0], data[1], teamController.getTeam(Integer.parseInt(data[2])), data[3], data[4], data[5], data[6], data[7], data[8]));
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format.***");
                 throw new RuntimeException(e);
             }

@@ -150,16 +150,16 @@ public class Team {
     @Override
     public String toString() {
         return "Team{" +
-                "teamId='" + teamId + '\'' +
-                ", name='" + name + '\'' +
-                ", location='" + location + '\'' +
-                ", games=" + totalGames +
-                ", wins=" + wins +
-                ", loses=" + loses +
-                ", playoffAppearances=" + playoffAppearances +
-                ", conferenceChampions=" + conferenceChampions +
-                ", championships=" + championships +
-                ", conference=" + conference +
+                "teamId='" + teamId + '\'' +" | " +
+                "name='" + name + '\'' +" | " +
+                "location='" + location + '\'' +" | " +
+                "games=" + totalGames +" | " +
+                "wins=" + wins +" | " +
+                "loses=" + loses +" | " +
+                "playoffAppearances=" + playoffAppearances +" | " +
+                "conferenceChampions=" + conferenceChampions +" | " +
+                "championships=" + championships +" | " +
+                "conference=" + conference +
                 '}';
     }
 }

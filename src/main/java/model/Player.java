@@ -153,16 +153,16 @@ public class Player implements Serializable {
     public String toString() {
 
         return "Player{" +
-                "playerId='" + playerId + '\'' +
-                ", name='" + name + '\'' +
-                ", born='" + born + '\'' +
-                ", age=" + age +
-                ", college='" + college + '\'' +
-                ", position='" + position + '\'' +
-                ", draftTeam='" + draftTeam + '\'' +
-                ", draftPos='" + draftPos + '\'' +
-                ", draftYear=" + draftYear +
-                ", expCareer=" + expCareer +
+                "playerId='" + playerId + '\''+ " | " +
+                "name='" + name + '\'' +" | " +
+                "born='" + born + '\'' +" | " +
+                "age=" + age +" | " +
+                "college='" + college + '\'' +" | " +
+                "position='" + position + '\'' +" | " +
+                "draftTeam='" + draftTeam + '\'' +" | " +
+                "draftPos='" + draftPos + '\'' +" | " +
+                "draftYear=" + draftYear +" | " +
+                "expCareer=" + expCareer +
                 '}';
     }
 }

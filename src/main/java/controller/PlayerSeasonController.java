@@ -1,8 +1,6 @@
 package controller;
 
 import database.OpenCSV;
-import model.Player;
-import net.bytebuddy.jar.asm.Type;
 import model.PlayerSeason;
 import model.PlayerSeasonId;
 import org.jetbrains.annotations.NotNull;
@@ -97,7 +95,7 @@ public class PlayerSeasonController {
             try {
                 System.out.print(fields.get(i).getName() + ": ");
                 setter4Fields(playerSeason, i);
-            } catch (NumberFormatException | ParseException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 i--;
             }
@@ -115,34 +113,19 @@ public class PlayerSeasonController {
         do {
             try {
                 rep = false;
-                System.out.println(" -- Do you want to filter (Y/N) ? --");
-                String value = sc.nextLine();
-                if (value.equalsIgnoreCase("Y")) {
-                    List<PlayerSeason> playerSeasons = getCriteriaList(em);
-                    if (playerSeasons != null && playerSeasons.size() != 0) {
-                        for (PlayerSeason p : playerSeasons) {
-                            System.out.println(" Updating -- " + p.toString());
-                            updateFieldForm(p);
-                            em.merge(p);
-                            System.out.println(" -- PlayerSeason Updated -- ");
-                        }
-                    } else {
-                        System.out.println(" -- No value founded... --");
-                    }
-                } else if (value.equalsIgnoreCase("N")) {
-                    PlayerSeason playerSeason = em.find(PlayerSeason.class, selectPlayerSeason());
-                    if (playerSeason != null) {
-                        System.out.println(" Updating -- " + playerSeason);
-                        updateFieldForm(playerSeason);
-                        em.merge(playerSeason);
+                List<PlayerSeason> playerSeasons = getCriteriaList(em);
+                if (playerSeasons != null && playerSeasons.size() != 0) {
+                    for (PlayerSeason p : playerSeasons) {
+                        System.out.println(" Updating -- " + p.toString());
+                        updateFieldForm(p);
+                        em.merge(p);
                         System.out.println(" -- PlayerSeason Updated -- ");
-                    } else {
-                        System.out.println(" -- No value founded... --");
                     }
                 } else {
-                    throw new NumberFormatException();
+                    System.out.println(" -- No value founded... --");
                 }
-            } catch (NumberFormatException e) {
+
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
@@ -158,36 +141,22 @@ public class PlayerSeasonController {
     public void deletePlayerSeason() {
         EntityManager em = entityManagerFactory.createEntityManager();
 
-        String value;
         em.getTransaction().begin();
         System.out.println(" *** DELETE ***");
         try {
-            System.out.println(" -- Do you want to filter (Y/N) ? --");
-            value = sc.nextLine();
-            if (value.equalsIgnoreCase("Y")) {
-                List<PlayerSeason> playerSeasons = getCriteriaList(em);
-                if (playerSeasons != null && playerSeasons.size() != 0) {
-                    for (PlayerSeason p : playerSeasons) {
-                        em.remove(p);
-                        System.out.println(" -- " + p.toString());
-                        System.out.println(" -- PlayerSeason Deleted -- ");
-                    }
-                } else {
-                    System.out.println(" -- No value founded... --");
-                }
-            } else if (value.equalsIgnoreCase("N")) {
-                PlayerSeason playerSeason = em.find(PlayerSeason.class, selectPlayerSeason());
-                if (playerSeason != null) {
-                    em.remove(playerSeason);
-                    System.out.println(" -- " + playerSeason);
+            System.out.println(" -- Apply Filter --");
+            List<PlayerSeason> playerSeasons = getCriteriaList(em);
+            if (playerSeasons != null && playerSeasons.size() != 0) {
+                for (PlayerSeason p : playerSeasons) {
+                    em.remove(p);
+                    System.out.println(" -- " + p.toString());
                     System.out.println(" -- PlayerSeason Deleted -- ");
-                } else {
-                    System.out.println(" -- No value founded... --");
                 }
             } else {
-                throw new NumberFormatException();
+                System.out.println(" -- No value founded... --");
             }
-        } catch (NumberFormatException e) {
+
+        } catch (Exception e) {
             System.out.println("*** Error, bad value or format.***");
             System.out.println(" ** Exiting **");
         }
@@ -222,7 +191,7 @@ public class PlayerSeasonController {
                     System.out.println("Do you want to update anything else? (Y/N)");
                     if (sc.nextLine().equalsIgnoreCase("Y")) rep = true;
                 }
-            } catch (NumberFormatException | ParseException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
@@ -244,15 +213,33 @@ public class PlayerSeasonController {
         q.select(c);
 
         String option;
+        int opt = 0, id = 0;
 
         listPlayerSeasons();
 
         System.out.println(" -- What attribute do you want to filter for? --");
-        for (int i = 1; i < fields.size(); i++) {
-            System.out.println((i) + ": " + fields.get(i).getName());
+        for (int i = 0; i < fields.size(); i++) {
+            if (i == 0) {
+                System.out.println("0. idPlayer / idSeason / idTeam");
+            } else System.out.println((i) + ": " + fields.get(i).getName());
         }
         System.out.print("Selected: ");
+
         Field filter = fields.get(Integer.parseInt(sc.nextLine()));
+        if (filter.getName().equalsIgnoreCase("playerSeasonId")) {
+            do {
+                System.out.println("1. Filter Player");
+                System.out.println("2. Filter Season");
+                System.out.println("3. Filter Team");
+                opt = Integer.parseInt(sc.nextLine());
+                switch (opt) {
+                    case 1 -> id = playerController.getPlayer().getPlayerId();
+                    case 2 -> id = seasonController.getSeason().getSeasonId();
+                    case 3 -> id = teamController.getTeam().getTeamId();
+                    default -> System.out.println(" -- Error, try another value. --");
+                }
+            } while (opt != 1 && opt != 2 && opt != 3);
+        }
         do {
             rep = false;
             System.out.println("*** What type of criteria would you use (<, >, = , !=) ? ***");
@@ -296,12 +283,26 @@ public class PlayerSeasonController {
                         );
                     }
                 } else if (filter.getGenericType().toString().equals("class model.PlayerSeasonId")) {
-
+                    if (option.equalsIgnoreCase("=")) {
+                        if (opt == 1) {
+                            q.where(
+                                    cb.equal(c.get(filter.getName()).get("idPlayer"), id)
+                            );
+                        } else if (opt == 2) {
+                            q.where(
+                                    cb.equal(c.get(filter.getName()).get("idSeason"), id)
+                            );
+                        } else if (opt == 3) {
+                            q.where(
+                                    cb.equal(c.get(filter.getName()).get("idTeam"), id)
+                            );
+                        }
+                    }
                 } else {
                     System.out.println(" -- We can't filter for that field... --");
                     return null;
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format. Try Again ***");
                 rep = true;
             }
@@ -315,9 +316,8 @@ public class PlayerSeasonController {
      *
      * @param playerSeason PlayerSeason Object to set new Values
      * @param pos          postion of field in Fields List
-     * @throws ParseException Bad format into Date
      */
-    private void setter4Fields(PlayerSeason playerSeason, int pos) throws ParseException {
+    private void setter4Fields(PlayerSeason playerSeason, int pos) {
         System.out.println(fields.get(pos).getName());
         switch (fields.get(pos).getName()) {
             case "playerSeasonId" ->
@@ -361,7 +361,6 @@ public class PlayerSeasonController {
      * @return List of PlayerSeasons imported from the csv
      */
     public List<PlayerSeason> readPlayerSeasonFile(String path) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         List<PlayerSeason> PlayerSeasonList = new ArrayList<>();
         boolean first = false;
         for (String[] data : OpenCSV.readCSV(path)) {
@@ -375,7 +374,7 @@ public class PlayerSeasonController {
                             Integer.parseInt(data[19]), Integer.parseInt(data[20]), Float.parseFloat(data[21]), Integer.parseInt(data[22]), Integer.parseInt(data[23]),
                             Integer.parseInt(data[24]), Integer.parseInt(data[25]), Integer.parseInt(data[26]), Integer.parseInt(data[27]), Integer.parseInt(data[28]),
                             Integer.parseInt(data[29]), Integer.parseInt(data[30]), Integer.parseInt(data[31])));
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("*** Error, bad value or format.***");
             }
         }

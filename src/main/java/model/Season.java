@@ -159,16 +159,16 @@ public class Season {
     @Override
     public String toString() {
         return "Season{" +
-                "seasonId='" + seasonId + '\'' +
-                ", year='" + year + '\'' +
-                ", league='" + league + '\'' +
-                ", champion='" + champion + '\'' +
-                ", MVP='" + MVP + '\'' +
-                ", ROTY='" + ROTY + '\'' +
-                ", PPG_Leader='" + PPG_Leader + '\'' +
-                ", RGP_Leader='" + RGP_Leader + '\'' +
-                ", APG_Leader='" + APG_Leader + '\'' +
-                ", WS_Leader='" + WS_Leader + '\'' +
+                "seasonId='" + seasonId + '\'' +" | " +
+                "year='" + year + '\'' +" | " +
+                "league='" + league + '\'' +" | " +
+                "champion='" + champion + '\'' +" | " +
+                "MVP='" + MVP + '\'' +" | " +
+                "ROTY='" + ROTY + '\'' +" | " +
+                "PPG_Leader='" + PPG_Leader + '\'' +" | " +
+                "RGP_Leader='" + RGP_Leader + '\'' +" | " +
+                "APG_Leader='" + APG_Leader + '\'' +" | " +
+                "WS_Leader='" + WS_Leader + '\''+
                 '}';
     }
 
